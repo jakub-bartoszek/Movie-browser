@@ -1,6 +1,15 @@
+import { HashRouter, Route, Routes } from "react-router-dom";
+import MovieList from "./pages/MovieList";
+import { Navigation } from "./components/common/Navigation/Navigation";
+
 function App() {
   return (
-    <div>App</div>
+    <HashRouter>
+      <Navigation/>
+      <Routes>
+        <Route path="/" element={<MovieList/>}/>
+      </Routes>
+    </HashRouter>
   );
 }
 

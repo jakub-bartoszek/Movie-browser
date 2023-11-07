@@ -7,6 +7,7 @@ function App() {
     <HashRouter>
       <Navigation/>
       <Routes>
+        <Route path="/movie-list" element={<MovieList/>}/>
         <Route path="/" element={<MovieList/>}/>
       </Routes>
     </HashRouter>

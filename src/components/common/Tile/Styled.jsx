@@ -51,3 +51,53 @@ export const GreyRelease = styled.span`
    margin-right: 5px;
    display: block;
 `;
+
+export const Genres = styled.ul`
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   list-style: none;
+   padding-left: 0px;
+   margin-top: 24px;
+`;
+
+export const Genre = styled.li`
+  font-size: 14px; 
+  border-radius: 5px;
+  background: #E4E6F0;
+  padding: 8px 16px;
+  margin:0 16px 8px 0;
+`;
+
+export const Rating = styled.div`
+   margin-top: 24px;
+  font-size: 22px;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-end;
+`;
+
+export const Icon = styled.img`
+   width:24px;
+   height: 24px;
+   margin-right: 8px;
+`;
+export const Rate = styled.span`
+   font-size: 14px;
+   font-weight: 400;
+   margin-right: 12px;
+   margin-left: 8px;
+`;
+
+export const Votes = styled.span`
+   font-size: 14px;
+   font-weight: 400;
+`;
+
+export const Discription = styled.div`
+   max-width: 936px;;
+   font-size: 20px;
+   line-height: 160%;
+   margin-top: 24px;
+   font-weight: 400;
+`;

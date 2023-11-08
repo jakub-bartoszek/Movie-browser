@@ -7,6 +7,7 @@ const colorNames = {
 
 export const theme = {
 	breakpoints: {
+		xs: "414px",
 		s: "600px",
 		m: "900px",
 		l: "1200px",
@@ -19,7 +20,8 @@ export const theme = {
 		},
 		navigation: {
 			background: colorNames.Woodsmoke,
-			text: colorNames.White
+			text: colorNames.White,
+			mobileBackground: colorNames.Black
 		},
 		searchBar: {
 			background: colorNames.White,

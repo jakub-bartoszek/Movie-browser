@@ -49,7 +49,6 @@ export const Tile = () => {
             Disguises herself as a male warrior in order to save her father.
             A young Chinese maiden disguises herself as a male warrior in order to save her father.
           </Discription>
-
         </Content>
       </Container>
     </>

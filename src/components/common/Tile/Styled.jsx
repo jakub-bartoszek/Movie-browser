@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-   background-color:#FFFFFF ;
+   background-color:${({ theme }) => theme.colors.tile.background};
    max-width: 1368px;
    padding: 40px;
    box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.50);
@@ -9,6 +9,7 @@ export const Container = styled.div`
    grid-template-columns: auto 1fr;
    gap: 40px;
 `;
+
 export const Image = styled.img`
    max-width: 312px;
    max-height: 464px;
@@ -16,19 +17,18 @@ export const Image = styled.img`
 `;
 
 export const Content = styled.div`
-padding: 8px 0;
-
+   padding: 8px 0;
 `;
 
 export const Header = styled.header`
-   color:#000;
+   color:${({ theme }) => theme.colors.tile.text};
    font-size: 36px;
    margin-bottom: 24px;
 `;
 
 export const Year = styled.p`
-font-size: 22px;
-margin-bottom: 24px;
+   font-size: 22px;
+   margin-bottom: 24px;
 `;
 
 export const Release = styled.div`
@@ -47,7 +47,7 @@ export const ReleaseDate = styled.div`
   
 `;
 export const GreyRelease = styled.span`
-   color: #74788B;
+   color:${({ theme }) => theme.colors.tile.mutedText}; 
    margin-right: 5px;
    display: block;
 `;
@@ -64,13 +64,13 @@ export const Genres = styled.ul`
 export const Genre = styled.li`
   font-size: 14px; 
   border-radius: 5px;
-  background: #E4E6F0;
+  background: ${({ theme }) => theme.colors.tile.ganresBackground};
   padding: 8px 16px;
   margin:0 16px 8px 0;
 `;
 
 export const Rating = styled.div`
-   margin-top: 24px;
+  margin-top: 24px;
   font-size: 22px;
   font-weight: 500;
   display: flex;
@@ -100,4 +100,8 @@ export const Discription = styled.div`
    line-height: 160%;
    margin-top: 24px;
    font-weight: 400;
+   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+		font-size: 16px;
+      line-height: 130%;
+	}
 `;

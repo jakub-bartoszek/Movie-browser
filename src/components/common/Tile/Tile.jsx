@@ -24,10 +24,10 @@ export const Tile = () => {
       <Container>
         <Image src={poster} alt="" />
         <Content>
-          <Header> Mulan</Header>
-          <Year> 2020 </Year>
+          <Header>Mulan</Header>
+          <Year>2020</Year>
           <Release>
-            <GreyRelease>Production: </GreyRelease>
+            <GreyRelease>Production:</GreyRelease>
             China, United States of America
           </Release>
           <ReleaseDate>
@@ -41,7 +41,7 @@ export const Tile = () => {
           </Genres>
           <Rating>
             <Icon src={icon} alt=""></Icon>7,8
-            <Rate>/10</Rate>
+            <Rate>/ 10</Rate>
             <Votes>335 votes</Votes>
           </Rating>
           <Discription>

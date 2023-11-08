@@ -37,15 +37,15 @@ export const Release = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 8px;
-  
 `;
+
 export const ReleaseDate = styled.div`
   font-size: 18px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  
 `;
+
 export const GreyRelease = styled.span`
    color:${({ theme }) => theme.colors.tile.mutedText}; 
    margin-right: 5px;
@@ -82,6 +82,7 @@ export const Icon = styled.img`
    height: 24px;
    margin-right: 8px;
 `;
+
 export const Rate = styled.span`
    font-size: 14px;
    font-weight: 400;

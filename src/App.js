@@ -1,5 +1,6 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import MovieList from "./pages/MovieList";
+import People from "./pages/People";
 import { Navigation } from "./components/common/Navigation/Navigation";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <Navigation/>
       <Routes>
         <Route path="/movie-list" element={<MovieList/>}/>
+        <Route path="/people" element={<People/>}/>
         <Route path="/" element={<MovieList/>}/>
       </Routes>
     </HashRouter>

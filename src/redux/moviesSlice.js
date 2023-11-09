@@ -3,21 +3,31 @@ import { createSlice } from "@reduxjs/toolkit";
 const moviesSlice = createSlice({
   name: "movies",
   initialState: {
-    movies: []
+    movies: [],
+
+    loading: false,
   },
   reducers: {
-    setMovies: (state, { payload }) => {
-      state.movies = payload;
+    fetchMovies: state => {
+      state.loading = true;
     },
-    fetchMovies: () => { }
+    fetchMoviesSuccess: (state, { payload: movies }) => {
+      state.movies = movies;
+      state.loading = false;
+    },
+    fetchMoviesError: (state) => {
+      state.loading = false;
+    },
   }
 });
-
 export const {
-  setMovies,
-  fetchMovies
+  fetchMovies, fetchMoviesSuccess, fetchMoviesError
 } = moviesSlice.actions;
 
-export const selectMovies = (state) => state.movies.movies;
+export const selectMoviesState = (state) => state.movies;
+
+export const selectMovies = (state) => selectMoviesState(state).movies;
+export const selectIsLoading = (state) => selectMoviesState(state).loading;
+
 
 export default moviesSlice.reducer;

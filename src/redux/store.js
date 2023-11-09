@@ -1,17 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
 import moviesReducer from "./moviesSlice";
-import createSagaMiddleware from "@redux-saga/core";
-import { watchFetchMovies } from "./moviesSaga";
+import rootSaga from "./rootSaga";
 
-const sagaMiddleware = createSagaMiddleware()
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: {
     movies: moviesReducer,
   },
-  middleware: [sagaMiddleware]
+  middleware: [sagaMiddleware],
 });
 
-sagaMiddleware.run(watchFetchMovies)
+sagaMiddleware.run(rootSaga);
 
 export default store;

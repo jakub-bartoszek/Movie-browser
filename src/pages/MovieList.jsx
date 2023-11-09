@@ -1,13 +1,25 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchMovies } from "../redux/moviesSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchMovies, selectMovies } from "../redux/moviesSlice";
 
 export default function MovieList() {
 	const dispatch = useDispatch();
 
+	const movies = useSelector(selectMovies);
+
 	useEffect(() => {
-		dispatch(fetchMovies());
+		if (movies.length === 0) {
+			dispatch(fetchMovies());
+			console.log(movies);
+		}
 	});
 
-	return <div>MovieList</div>;
+	return (
+		<div>
+			<button onClick={() => dispatch(fetchMovies())}>
+				Pobierz przykładowe zadania
+			</button>
+		</div>
+	);
 }

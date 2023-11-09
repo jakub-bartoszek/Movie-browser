@@ -1,18 +1,18 @@
-import { call, put, takeEvery } from "@redux-saga/core/effects";
-import { fetchMovies, setMovies } from "./moviesSlice";
-import { getMovies } from "./getMovies";
+import { put, call, takeLatest, delay } from 'redux-saga/effects';
+import { fetchMovies, fetchMoviesSuccess, } from "./moviesSlice";
+import { getMovies } from './getMovies';
 
 function* fetchMoviesHandler() {
   try {
+    yield delay(1000);
     const movies = yield call(getMovies);
-    yield put(setMovies(movies));
+    yield put(fetchMoviesSuccess(movies));
   }
   catch (error) {
-    console.log(error);
+    yield call(alert, "Something went wrong!");
   }
 }
 
-export function* watchFetchMovies() {
-  yield call(console.log("Saga podłączona"));
-  yield takeEvery(fetchMovies.type, fetchMoviesHandler);
+export function* tasksSaga() {
+  yield takeLatest(fetchMovies.type, fetchMoviesHandler);
 }

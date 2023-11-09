@@ -172,13 +172,13 @@ export const Discription = styled.div`
    max-width: 936px;
    font-size: 20px;
    line-height: 160%;
-   margin-top: 24px;
+   /* margin-top: 24px; */
    font-weight: 400;
    grid-area: discription;
    
        @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
 		   font-size: 14px;
          column-gap: 8px;
-         margin-top: 0px;
+         margin-top: 8px;
       }
 `;

@@ -44,12 +44,12 @@ export const Tile = () => {
             <Rate>/ 10</Rate>
             <Votes>335 votes</Votes>
           </Rating>
-          <Discription>
-            A young Chinese maiden disguises herself as a male warrior in order to save her father.
-            Disguises herself as a male warrior in order to save her father.
-            A young Chinese maiden disguises herself as a male warrior in order to save her father.
-          </Discription>
         </Content>
+        <Discription>
+          A young Chinese maiden disguises herself as a male warrior in order to save her father.
+          Disguises herself as a male warrior in order to save her father.
+          A young Chinese maiden disguises herself as a male warrior in order to save her father.
+        </Discription>
       </Container>
     </>
   );

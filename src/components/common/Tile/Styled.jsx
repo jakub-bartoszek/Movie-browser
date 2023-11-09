@@ -6,13 +6,24 @@ export const Container = styled.div`
    max-width: 1368px;
    padding: 40px;
    box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.50);
-   display: flex;
-   flex-direction: row;
-   gap: 40px;     
+   display: grid;
+   grid-template-columns: 1fr 3fr auto;
+   column-gap: 40px;     
+   grid-template-areas:  
+    "image content content"
+    "image content content"
+    "image discription discription "
+    "image discription discription"
+   ;
        @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
-      padding: 16px;
-      gap: 16px;
-      flex-wrap: nowrap;
+          padding: 16px;
+          gap: 16px;
+          grid-template-areas: 
+            "image content content"
+            "image content content"
+            "image content content "
+            "discription discription discription"
+      ;
    }
 `;
 
@@ -20,11 +31,11 @@ export const Image = styled.img`
    max-width: 312px;
    max-height: 464px;
    border-radius: 5px;
-   display: flex;
+   grid-area: image;
    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
 		width: 164px;
       height: 219px;
-	}
+   }
    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
 		width: 114px;
       height: 169px;
@@ -32,9 +43,10 @@ export const Image = styled.img`
 `;
 
 export const Content = styled.div`
-   padding: 8px 0;
-      @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
-         
+   grid-area: content;
+   row-gap: 24px;
+   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+      row-gap: 8px;
    }
 `;
 
@@ -106,7 +118,7 @@ export const Genres = styled.ul`
 export const Genre = styled.li`
   font-size: 14px; 
   border-radius: 5px;
-  background: ${({ theme }) => theme.colors.tile.ganresBackground};
+  background: ${({ theme }) => theme.colors.tile.genresBackground};
   padding: 8px 16px;
   margin:0 16px 8px 0;
       @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}){
@@ -162,8 +174,11 @@ export const Discription = styled.div`
    line-height: 160%;
    margin-top: 24px;
    font-weight: 400;
+   grid-area: discription;
+   
        @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
 		   font-size: 14px;
-         margin-top: 8px;
-   }
+         column-gap: 8px;
+         margin-top: 0px;
+      }
 `;

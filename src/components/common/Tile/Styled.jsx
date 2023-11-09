@@ -1,34 +1,64 @@
 import styled from "styled-components";
+import { ReactComponent as star } from "../../../assets/star.svg"
 
 export const Container = styled.div`
    background-color:${({ theme }) => theme.colors.tile.background};
    max-width: 1368px;
    padding: 40px;
    box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.50);
-   display: grid;
-   grid-template-columns: auto 1fr;
-   gap: 40px;
+   display: flex;
+   flex-direction: row;
+   gap: 40px;     
+       @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+      padding: 16px;
+      gap: 16px;
+      flex-wrap: nowrap;
+   }
 `;
 
 export const Image = styled.img`
    max-width: 312px;
    max-height: 464px;
    border-radius: 5px;
+   display: flex;
+   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+		width: 164px;
+      height: 219px;
+	}
+   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		width: 114px;
+      height: 169px;
+	}
 `;
 
 export const Content = styled.div`
    padding: 8px 0;
+      @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+         
+   }
 `;
 
 export const Header = styled.header`
    color:${({ theme }) => theme.colors.tile.text};
    font-size: 36px;
    margin-bottom: 24px;
+      @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+         width: 120px;
+         font-size: 16px;
+         margin-bottom: 4px;
+         font-weight: 500;;
+	}
 `;
 
 export const Year = styled.p`
    font-size: 22px;
    margin-bottom: 24px;
+   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+         width: 120px;
+         font-size: 13px;
+         margin-bottom: 8px;
+         color:${({ theme }) => theme.colors.tile.mutedText};
+   }
 `;
 
 export const Release = styled.div`
@@ -37,6 +67,9 @@ export const Release = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 8px;
+    @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+      font-size: 12px;
+   } 
 `;
 
 export const ReleaseDate = styled.div`
@@ -44,12 +77,18 @@ export const ReleaseDate = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+      @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+         font-size: 12px;
+   } 
 `;
 
 export const GreyRelease = styled.span`
    color:${({ theme }) => theme.colors.tile.mutedText}; 
    margin-right: 5px;
    display: block;
+      @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}){
+         display: none;
+   }
 `;
 
 export const Genres = styled.ul`
@@ -59,6 +98,9 @@ export const Genres = styled.ul`
    list-style: none;
    padding-left: 0px;
    margin-top: 24px;
+         @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}){
+            margin-top: 8px;
+   }
 `;
 
 export const Genre = styled.li`
@@ -67,6 +109,11 @@ export const Genre = styled.li`
   background: ${({ theme }) => theme.colors.tile.ganresBackground};
   padding: 8px 16px;
   margin:0 16px 8px 0;
+      @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}){
+         font-size: 10px;
+         padding: 4px 8px;
+         margin:0 8px 4px 0;
+   }
 `;
 
 export const Rating = styled.div`
@@ -75,12 +122,18 @@ export const Rating = styled.div`
   font-weight: 500;
   display: flex;
   align-items: flex-end;
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}){
+         font-size: 13px;
+         margin-top: 8px;
+   }
 `;
 
-export const Icon = styled.img`
-   width:24px;
-   height: 24px;
+export const IconStar = styled(star)`
    margin-right: 8px;
+       @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+		   height: 16px;
+		   width: 16px;
+	}
 `;
 
 export const Rate = styled.span`
@@ -88,21 +141,29 @@ export const Rate = styled.span`
    font-weight: 400;
    margin-right: 12px;
    margin-left: 8px;
+         @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+            display: none;
+   }
 `;
 
 export const Votes = styled.span`
    font-size: 14px;
    font-weight: 400;
+   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}){
+         font-size: 13px;
+         color:${({ theme }) => theme.colors.tile.mutedText}; 
+         margin-left: 7px;
+   }
 `;
 
 export const Discription = styled.div`
-   max-width: 936px;;
+   max-width: 936px;
    font-size: 20px;
    line-height: 160%;
    margin-top: 24px;
    font-weight: 400;
-   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-		font-size: 16px;
-      line-height: 130%;
-	}
+       @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+		   font-size: 14px;
+         margin-top: 8px;
+   }
 `;

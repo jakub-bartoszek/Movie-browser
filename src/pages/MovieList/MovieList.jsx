@@ -1,3 +1,4 @@
+import { TileSmall } from "./TileSmall";
 import {
   Button,
   Container,
@@ -15,14 +16,30 @@ export default function MovieList() {
         <Content>
           <Header>Popular movies</Header>
           <TilesRow>
-            <Tile></Tile>
-            <Tile></Tile>
-            <Tile></Tile>
-            <Tile></Tile>
-            <Tile></Tile>
-            <Tile></Tile>
-            <Tile></Tile>
-            <Tile></Tile>
+            <Tile>
+              <TileSmall />
+            </Tile>
+            <Tile>
+              <TileSmall />
+            </Tile>
+            <Tile>
+              <TileSmall />
+            </Tile>
+            <Tile>
+              <TileSmall />
+            </Tile>
+            <Tile>
+              <TileSmall />
+            </Tile>
+            <Tile>
+              <TileSmall />
+            </Tile>
+            <Tile>
+              <TileSmall />
+            </Tile>
+            <Tile>
+              <TileSmall />
+            </Tile>
           </TilesRow>
         </Content>
         <Pagination>

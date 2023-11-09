@@ -2,7 +2,9 @@ const colorNames = {
 	White: "#FFFFFF",
 	Black: "#000000",
 	Woodsmoke: "#18181B",
-	Waterloo: "#7E839A"
+	Waterloo: "#7E839A",
+	StormGrey: "#74788B",
+	Mystic: "#E4E6F0",
 };
 
 export const theme = {
@@ -27,7 +29,13 @@ export const theme = {
 			background: colorNames.White,
 			text: colorNames.Black,
 			mutedText: colorNames.Waterloo
-		}
+		},
+		tile: {
+			background: colorNames.White,
+			text: colorNames.Black,
+			mutedText: colorNames.StormGrey,
+			genresBackground: colorNames.Mystic,
+		},
 	}
 };
 

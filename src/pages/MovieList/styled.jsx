@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  margin: 0 auto;
   display: flex;
   margin-top: 50px;
   flex-direction: column;
@@ -8,10 +9,10 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin: 0 10%;
   align-self: center;
-  display: grid;
-  flex-direction: row;
   grid-gap: 10px;
 `;
 
@@ -20,28 +21,54 @@ export const Header = styled.span`
   font-style: normal;
   font-weight: 600;
   line-height: 120%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.m}) {
+    display: flex;
+    font-size: 24px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.m}) {
+    display: flex;
+    font-size: 18px;
+  }
 `;
 
 export const TilesRow = styled.div`
-  height: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: auto auto auto auto;
   grid-gap: 16px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.m}) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Tile = styled.div`
+  display: flex;
+  padding: 5%;
+  width: 200px;
+  height: 300px;
+  flex-shrink: 0;
+  flex-direction: column;
   background-color: ${({ theme }) => theme.colors.tile.background};
   box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.5);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.m}) {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
 `;
-
-export const Image = styled.img`
-  width: 200px;
-  height: 250px;
-`;
-
-export const Description = styled.div``;
-
-export const Rating = styled.p``;
 
 export const Pagination = styled.div`
   margin-top: 40px;

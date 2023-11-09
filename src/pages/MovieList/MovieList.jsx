@@ -2,11 +2,8 @@ import {
   Button,
   Container,
   Content,
-  Description,
   Header,
-  Image,
   Pagination,
-  Rating,
   Tile,
   TilesRow,
 } from "./styled";
@@ -18,48 +15,14 @@ export default function MovieList() {
         <Content>
           <Header>Popular movies</Header>
           <TilesRow>
-            <Tile>
-              <Image />
-              <Description>Title/Year</Description>
-              <Rating>Rating</Rating>
-            </Tile>
-            <Tile>
-              <Image />
-              <Description>Title/Year</Description>
-              <Rating>Rating</Rating>
-            </Tile>
-            <Tile>
-              <Image />
-              <Description>Title/Year</Description>
-              <Rating>Rating</Rating>
-            </Tile>
-            <Tile>
-              <Image />
-              <Description>Title/Year</Description>
-              <Rating>Rating</Rating>
-            </Tile>
-          </TilesRow>
-          <TilesRow>
-            <Tile>
-              <Image />
-              <Description>Title/Year</Description>
-              <Rating>Rating</Rating>
-            </Tile>
-            <Tile>
-              <Image />
-              <Description>Title/Year</Description>
-              <Rating>Rating</Rating>
-            </Tile>
-            <Tile>
-              <Image />
-              <Description>Title/Year</Description>
-              <Rating>Rating</Rating>
-            </Tile>
-            <Tile>
-              <Image />
-              <Description>Title/Year</Description>
-              <Rating>Rating</Rating>
-            </Tile>
+            <Tile></Tile>
+            <Tile></Tile>
+            <Tile></Tile>
+            <Tile></Tile>
+            <Tile></Tile>
+            <Tile></Tile>
+            <Tile></Tile>
+            <Tile></Tile>
           </TilesRow>
         </Content>
         <Pagination>

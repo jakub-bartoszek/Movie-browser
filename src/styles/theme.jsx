@@ -34,7 +34,7 @@ export const theme = {
 			background: colorNames.White,
 			text: colorNames.Black,
 			mutedText: colorNames.StormGrey,
-			ganresBackground: colorNames.Mystic,
+			genresBackground: colorNames.Mystic,
 		},
 	}
 };

@@ -10,15 +10,15 @@ import {
   Genres,
   Genre,
   Rating,
-  Icon,
+  IconStar,
   Rate,
   Votes,
   Discription,
 } from "./Styled"
 import poster from "./images/poster.png";
-import icon from "./images/shape-star.png"
 
 export const Tile = () => {
+  const isMobile = window.innerWidth < 800;
   return (
     <>
       <Container>
@@ -28,7 +28,7 @@ export const Tile = () => {
           <Year>2020</Year>
           <Release>
             <GreyRelease>Production:</GreyRelease>
-            China, United States of America
+            {isMobile ? "China, USA " : "China, United States of America"}
           </Release>
           <ReleaseDate>
             <GreyRelease>Release date:</GreyRelease>
@@ -40,7 +40,7 @@ export const Tile = () => {
             <Genre>Drama</Genre>
           </Genres>
           <Rating>
-            <Icon src={icon} alt=""></Icon>7,8
+            <IconStar />7,8
             <Rate>/ 10</Rate>
             <Votes>335 votes</Votes>
           </Rating>

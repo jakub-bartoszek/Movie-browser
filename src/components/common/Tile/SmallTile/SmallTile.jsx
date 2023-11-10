@@ -1,18 +1,18 @@
+import poster from "../images/poster.png";
 import {
   Description,
+  TileHeader,
   Genre,
   Genres,
-  TileHeader,
   IconStar,
   Image,
-  Rate,
   Rating,
+  Rate,
   Votes,
   Year,
 } from "./styled";
-import poster from "../../components/common/Tile/images/poster.png";
 
-export const TileSmall = () => {
+export const SmallTile = () => {
   return (
     <>
       <Image src={poster} alt="" />

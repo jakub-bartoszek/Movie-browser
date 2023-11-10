@@ -10,11 +10,12 @@ import {
   Rate,
   Votes,
   Year,
+  Wrapper,
 } from "./styled";
 
 export const SmallTile = () => {
   return (
-    <>
+    <Wrapper>
       <Image src={poster} alt="" />
       <Description>
         <TileHeader>Mulan</TileHeader>
@@ -29,6 +30,6 @@ export const SmallTile = () => {
           <Votes>335 votes</Votes>
         </Rating>
       </Description>
-    </>
+    </Wrapper>
   );
 };

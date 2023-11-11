@@ -1,10 +1,11 @@
 const colorNames = {
 	White: "#FFFFFF",
+	Whisper: "#F5F5FA",
 	Black: "#000000",
 	Woodsmoke: "#18181B",
 	Waterloo: "#7E839A",
 	StormGrey: "#74788B",
-	Mystic: "#E4E6F0",
+	Mystic: "#E4E6F0"
 };
 
 export const theme = {
@@ -17,7 +18,7 @@ export const theme = {
 	},
 	colors: {
 		site: {
-			background: colorNames.White,
+			background: colorNames.Whisper,
 			text: colorNames.Black
 		},
 		navigation: {
@@ -34,7 +35,7 @@ export const theme = {
 			background: colorNames.White,
 			text: colorNames.Black,
 			mutedText: colorNames.StormGrey,
-			genresBackground: colorNames.Mystic,
-		},
+			genresBackground: colorNames.Mystic
+		}
 	}
 };

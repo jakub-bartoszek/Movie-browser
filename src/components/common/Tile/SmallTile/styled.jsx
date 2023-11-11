@@ -1,34 +1,27 @@
 import styled from "styled-components";
-import { ReactComponent as star } from "../../../../assets/star.svg";
+import { ReactComponent as star } from "../../../../assets/icons/star.svg";
 
 export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding: 16px;
-  gap: 16px;
-
-  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    flex-direction: row;
-	}
-`;
-
-export const TileHeader = styled.header`
-	font-size: 22px;
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-		font-size: 16px;
-	}
+	box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.5);
+	gap: 16px;
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
-		font-size: 12px;
+		flex-direction: row;
 	}
 `;
 
 export const Image = styled.img`
 	border-radius: 5px;
 	width: 292px;
-	height: 434px;
+
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		width: 114px;
+	}
 `;
 
-export const Description = styled.div`
+export const Content = styled.div`
 	@media (max-width: ${({ theme }) => theme.breakpoints.s}) {
 		display: flex;
 		flex-direction: column;
@@ -36,101 +29,90 @@ export const Description = styled.div`
 	}
 `;
 
-export const Year = styled.p`
-	font-size: 16px;
-	gap: 24px;
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-		font-size: 13px;
-		gap: 8px;
-		color: ${({ theme }) => theme.colors.tile.mutedText};
-	}
+export const TileHeader = styled.header`
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 130%;
+
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
-		font-size: 12px;
-		gap: 8px;
-		color: ${({ theme }) => theme.colors.tile.mutedText};
+		font-size: 16px;
+		font-weight: 500;
 	}
 `;
 
-export const Release = styled.div`
-	font-size: 18px;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
-	margin-bottom: 8px;
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-		font-size: 12px;
+export const Year = styled.p`
+	margin-top: 8px;
+	font-size: 16px;
+	line-height: 150%;
+	color: var(--Darker-grey, #7e839a);
+
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		margin-top: 4px;
+		font-size: 13px;
+		line-height: 130%;
 	}
 `;
 
 export const Genres = styled.ul`
+	margin-top: 8px;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
 	list-style: none;
 	padding-left: 0px;
-	margin-top: 24px;
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-		margin-top: 8px;
+	gap: 10px;
+
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		gap: 8px;
 	}
 `;
 
 export const Genre = styled.li`
-	font-size: 14px;
-	border-radius: 5px;
-	background: ${({ theme }) => theme.colors.tile.genresBackground};
+	display: flex;
 	padding: 8px 16px;
-	margin: 0 16px 8px 0;
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-		font-size: 10px;
+	align-items: center;
+	border-radius: 5px;
+	background: #e4e6f0;
+	font-family: Poppins;
+	font-size: 14px;
+
+	line-height: 140%;
+
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
 		padding: 4px 8px;
-		margin: 0 8px 4px 0;
+		font-size: 10px;
+		line-height: 110%;
 	}
 `;
 
 export const Rating = styled.div`
-	margin-top: 24px;
-	font-size: 22px;
-	font-weight: 500;
+	margin-top: 39px;
 	display: flex;
-	align-items: flex-end;
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+	gap: 12px;
+	align-items: center;
+	font-size: 16px;
+	line-height: 150%;
+
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
 		font-size: 13px;
+		line-height: 130%;
 		margin-top: 8px;
+		gap: 8px;
 	}
 `;
 
 export const IconStar = styled(star)`
-	margin-right: 8px;
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-		height: 16px;
-		width: 16px;
-	}
+	width: 24px;
+	height: 24px;
+
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
-		height: 12px;
-		width: 12px;
-	}
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
-		height: 12px;
-		width: 12px;
+		width: 16px;
+		height: 16px;
 	}
 `;
 
 export const Rate = styled.span`
-	font-size: 14px;
-	font-weight: 400;
-	margin-right: 12px;
-	margin-left: 8px;
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-		display: none;
-	}
+	font-weight: 600;
 `;
 
 export const Votes = styled.span`
-	font-size: 14px;
-	font-weight: 400;
-	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-		font-size: 13px;
-		color: ${({ theme }) => theme.colors.tile.mutedText};
-		margin-left: 7px;
-	}
+	color: var(--Darker-grey, #7e839a);
 `;

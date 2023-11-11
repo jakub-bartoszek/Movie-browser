@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { SmallTile } from "../../components/common/Tile/SmallTile/SmallTile";
 import {
 	Button,
@@ -5,8 +6,8 @@ import {
 	Content,
 	Header,
 	Pagination,
-	Tile,
-	TilesRow
+	StyledLeftIcon,
+	StyledRightIcon
 } from "./styled";
 
 export default function MovieList() {
@@ -24,13 +25,23 @@ export default function MovieList() {
 				<SmallTile />
 			</Content>
 			<Pagination>
-				<Button>First</Button>
-				<Button>Previous</Button>
+				<Button>
+					<StyledLeftIcon />
+					<StyledLeftIcon />
+				</Button>
+				<Button>
+					<StyledLeftIcon />
+				</Button>
 				<span>
 					Page <strong>1</strong> of <strong>500</strong>
 				</span>
-				<Button>Next</Button>
-				<Button>Last</Button>
+				<Button>
+					<StyledRightIcon />
+				</Button>
+				<Button>
+					<StyledRightIcon />
+					<StyledRightIcon />
+				</Button>
 			</Pagination>
 		</Container>
 	);

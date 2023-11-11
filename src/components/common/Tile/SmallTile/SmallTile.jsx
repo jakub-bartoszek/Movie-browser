@@ -1,4 +1,4 @@
-import poster from "../images/poster.png";
+import poster from "../../../../assets/images/poster.png";
 import {
 	Content,
 	TileHeader,

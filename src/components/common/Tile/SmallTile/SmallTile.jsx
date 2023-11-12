@@ -1,35 +1,41 @@
-import poster from "../../../../assets/images/poster.png";
+import { Genres } from "./Genres/Genres";
 import {
-  Content,
-  TileHeader,
-  Genre,
-  Genres,
-  IconStar,
-  Image,
-  Rating,
-  Rate,
-  Votes,
-  Year,
-  Wrapper,
+	Content,
+	TileHeader,
+	IconStar,
+	Image,
+	Rating,
+	Rate,
+	Votes,
+	Year,
+	Wrapper,
+	ImageWrapper,
+	StyledPictureIcon
 } from "./styled";
 
-export const SmallTile = () => {
-  return (
-    <Wrapper>
-      <Image src={poster} alt="" />
-      <Content>
-        <TileHeader>Mulan</TileHeader>
-        <Year>2020</Year>
-        <Genres>
-          <Genre>Action</Genre>
-          <Genre>Action</Genre>
-        </Genres>
-        <Rating>
-          <IconStar />
-          <Rate>7,8</Rate>
-          <Votes>35 votes</Votes>
-        </Rating>
-      </Content>
-    </Wrapper>
-  );
+export const SmallTile = ({ movie }) => {
+	return (
+		<Wrapper>
+			<ImageWrapper>
+				{movie.poster_path ? (
+					<Image
+						src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+						alt=""
+					/>
+				) : (
+					<StyledPictureIcon />
+				)}
+			</ImageWrapper>
+			<Content>
+				<TileHeader>{movie.title}</TileHeader>
+				<Year>{movie.release_date.slice(0, 4)}</Year>
+				<Genres genreIds={movie.genre_ids} />
+				<Rating>
+					<IconStar />
+					<Rate>{movie.vote_average.toFixed(1)}</Rate>
+					<Votes>{movie.vote_count}</Votes>
+				</Rating>
+			</Content>
+		</Wrapper>
+	);
 };

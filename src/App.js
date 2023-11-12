@@ -2,7 +2,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import MovieList from "./pages/MovieList";
 import People from "./pages/People";
 import { Navigation } from "./components/common/Navigation/Navigation";
-import MoviePage from "./pages/MoviePage";
+import MoviePage from "./pages/MoviePage/MoviePage";
 
 function App() {
   return (

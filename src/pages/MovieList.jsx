@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchMovies, selectMovies } from "../redux/moviesSlice";
+import { nanoid } from "nanoid";
 
 export default function MovieList() {
 	const dispatch = useDispatch();
@@ -9,17 +10,19 @@ export default function MovieList() {
 	const movies = useSelector(selectMovies);
 
 	useEffect(() => {
-		if (movies.length === 0) {
-			dispatch(fetchMovies());
-			console.log(movies);
-		}
-	});
+		console.log(movies);
+	}, [movies]);
 
 	return (
 		<div>
 			<button onClick={() => dispatch(fetchMovies())}>
 				Pobierz przykładowe zadania
 			</button>
+			<ul>
+				{movies.map((movie) => (
+					<li key={nanoid()}>{movie.title}</li>
+				))}
+			</ul>
 		</div>
 	);
 }

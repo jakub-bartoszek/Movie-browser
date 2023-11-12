@@ -1,6 +1,8 @@
- export default function MoviePage() {
-   return (
-     <div>MoviePage</div>
-   )
- }
- 
+import { Tile } from "../components/common/Tile/Tile"
+export default function MoviePage() {
+  return (
+    <div>
+      <Tile />
+    </div>
+  )
+}

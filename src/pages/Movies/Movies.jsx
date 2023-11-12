@@ -32,7 +32,7 @@ export default function MovieList() {
 			dispatch(fetchPopularMovies());
 		}
 	}, [searchQuery, dispatch]);
-console.log(movies)
+
 	return (
 		<Container>
 			<Header>Popular movies</Header>

@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { theme } from "./styles/theme";
-import store from './redux/store';
+import store from './utils/redux/store';
 import { Provider } from 'react-redux';
 
 

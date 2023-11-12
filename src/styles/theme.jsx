@@ -5,6 +5,7 @@ const colorNames = {
 	Waterloo: "#7E839A",
 	StormGrey: "#74788B",
 	Mystic: "#E4E6F0",
+	Whisper: "#F5F5FA"
 };
 
 export const theme = {
@@ -17,7 +18,7 @@ export const theme = {
 	},
 	colors: {
 		site: {
-			background: colorNames.White,
+			background: colorNames.Whisper,
 			text: colorNames.Black
 		},
 		navigation: {
@@ -35,6 +36,10 @@ export const theme = {
 			text: colorNames.Black,
 			mutedText: colorNames.StormGrey,
 			genresBackground: colorNames.Mystic,
+		},
+		MoviePage: {
+			background: colorNames.Black,
+
 		},
 	}
 };

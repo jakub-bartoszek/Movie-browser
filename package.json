@@ -2,7 +2,7 @@
 	"name": "movie-browser",
 	"version": "0.1.0",
 	"private": true,
-  "homepage": "https://jakub-bartoszek-developer.github.io/Movie-browser/",
+	"homepage": "https://jakub-bartoszek-developer.github.io/Movie-browser/",
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^13.4.0",

@@ -14,13 +14,8 @@ import {
   Rate,
   Votes,
   Discription,
-<<<<<<< HEAD
-} from "./styled"
-import poster from "./images/poster.png";
-=======
 } from "./styled";
 import poster from "../../../assets/images/poster.png";
->>>>>>> 6aa77df65c5751e71f48388f4d33b41188be0c1c
 
 export const Tile = () => {
   const isMobile = window.innerWidth < 800;

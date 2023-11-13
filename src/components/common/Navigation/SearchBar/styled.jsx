@@ -4,7 +4,7 @@ import { ReactComponent as SearchIcon } from "../../../../assets/icons/search.sv
 export const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
-	background-color: white;
+	background-color: ${({ theme }) => theme.colors.searchBar.background};
 	border-radius: 33px;
 	padding: 12px 24px;
 	gap: 16px;

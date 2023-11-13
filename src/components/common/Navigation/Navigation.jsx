@@ -22,7 +22,7 @@ export const Navigation = () => {
 					</Logo>
 					<StyledUl>
 						<StyledLi>
-							<StyledNavLink to="/movie">movies</StyledNavLink>
+							<StyledNavLink to="/movies">movies</StyledNavLink>
 						</StyledLi>
 						<StyledLi>
 							<StyledNavLink to="/people">people</StyledNavLink>

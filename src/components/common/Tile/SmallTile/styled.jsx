@@ -5,32 +5,41 @@ import { ReactComponent as PictureIcon } from "../../../../assets/icons/picture.
 export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
+	width: 324px;
+	height: 650px;
 	padding: 16px;
-	box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.5);
+	box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
 	gap: 16px;
+
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		height: auto;
 		flex-direction: row;
+		width: 100%;
 	}
 `;
 
 export const ImageWrapper = styled.div`
 	border-radius: 5px;
 	width: 292px;
+	min-width: 292px;
 	height: 434px;
-	background-color: grey;
+	min-height: 434px;
+	background-color: ${({ theme }) => theme.colors.tile.imageWrapper};
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
 		width: 114px;
+		min-width: 114px;
 		height: 169px;
+		min-height: 169px;
 	}
 `;
 
 export const StyledPictureIcon = styled(PictureIcon)`
 	width: 48px;
-	color: white;
+	color: ${({ theme }) => theme.colors.tile.background};
 `;
 
 export const Image = styled.img`
@@ -40,12 +49,19 @@ export const Image = styled.img`
 `;
 
 export const Content = styled.div`
-	@media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-		display: flex;
-		flex-direction: column;
-		row-gap: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		font-size: 16px;
+		font-weight: 500;
+		justify-content: start;
 	}
 `;
+
+export const MovieInfo = styled.div``;
 
 export const TileHeader = styled.header`
 	font-size: 22px;
@@ -62,7 +78,7 @@ export const Year = styled.p`
 	margin-top: 8px;
 	font-size: 16px;
 	line-height: 150%;
-	color: var(--Darker-grey, #7e839a);
+	color: ${({ theme }) => theme.colors.tile.mutedText};
 
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
 		margin-top: 4px;
@@ -72,7 +88,6 @@ export const Year = styled.p`
 `;
 
 export const Rating = styled.div`
-	margin-top: 39px;
 	display: flex;
 	gap: 12px;
 	align-items: center;
@@ -102,5 +117,5 @@ export const Rate = styled.span`
 `;
 
 export const Votes = styled.span`
-	color: var(--Darker-grey, #7e839a);
+	color: ${({ theme }) => theme.colors.tile.mutedText};
 `;

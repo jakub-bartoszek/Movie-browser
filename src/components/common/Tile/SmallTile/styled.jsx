@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { ReactComponent as star } from "../../../../assets/icons/star.svg";
+import styled, { css } from "styled-components";
+import { ReactComponent as Star } from "../../../../assets/icons/star.svg";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -7,14 +7,36 @@ export const Wrapper = styled.div`
   padding: 16px;
   box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.5);
   gap: 16px;
+
+  ${({ wrapperStyle }) =>
+    wrapperStyle &&
+    css`
+      max-width: 208px;
+      text-align: center;
+      gap: 12px;
+    `};
+
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
     flex-direction: row;
+
+    &.no-media-query {
+      flex-direction: column;
+      max-height: 245px;
+      row-gap: 4px;
+    }
   }
 `;
 
 export const Image = styled.img`
   border-radius: 5px;
   width: 292px;
+
+  ${({ imageStyle }) =>
+    imageStyle &&
+    css`
+      width: 177px;
+      height: 274px;
+    `}
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
     width: 114px;
@@ -40,11 +62,17 @@ export const TileHeader = styled.header`
   }
 `;
 
-export const Year = styled.p`
+export const Subtitle = styled.p`
   margin-top: 8px;
   font-size: 16px;
   line-height: 150%;
   color: var(--Darker-grey, #7e839a);
+
+  ${({ actorFilmName }) =>
+    actorFilmName &&
+    css`
+      font-size: 33px;
+    `};
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
     margin-top: 4px;
@@ -73,7 +101,6 @@ export const Genre = styled.li`
   background: #e4e6f0;
   font-family: Poppins;
   font-size: 14px;
-
   line-height: 140%;
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
@@ -99,7 +126,7 @@ export const Rating = styled.div`
   }
 `;
 
-export const IconStar = styled(star)`
+export const IconStar = styled(Star)`
   width: 24px;
   height: 24px;
 

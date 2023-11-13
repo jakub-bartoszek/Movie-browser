@@ -14,7 +14,7 @@ import {
   Rate,
   Votes,
   Discription,
-} from "./styled";
+} from "./Styled";
 import poster from "../../../assets/images/poster.png";
 
 export const Tile = () => {

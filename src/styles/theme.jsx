@@ -36,6 +36,10 @@ export const theme = {
 			text: colorNames.Black,
 			mutedText: colorNames.StormGrey,
 			genresBackground: colorNames.Mystic
+		},
+		moviePage: {
+			background: colorNames.Black,
+			headerText: colorNames.White,
 		}
 	}
 };

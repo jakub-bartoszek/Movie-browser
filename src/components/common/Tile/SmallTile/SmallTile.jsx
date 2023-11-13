@@ -10,7 +10,8 @@ import {
 	Year,
 	Wrapper,
 	ImageWrapper,
-	StyledPictureIcon
+	StyledPictureIcon,
+	MovieInfo
 } from "./styled";
 
 export const SmallTile = ({ movie }) => {
@@ -27,13 +28,15 @@ export const SmallTile = ({ movie }) => {
 				)}
 			</ImageWrapper>
 			<Content>
-				<TileHeader>{movie.title}</TileHeader>
-				<Year>{movie.release_date.slice(0, 4)}</Year>
-				<Genres genreIds={movie.genre_ids} />
+				<MovieInfo>
+					<TileHeader>{movie.title}</TileHeader>
+					<Year>{movie.release_date.slice(0, 4)}</Year>
+					<Genres genreIds={movie.genre_ids} />
+				</MovieInfo>
 				<Rating>
 					<IconStar />
 					<Rate>{movie.vote_average.toFixed(1)}</Rate>
-					<Votes>{movie.vote_count}</Votes>
+					<Votes>{movie.vote_count} votes</Votes>
 				</Rating>
 			</Content>
 		</Wrapper>

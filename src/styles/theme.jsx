@@ -35,7 +35,13 @@ export const theme = {
 			background: colorNames.White,
 			text: colorNames.Black,
 			mutedText: colorNames.StormGrey,
-			genresBackground: colorNames.Mystic
+			genresBackground: colorNames.Mystic,
+			imageWrapper: colorNames.StormGrey,
+		}
+	},
+	properties: {
+		tile: {
+			boxShadow: "0px 4px 12px 0px rgba(186, 199, 213, 0.5)"
 		}
 	}
 };

@@ -4,23 +4,38 @@ import {
   selectSearchMovieQuery,
   setSearchMovieQuery,
 } from "../../../../utils/redux/moviesSlice";
-import { selectSearchPeopleQuery } from "../../../../utils/redux/peopleSlice";
+import {
+  selectSearchPeopleQuery,
+  setSearchPeopleQuerry,
+} from "../../../../utils/redux/peopleSlice";
+import { useLocation } from "react-router";
 
 export const SearchBar = () => {
   const dispatch = useDispatch();
   const searchMovieQuery = useSelector(selectSearchMovieQuery);
   const searchPeopleQuery = useSelector(selectSearchPeopleQuery);
+  const location = useLocation();
 
   return (
     <Wrapper>
       <StyledSearchIcon />
-      <SearchInput
-        placeholder="Search for movies..."
-        value={searchMovieQuery}
-        onChange={(e) => {
-          dispatch(setSearchMovieQuery(e.target.value));
-        }}
-      />
+      {location.pathname === "/people" ? (
+        <SearchInput
+          placeholder="Search for people..."
+          value={searchPeopleQuery}
+          onChange={(e) => {
+            dispatch(setSearchPeopleQuerry(e.target.value));
+          }}
+        />
+      ) : (
+        <SearchInput
+          placeholder="Search for movies..."
+          value={searchMovieQuery}
+          onChange={(e) => {
+            dispatch(setSearchMovieQuery(e.target.value));
+          }}
+        />
+      )}
     </Wrapper>
   );
 };

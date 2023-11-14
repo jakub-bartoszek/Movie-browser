@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const getMoviesSearchResults = async (searchQuery) => {
+export const getMoviesSearchResults = async (searchMovieQuery) => {
   try {
     const response = await axios(
-      `https://api.themoviedb.org/3/search/movie?query=${searchQuery}`,
+      `https://api.themoviedb.org/3/search/movie?query=${searchMovieQuery}`,
       {
         headers: {
           accept: "application/json",

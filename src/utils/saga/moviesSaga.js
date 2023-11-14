@@ -20,9 +20,9 @@ function* fetchPopularMoviesHandler() {
   }
 }
 
-function* fetchMoviesSearchResultsHandler(searchQuery) {
+function* fetchMoviesSearchResultsHandler(searchMovieQuery) {
   try {
-    const movies = yield call(getMoviesSearchResults, searchQuery.payload);
+    const movies = yield call(getMoviesSearchResults, searchMovieQuery.payload);
     const genres = yield call(getGenres);
     yield put(setMovies(movies));
     yield put(setGenres(genres));

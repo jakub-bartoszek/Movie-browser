@@ -6,7 +6,7 @@ import {
   fetchPopularMovies,
   fetchMoviesSearchResults,
   selectMovies,
-  selectSearchQuery,
+  selectSearchMovieQuery,
 } from "../../utils/redux/moviesSlice";
 import { nanoid } from "nanoid";
 
@@ -23,15 +23,15 @@ import {
 export default function MovieList() {
   const dispatch = useDispatch();
   const movies = useSelector(selectMovies);
-  const searchQuery = useSelector(selectSearchQuery);
+  const searchMovieQuery = useSelector(selectSearchMovieQuery);
 
   useEffect(() => {
-    if (searchQuery) {
-      dispatch(fetchMoviesSearchResults(searchQuery));
+    if (searchMovieQuery) {
+      dispatch(fetchMoviesSearchResults(searchMovieQuery));
     } else {
       dispatch(fetchPopularMovies());
     }
-  }, [searchQuery, dispatch]);
+  }, [searchMovieQuery, dispatch]);
 
   return (
     <Container>

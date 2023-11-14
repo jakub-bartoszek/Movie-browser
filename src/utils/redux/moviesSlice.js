@@ -4,7 +4,7 @@ const moviesSlice = createSlice({
   name: "movies",
   initialState: {
     movies: [],
-    searchQuery: "",
+    searchMovieQuery: "",
     genres: [],
   },
   reducers: {
@@ -13,8 +13,8 @@ const moviesSlice = createSlice({
     setMovies: (state, { payload }) => {
       state.movies = payload;
     },
-    setSearchQuery: (state, { payload }) => {
-      state.searchQuery = payload;
+    setSearchMovieQuery: (state, { payload }) => {
+      state.searchMovieQuery = payload;
     },
     setGenres: (state, { payload }) => {
       state.genres = payload;
@@ -23,7 +23,7 @@ const moviesSlice = createSlice({
 });
 export const {
   fetchPopularMovies,
-  setSearchQuery,
+  setSearchMovieQuery,
   setMovies,
   fetchMoviesSearchResults,
   setGenres,
@@ -32,8 +32,8 @@ export const {
 export const selectMoviesState = (state) => state.movies;
 
 export const selectMovies = (state) => selectMoviesState(state).movies;
-export const selectSearchQuery = (state) =>
-  selectMoviesState(state).searchQuery;
+export const selectSearchMovieQuery = (state) =>
+  selectMoviesState(state).searchMovieQuery;
 export const selectGenres = (state) => selectMoviesState(state).genres;
 
 export default moviesSlice.reducer;

@@ -11,7 +11,7 @@ import {
   fetchPeopleSearchResults,
   fetchPopularPeople,
   selectPeople,
-  selectSearchQuery,
+  selectSearchPeopleQuery,
 } from "../../utils/redux/peopleSlice";
 import { nanoid } from "nanoid";
 import { useEffect } from "react";
@@ -19,15 +19,15 @@ import { useEffect } from "react";
 export default function People() {
   const dispatch = useDispatch();
   const people = useSelector(selectPeople);
-  const searchQuery = useSelector(selectSearchQuery);
+  const searchPeopleQuery = useSelector(selectSearchPeopleQuery);
 
   useEffect(() => {
-    if (searchQuery) {
-      dispatch(fetchPeopleSearchResults(searchQuery));
+    if (searchPeopleQuery) {
+      dispatch(fetchPeopleSearchResults(searchPeopleQuery));
     } else {
       dispatch(fetchPopularPeople());
     }
-  }, [searchQuery, dispatch]);
+  }, [searchPeopleQuery, dispatch]);
 
   return (
     <Container>

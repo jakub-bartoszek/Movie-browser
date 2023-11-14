@@ -16,9 +16,9 @@ function* fetchPopularPeopleHandler() {
   }
 }
 
-function* fetchPeopleSearchResultsHandler(searchQuery) {
+function* fetchPeopleSearchResultsHandler(searchPeopleQuery) {
   try {
-    const people = yield call(getPeopleSearchResults, searchQuery.payload);
+    const people = yield call(getPeopleSearchResults, searchPeopleQuery.payload);
 
     yield put(setPeople(people));
   } catch (error) {

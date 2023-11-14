@@ -4,7 +4,7 @@ const peopleSlice = createSlice({
   name: "people",
   initialState: {
     people: [],
-    searchQuerry: "",
+    searchPeopleQuery: "",
   },
   reducers: {
     fetchPopularPeople: (state) => {},
@@ -12,21 +12,21 @@ const peopleSlice = createSlice({
     setPeople: (state, { payload }) => {
       state.people = payload;
     },
-    setSearchQuerry: (state, { payload }) => {
-      state.searchQuerry = payload;
+    setSearchPeopleQuerry: (state, { payload }) => {
+      state.searchPeopleQuery = payload;
     },
   },
 });
 
 export const {
   setPeople,
-  setSearchQuerry,
+  setSearchPeopleQuerry,
   fetchPeopleSearchResults,
   fetchPopularPeople,
 } = peopleSlice.actions;
 
 export const selectPeopleState = (state) => state.people;
 export const selectPeople = (state) => selectPeopleState(state).people;
-export const selectSearchQuery = (state) => selectPeopleState(state).search;
+export const selectSearchPeopleQuery = (state) => selectPeopleState(state).searchPeopleQuery;
 
 export default peopleSlice.reducer;

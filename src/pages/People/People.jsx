@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from "react-redux";
 import { PersonTile } from "../../components/common/Tile/PersonTile/PersonTile";
 import {
   Button,
@@ -6,13 +7,35 @@ import {
   StyledRightIcon,
 } from "../Movies/styled";
 import { Container, Content, Header } from "./styled";
+import {
+  fetchPeopleSearchResults,
+  fetchPopularPeople,
+  selectPeople,
+  selectSearchQuery,
+} from "../../utils/redux/peopleSlice";
+import { nanoid } from "nanoid";
+import { useEffect } from "react";
 
 export default function People() {
+  const dispatch = useDispatch();
+  const people = useSelector(selectPeople);
+  const searchQuery = useSelector(selectSearchQuery);
+
+  useEffect(() => {
+    if (searchQuery) {
+      dispatch(fetchPeopleSearchResults(searchQuery));
+    } else {
+      dispatch(fetchPopularPeople());
+    }
+  }, [searchQuery, dispatch]);
+
   return (
     <Container>
       <Header>Popular people</Header>
       <Content>
-        <PersonTile />
+        {people.map((member) => (
+          <PersonTile member={member} />
+        ))}
       </Content>
       <Pagination>
         <Button>

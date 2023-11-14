@@ -1,8 +1,13 @@
-import { put, call, takeEvery } from 'redux-saga/effects';
-import { fetchPopularMovies, fetchSearchResults, setGenres, setMovies, } from "../redux/moviesSlice";
-import { getPopularMovies } from './getPopularMovies';
-import { getSearchResults } from './getSearchResults';
-import { getGenres } from './getGenres';
+import { put, call, takeEvery } from "redux-saga/effects";
+import {
+  fetchPopularMovies,
+  fetchMoviesSearchResults,
+  setGenres,
+  setMovies,
+} from "../redux/moviesSlice";
+import { getPopularMovies } from "./getPopularMovies";
+import { getMoviesSearchResults } from "./getMoviesSearchResults";
+import { getGenres } from "./getGenres";
 
 function* fetchPopularMoviesHandler() {
   try {
@@ -10,25 +15,26 @@ function* fetchPopularMoviesHandler() {
     const genres = yield call(getGenres);
     yield put(setMovies(movies));
     yield put(setGenres(genres));
-  }
-  catch (error) {
+  } catch (error) {
     yield call(alert, "Something went wrong!");
   }
 }
 
-function* fetchSearchResultsHandler(searchQuery) {
+function* fetchMoviesSearchResultsHandler(searchQuery) {
   try {
-    const movies = yield call(getSearchResults, searchQuery.payload);
+    const movies = yield call(getMoviesSearchResults, searchQuery.payload);
     const genres = yield call(getGenres);
     yield put(setMovies(movies));
     yield put(setGenres(genres));
-  }
-  catch (error) {
+  } catch (error) {
     yield call(alert, "Something went wrong!");
   }
 }
 
 export function* moviesSaga() {
   yield takeEvery(fetchPopularMovies.type, fetchPopularMoviesHandler);
-  yield takeEvery(fetchSearchResults.type, fetchSearchResultsHandler);
+  yield takeEvery(
+    fetchMoviesSearchResults.type,
+    fetchMoviesSearchResultsHandler
+  );
 }

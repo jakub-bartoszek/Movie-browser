@@ -36,6 +36,6 @@ export const Content = styled.div`
   gap: 24px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 `;

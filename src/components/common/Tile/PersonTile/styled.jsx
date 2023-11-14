@@ -46,7 +46,7 @@ export const Character = styled.p`
   gap: 10px;
 `;
 
-export const Text = styled.p`
+export const Name = styled.p`
   font-size: 22px;
   text-align: center;
   font-style: normal;

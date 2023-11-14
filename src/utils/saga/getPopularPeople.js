@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getPopularMovies = async () => {
+export const getPopularPeople = async () => {
   try {
-    const response = await axios(`https://api.themoviedb.org/3/movie/popular`, {
+    const response = await axios(`https://api.themoviedb.org/3/person/popular`, {
       headers: {
         accept: "application/json",
         Authorization:

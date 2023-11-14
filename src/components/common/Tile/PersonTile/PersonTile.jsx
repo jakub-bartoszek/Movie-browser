@@ -1,14 +1,21 @@
-import { Image, ImageWrapper, Character, Text, Wrapper } from "./styled";
-import poster from "../../../../assets/images/poster.png";
+import { StyledPictureIcon } from "../SmallTile/styled";
+import { Image, ImageWrapper, Character, Name, Wrapper } from "./styled";
 
-export const PersonTile = () => {
+export const PersonTile = ({ member }) => {
   return (
     <Wrapper>
       <ImageWrapper>
-        <Image src={poster} alt="" />
+        {member.profile_path ? (
+          <Image
+            src={`https://image.tmdb.org/t/p/original${member.profile_path}`}
+            alt=""
+          />
+        ) : (
+          <StyledPictureIcon />
+        )}
       </ImageWrapper>
       <Character>
-        <Text>Lorem Ipsum</Text>
+        <Name>{member.name}</Name>
       </Character>
     </Wrapper>
   );

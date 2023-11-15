@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const getSearchResults = async (searchQuery) => {
-  try {
     const response = await axios(`https://api.themoviedb.org/3/search/movie?query=${searchQuery}`, {
       headers: {
         accept: 'application/json',
@@ -10,8 +9,4 @@ export const getSearchResults = async (searchQuery) => {
     });
 
     return await response.data.results;
-  }
-  catch (err) {
-    console.log(err);
-  }
 };

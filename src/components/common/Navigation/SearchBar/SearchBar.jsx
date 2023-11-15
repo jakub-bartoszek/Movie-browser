@@ -1,23 +1,16 @@
 import { SearchInput, StyledSearchIcon, Wrapper } from "./styled";
-import { useDispatch, useSelector } from "react-redux";
-import {
-	selectSearchQuery,
-	setSearchQuery
-} from "../../../../utils/redux/moviesSlice";
+import { useSearch } from "./useSearch";
 
 export const SearchBar = () => {
-	const dispatch = useDispatch();
-	const searchQuery = useSelector(selectSearchQuery);
-
+	
+	const { onInputChange, value } = useSearch();
 	return (
 		<Wrapper>
 			<StyledSearchIcon />
 			<SearchInput
 				placeholder="Search for movies..."
-				value={searchQuery}
-				onChange={(e) => {
-					dispatch(setSearchQuery(e.target.value));
-				}}
+				value={value}
+				onChange={onInputChange}
 			/>
 		</Wrapper>
 	);

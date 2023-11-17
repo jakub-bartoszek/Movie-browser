@@ -1,8 +1,14 @@
-import { put, call, takeEvery, takeLatest, delay } from 'redux-saga/effects';
-import { fetchPopularMovies, fetchSearchResults, setGenres, setMovies, setStatus, } from "../redux/moviesSlice";
-import { getPopularMovies } from './getPopularMovies';
-import { getSearchResults } from './getSearchResults';
-import { getGenres } from './getGenres';
+import { put, call, takeLatest, delay } from "redux-saga/effects";
+import {
+  fetchPopularMovies,
+  fetchSearchResults,
+  setGenres,
+  setMovies,
+  setStatus,
+} from "../redux/moviesSlice";
+import { getPopularMovies } from "./getPopularMovies";
+import { getSearchResults } from "./getSearchResults";
+import { getGenres } from "./getGenres";
 
 function* fetchPopularMoviesHandler() {
   try {
@@ -13,8 +19,7 @@ function* fetchPopularMoviesHandler() {
     yield put(setMovies(movies));
     yield put(setGenres(genres));
     yield put(setStatus("success"));
-  }
-  catch (error) {
+  } catch (error) {
     yield put(setStatus("error"));
   }
 }
@@ -28,8 +33,7 @@ function* fetchSearchResultsHandler(searchQuery) {
     yield put(setMovies(movies));
     yield put(setGenres(genres));
     yield put(setStatus("success"));
-  }
-  catch (error) {
+  } catch (error) {
     yield put(setStatus("error"));
   }
 }

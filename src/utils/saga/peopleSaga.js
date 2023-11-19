@@ -1,25 +1,25 @@
 import { put, call, takeEvery } from "redux-saga/effects";
 import {
-  fetchPeopleSearchResults,
   fetchPopularPeople,
+  fetchSearchResults,
   setPeople,
 } from "../redux/peopleSlice";
-import { getPopularPeople } from "./getPopularPeople";
-import { getPeopleSearchResults } from "./getPeopleSearchResults";
+import { getPopular } from "./getPopular";
+import { getSearchResults } from "./getSearchResults";
 
-function* fetchPopularPeopleHandler() {
+function* fetchPopularPeopleHandler({ payload }) {
   try {
-    const people = yield call(getPopularPeople);
+    const people = yield call(getPopular, payload.category);
     yield put(setPeople(people));
   } catch (error) {
     yield call(alert, "Something went wrong!");
   }
 }
 
-function* fetchPeopleSearchResultsHandler(searchPeopleQuery) {
+function* fetchSearchResultsHandler({ payload }) {
+  console.log(payload);
   try {
-    const people = yield call(getPeopleSearchResults, searchPeopleQuery.payload);
-
+    const people = yield call(getSearchResults, payload.searchQuery, payload.category);
     yield put(setPeople(people));
   } catch (error) {
     yield call(alert, "Something went wrong!");
@@ -29,7 +29,7 @@ function* fetchPeopleSearchResultsHandler(searchPeopleQuery) {
 export function* peopleSaga() {
   yield takeEvery(fetchPopularPeople.type, fetchPopularPeopleHandler);
   yield takeEvery(
-    fetchPeopleSearchResults.type,
-    fetchPeopleSearchResultsHandler
+    fetchSearchResults.type,
+    fetchSearchResultsHandler
   );
 }

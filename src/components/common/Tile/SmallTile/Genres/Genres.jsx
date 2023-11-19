@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectGenres } from "../../../../../utils/redux/moviesSlice";
 import { Genre, Wrapper } from "./styled";
+import { nanoid } from "nanoid";
 
 export const Genres = ({ genreIds }) => {
 	const genres = useSelector(selectGenres);
@@ -9,7 +10,7 @@ export const Genres = ({ genreIds }) => {
 	return (
 		<Wrapper>
 			{movieGenres.slice(0, 2).map((genre) => (
-				<Genre>{genre.name}</Genre>
+				<Genre key={nanoid()}>{genre.name}</Genre>
 			))}
 		</Wrapper>
 	);

@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const getPopularMovies = async () => {
-  try {
     const response = await axios(`https://api.themoviedb.org/3/movie/popular`, {
       headers: {
         accept: "application/json",
@@ -11,7 +10,4 @@ export const getPopularMovies = async () => {
     });
 
     return await response.data.results;
-  } catch (err) {
-    console.log(err);
-  }
 };

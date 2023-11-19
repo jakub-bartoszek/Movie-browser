@@ -1,41 +1,20 @@
+import { useSelector } from "react-redux";
+import { selectCategory } from "../../../../utils/redux/searchSlice";
 import { SearchInput, StyledSearchIcon, Wrapper } from "./styled";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectSearchMovieQuery,
-  setSearchMovieQuery,
-} from "../../../../utils/redux/moviesSlice";
-import {
-  selectSearchPeopleQuery,
-  setSearchPeopleQuerry,
-} from "../../../../utils/redux/peopleSlice";
-import { useLocation } from "react-router";
+import { useSearch } from "./useSearch";
 
 export const SearchBar = () => {
-  const dispatch = useDispatch();
-  const searchMovieQuery = useSelector(selectSearchMovieQuery);
-  const searchPeopleQuery = useSelector(selectSearchPeopleQuery);
-  const location = useLocation();
-
-  return (
-    <Wrapper>
-      <StyledSearchIcon />
-      {location.pathname === "/people" ? (
-        <SearchInput
-          placeholder="Search for people..."
-          value={searchPeopleQuery}
-          onChange={(e) => {
-            dispatch(setSearchPeopleQuerry(e.target.value));
-          }}
-        />
-      ) : (
-        <SearchInput
-          placeholder="Search for movies..."
-          value={searchMovieQuery}
-          onChange={(e) => {
-            dispatch(setSearchMovieQuery(e.target.value));
-          }}
-        />
-      )}
-    </Wrapper>
-  );
+	const category = useSelector(selectCategory)
+	
+	const { onInputChange, value } = useSearch();
+	return (
+		<Wrapper>
+			<StyledSearchIcon />
+			<SearchInput
+				placeholder={`Search for ${category}...`}
+				value={value}
+				onChange={onInputChange}
+			/>
+		</Wrapper>
+	);
 };

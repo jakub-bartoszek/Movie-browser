@@ -15,41 +15,42 @@ import {
   Votes,
   Discription,
 } from "./Styled";
-import poster from "../../../assets/images/poster.png";
 
-export const Tile = () => {
-  const isMobile = window.innerWidth < 800;
+export const Tile = ({ poster_path, title, release_date, production_countries, vote_average, votes, overview, genres }) => {
+  const isMobile = window.innerWidth < 767;
+  const countryNames = production_countries?.map(country => (isMobile ? country.iso_3166_1 : country.name)) || [];
+  const releaseDate = new Date(release_date);
+  const year = releaseDate.getFullYear().toString();
   return (
     <Container>
-      <Image src={poster} alt="" />
+      <Image src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
       <Content>
-        <Header>Mulan</Header>
-        <Year>2020</Year>
+        <Header>{title}</Header>
+        <Year>{year}</Year>
         <Release>
           <GreyRelease>Production:</GreyRelease>
-          {isMobile ? "China, USA " : "China, United States of America"}
+          {countryNames}
         </Release>
         <ReleaseDate>
           <GreyRelease>Release date:</GreyRelease>
-          24.10.2020
+          {release_date}
         </ReleaseDate>
         <Genres>
-          <Genre>Action</Genre>
-          <Genre>Advanture</Genre>
-          <Genre>Drama</Genre>
+          {
+            genres && genres.map(genre => (
+              <Genre key={genre.id}>{genre.name}</Genre>
+            ))
+          }
         </Genres>
         <Rating>
           <IconStar />
-          7,8
+          {vote_average ? vote_average.toFixed(2) : ""}
           <Rate>/ 10</Rate>
-          <Votes>335 votes</Votes>
+          <Votes>{votes}</Votes>
         </Rating>
       </Content>
       <Discription>
-        A young Chinese maiden disguises herself as a male warrior in order to
-        save her father. Disguises herself as a male warrior in order to save
-        her father. A young Chinese maiden disguises herself as a male warrior
-        in order to save her father.
+        {overview}
       </Discription>
     </Container>
   );

@@ -40,6 +40,13 @@ export const theme = {
 		moviePage: {
 			background: colorNames.Black,
 			headerText: colorNames.White,
+			genresBackground: colorNames.Mystic,
+			imageWrapper: colorNames.StormGrey,
+		}
+	},
+	properties: {
+		tile: {
+			boxShadow: "0px 4px 12px 0px rgba(186, 199, 213, 0.5)"
 		}
 	}
 };

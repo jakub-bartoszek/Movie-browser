@@ -13,6 +13,7 @@ export const Container = styled.div`
   
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
     gap: 16px;
+    margin: 0 16px;
   }
 `;
 

@@ -7,7 +7,8 @@ export const StyledNav = styled.nav`
 	width: 100%;
 
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
-		background-color: ${({ theme }) => theme.colors.navigation.mobileBackground};
+		background-color: ${({ theme }) =>
+			theme.colors.navigation.mobileBackground};
 	}
 `;
 
@@ -80,7 +81,7 @@ export const StyledLi = styled.div`
 
 export const StyledNavLink = styled(NavLink)`
 	text-decoration: none;
-	color: white;
+	color: ${({theme}) => theme.colors.navigation.text};
 	display: flex;
 	align-items: center;
 	padding: 8px 24px;

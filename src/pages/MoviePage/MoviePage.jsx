@@ -1,4 +1,5 @@
-import { SmallTile } from "../../components/common/Tile/SmallTile/SmallTile";
+import { useParams } from "react-router";
+import { useEffect } from "react";
 import { Tile } from "../../components/common/Tile/Tile";
 import {
   MainWrapper,
@@ -13,53 +14,55 @@ import {
   Votes,
   RatingTopContent,
 } from "./styled";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovieDetails } from "../../utils/redux/moviesSlice";
+import { PersonTileDemo } from "./PersonMovieTileDemo/PersonTileDemo";
 
 export default function MoviePage() {
-  const actorName = "Liu Yifei";
-  const actorFilmName = "Mulan";
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const movieDetails = useSelector(state => state.movies.movieDetails);
+
+  useEffect(() => {
+    dispatch(fetchMovieDetails(id));
+  }, [dispatch, id]);
+
+  const { title, vote_average, vote_count, backdrop_path, poster_path, release_date, production_countries, overview, genres } = movieDetails;
+
   return (
     <>
       <MainWrapper>
-        <Header>
+        <Header backdropPath={`https://image.tmdb.org/t/p/original${backdrop_path}`}>
           <RatingTopContent>
-            <LongTitle> Long title</LongTitle>
+            <LongTitle>{title} </LongTitle>
             <Rating>
               <IconStar />
-              7,8
+              {vote_average ? vote_average.toFixed(2) : ""}
               <Rate>/ 10</Rate>
-              <Votes>335 votes</Votes>
+              <Votes>{vote_count}</Votes>
             </Rating>
           </RatingTopContent>
         </Header>
       </MainWrapper>
 
       <Wrapper>
-        <Tile />
+        <Tile
+          poster_path={poster_path}
+          title={title}
+          release_date={release_date}
+          production_countries={production_countries}
+          vote_average={vote_average}
+          votes={vote_count}
+          overview={overview}
+          genres={genres}
+        />
         <SectionTitle>Cast</SectionTitle>
         <Section>
-          {[...Array(8)].map((_, index) => (
-            <SmallTile
-              key={index}
-              showExtraContent={false}
-              wrapperStyle={true}
-              imageStyle={true}
-              actorName={actorName}
-              actorFilmName={actorFilmName}
-            />
-          ))}
+          <PersonTileDemo />
         </Section>
         <SectionTitle>Crew</SectionTitle>
         <Section>
-          {[...Array(8)].map((_, index) => (
-            <SmallTile
-              key={index}
-              showExtraContent={false}
-              wrapperStyle={true}
-              imageStyle={true}
-              actorName={actorName}
-              actorFilmName={actorFilmName}
-            />
-          ))}
+
         </Section>
       </Wrapper>
     </>

@@ -16,7 +16,7 @@ export const MainWrapper = styled.div`
 `;
 
 export const Header = styled.div`
-  background-image: url(${require("../../assets/images/PosterBig.png")});
+  background-image: ${({ backdropPath }) => `url(${backdropPath})`};
   background-size: cover;
   background-position: center;
   max-width: 1368px;

@@ -1,55 +1,67 @@
 import styled, { css } from "styled-components";
-import { ReactComponent as Star } from "../../../../assets/icons/star.svg";
+import { ReactComponent as PictureIcon } from "../../../../assets/icons/picture.svg";
+import { ReactComponent as StarIcon } from "../../../../assets/icons/star.svg";
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 324px;
+  height: 650px;
   padding: 16px;
-  box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.5);
+  box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
   gap: 16px;
 
-  ${({ wrapperStyle }) =>
-    wrapperStyle &&
-    css`
-      max-width: 208px;
-      text-align: center;
-      gap: 12px;
-    `};
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+    height: auto;
+    flex-direction: row;
+    width: 100%;
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  border-radius: 5px;
+  width: 292px;
+  min-width: 292px;
+  height: 434px;
+  min-height: 434px;
+  background-color: ${({ theme }) => theme.colors.tile.imageWrapper};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    flex-direction: row;
-
-    &.no-media-query {
-      flex-direction: column;
-      max-height: 245px;
-      row-gap: 4px;
-    }
+    width: 114px;
+    min-width: 114px;
+    height: 169px;
+    min-height: 169px;
   }
+`;
+
+export const StyledPictureIcon = styled(PictureIcon)`
+  width: 48px;
+  color: ${({ theme }) => theme.colors.tile.background};
 `;
 
 export const Image = styled.img`
   border-radius: 5px;
-  width: 292px;
-
-  ${({ imageStyle }) =>
-    imageStyle &&
-    css`
-      width: 177px;
-      height: 274px;
-    `}
-
-  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    width: 114px;
-  }
+  height: 100%;
+  width: 100%;
 `;
 
 export const Content = styled.div`
-  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+    font-size: 16px;
+    font-weight: 500;
+    justify-content: start;
   }
 `;
+
+export const MovieInfo = styled.div``;
 
 export const TileHeader = styled.header`
   font-size: 22px;
@@ -110,8 +122,20 @@ export const Genre = styled.li`
   }
 `;
 
+export const Year = styled.p`
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 150%;
+  color: ${({ theme }) => theme.colors.tile.mutedText};
+
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 130%;
+  }
+`;
+
 export const Rating = styled.div`
-  margin-top: 39px;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -126,7 +150,7 @@ export const Rating = styled.div`
   }
 `;
 
-export const IconStar = styled(Star)`
+export const IconStar = styled(StarIcon)`
   width: 24px;
   height: 24px;
 
@@ -141,5 +165,5 @@ export const Rate = styled.span`
 `;
 
 export const Votes = styled.span`
-  color: var(--Darker-grey, #7e839a);
+  color: ${({ theme }) => theme.colors.tile.mutedText};
 `;

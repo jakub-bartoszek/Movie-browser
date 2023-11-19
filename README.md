@@ -8,6 +8,8 @@ Welcome to the Movie Browser project! This collaborative effort is being underta
 
 ## Project Description
 
+<img src="https://github.com/jakub-bartoszek-developer/Movie-browser/blob/master/images/task_screen.jpg" width="360px">
+
 The Movie Browser is a web application designed to provide information about popular movies, actors, directors, and more. Users can explore details about their favorite films and the talented individuals involved in the film industry.
 
 ## Technologies Used

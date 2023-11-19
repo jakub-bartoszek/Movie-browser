@@ -27,6 +27,9 @@ const moviesSlice = createSlice({
     setMovies: (state, { payload }) => {
       state.movies = payload;
     },
+    setStatus: (state, { payload }) => {
+      state.status = payload;
+    },
     setSearchQuery: (state, { payload }) => {
       state.searchQuery = payload;
     },
@@ -42,6 +45,7 @@ const moviesSlice = createSlice({
 });
 export const {
   fetchPopularMovies,
+<<<<<<< HEAD
   fetchMovieDetails,
   setSearchQuery,
   setMovies,
@@ -50,11 +54,19 @@ export const {
   fetchCredits,
   setCredits,
   setMovieDetails,
+=======
+  fetchSearchResults,
+  setMovies,
+  setStatus,
+  setSearchQuery,
+  setGenres
+>>>>>>> cde895b40d4fb1438a481fd573b0194292029f98
 } = moviesSlice.actions;
 
 export const selectMoviesState = (state) => state.movies;
 
 export const selectMovies = (state) => selectMoviesState(state).movies;
+export const selectStatus = (state) => selectMoviesState(state).status;
 export const selectSearchQuery = (state) => selectMoviesState(state).searchQuery;
 export const selectGenres = (state) => selectMoviesState(state).genres;
 

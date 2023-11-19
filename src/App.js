@@ -3,11 +3,8 @@ import Movies from "./pages/Movies/Movies";
 import People from "./pages/People/People";
 import { Navigation } from "./components/common/Navigation/Navigation";
 import MoviePage from "./pages/MoviePage";
-import { useState } from "react";
 
 function App() {
-  const [navSwitch, setNavSwitch] = useState(false);
-
   return (
     <HashRouter>
       <Navigation />

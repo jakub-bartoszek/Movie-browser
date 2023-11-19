@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { setSearchQuery } from "../../../../utils/redux/moviesSlice";
-import { useDispatch } from "react-redux";
+import { selectCategory, setSearchQuery } from "../../../../utils/redux/searchSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export const useSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const [value, setValue] = useState(searchParams.get("search"));
+  const category = useSelector(selectCategory);
 
   const onInputChange = (event) => {
     setValue(event.target.value);
@@ -20,6 +21,10 @@ export const useSearch = () => {
   useEffect(() => {
     dispatch(setSearchQuery(searchParams.get("search")));
   });
+
+  useEffect(() => {
+    setValue("");
+  }, [category]);
 
   return {
     onInputChange,

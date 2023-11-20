@@ -23,6 +23,7 @@ import {
   StyledLeftIcon,
   StyledRightIcon,
 } from "./styled";
+import { NoResult } from "../NoResult/NoResult";
 
 export default function Movies() {
   const dispatch = useDispatch();
@@ -90,7 +91,7 @@ export default function Movies() {
                   </Pagination>
                 </>
               ) : (
-                <div>No results</div> //Just to demo no results page
+                <NoResult /> //Just to demo no results page
               )}
             </>
           ),

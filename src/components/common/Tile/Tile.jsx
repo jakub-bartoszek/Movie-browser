@@ -21,6 +21,7 @@ export const Tile = ({ poster_path, title, release_date, production_countries, v
   const countryNames = production_countries?.map(country => (isMobile ? country.iso_3166_1 : country.name)) || [];
   const releaseDate = new Date(release_date);
   const year = releaseDate.getFullYear().toString();
+
   return (
     <Container>
       <Image src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt="" />
@@ -36,11 +37,9 @@ export const Tile = ({ poster_path, title, release_date, production_countries, v
           {release_date}
         </ReleaseDate>
         <Genres>
-          {
-            genres && genres.map(genre => (
-              <Genre key={genre.id}>{genre.name}</Genre>
-            ))
-          }
+          {genres && genres.map(genre => (
+            <Genre key={genre.id}>{genre.name}</Genre>
+          ))}
         </Genres>
         <Rating>
           <IconStar />

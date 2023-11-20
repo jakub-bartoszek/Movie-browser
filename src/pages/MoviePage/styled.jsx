@@ -6,9 +6,8 @@ export const MainWrapper = styled.div`
   flex-direction: column;
   gap: 64px;
   align-items: center;
-  background-color:${({ theme }) => theme.colors.moviePage.background};
+  background-color: ${({ theme }) => theme.colors.moviePage.background};
   margin-bottom: 64px;
-
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
     margin-bottom: 16px;
@@ -68,7 +67,7 @@ export const RatingTopContent = styled.div`
   bottom: 10px;
   left: 1%;
   flex-direction: column;
-  color: ${({ theme }) => theme.colors.moviePage.headerText};;
+  color: ${({ theme }) => theme.colors.moviePage.headerText};
   margin-bottom: 56px;
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.xl}) {

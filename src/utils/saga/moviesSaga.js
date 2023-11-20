@@ -6,8 +6,10 @@ import {
   setMovies,
   setMovieDetails,
   fetchMovieDetails,
-  // setCredits,
   setStatus,
+  fetchCredits,
+  setMovieCredits,
+
 } from "../redux/moviesSlice";
 import { getPopular } from './getPopular';
 import { getSearchResults } from './getSearchResults';
@@ -40,16 +42,16 @@ export function* fetchMovieDetailsHandler({ payload: movieId }) {
   }
 };
 
-// export function* fetchCreditsHandler({ payload: movieId }) {
-//   try {
-//     yield delay(1000);
-
-//     const credits = yield call(getCredits, movieId);
-//     yield put(setCredits(credits));
-//   } catch (error) {
-//     yield put(alert("Something went wrong!"));
-//   }
-// };
+export function* fetchCreditsHandler({ payload: movieId }) {
+  try {
+    yield delay(1000);
+    const credits = yield call(getCredits, movieId);
+    console.log("Credits from API:", credits);
+    yield put(setMovieCredits(credits));
+  } catch (error) {
+    yield put(setStatus("error"));
+  }
+};
 
 
 function* fetchSearchResultsHandler({ payload }) {
@@ -74,5 +76,5 @@ export function* moviesSaga() {
   yield takeLatest(fetchPopularMovies.type, fetchPopularMoviesHandler);
   yield takeLatest(fetchSearchResults.type, fetchSearchResultsHandler);
   yield takeLatest(fetchMovieDetails.type, fetchMovieDetailsHandler);
-  // yield takeLatest(fetchMovieDetails.type, fetchCreditsHandler);
+  yield takeLatest(fetchCredits.type, fetchCreditsHandler);
 }

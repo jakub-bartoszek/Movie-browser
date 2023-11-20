@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 208px;
-  height: 339px;
+  height: auto;
   padding: 16px;
   box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
   gap: 12px;
@@ -17,7 +17,7 @@ export const ImageWrapper = styled.div`
   border-radius: 5px;
   width: 177px;
   min-width: 177px;
-  height: 264px;
+  /* height: 264px; */
   min-height: 264px;
   background-color: ${({ theme }) => theme.colors.tile.imageWrapper};
   display: flex;
@@ -38,12 +38,14 @@ export const Image = styled.img`
   width: 100%;
 `;
 
-export const Character = styled.p`
+export const Character = styled.div`
   display: flex;
   height: 64px;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 10px;
+  margin: 10px 0;
 `;
 
 export const Name = styled.p`
@@ -52,4 +54,8 @@ export const Name = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: 130%;
+`;
+export const FilmName = styled.p`
+  color: ${({ theme }) => theme.colors.tile.mutedText};
+  font-size: 18px;
 `;

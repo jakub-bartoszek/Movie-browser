@@ -15,37 +15,39 @@ import {
   RatingTopContent,
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovieDetails, selectStatus } from "../../utils/redux/moviesSlice";
+import { PersonTile } from "../../components/common/Tile/PersonTile/PersonTile";
+import { fetchMovieDetails, selectStatus, fetchCredits } from "../../utils/redux/moviesSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 export default function MoviePage() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const movieDetails = useSelector((state) => state.movies.movieDetails);
   const status = useSelector(selectStatus);
+  const credits = useSelector(state => state.movies);
 
   useEffect(() => {
     dispatch(fetchMovieDetails(id));
+    dispatch(fetchCredits(id));
   }, [dispatch, id]);
-
-  const { title, vote_average, vote_count, backdrop_path, poster_path, release_date, production_countries, overview, genres } = movieDetails;
 
   return (
     <div>
       {
         {
-          loading: <p>Loading...</p>, // Just to demo status pages
+          loading: <p>Loading...</p>,
           error: <p>Error!</p>,
           success: (
             <>
               <MainWrapper>
-                <Header backdropPath={`https://image.tmdb.org/t/p/original${backdrop_path}`}>
+                <Header backdropPath={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}>
                   <RatingTopContent>
-                    <LongTitle>{title} </LongTitle>
+                    <LongTitle>{movieDetails.title}</LongTitle>
                     <Rating>
                       <IconStar />
-                      {vote_average ? vote_average.toFixed(2) : ""}
+                      {movieDetails.vote_average ? movieDetails.vote_average.toFixed(2) : ""}
                       <Rate>/ 10</Rate>
-                      <Votes>{vote_count}&nbsp;votes</Votes>
+                      <Votes>{movieDetails.vote_count}&nbsp;votes</Votes>
                     </Rating>
                   </RatingTopContent>
                 </Header>
@@ -53,19 +55,27 @@ export default function MoviePage() {
 
               <Wrapper>
                 <Tile
-                  poster_path={poster_path}
-                  title={title}
-                  release_date={release_date}
-                  production_countries={production_countries}
-                  vote_average={vote_average}
-                  votes={vote_count}
-                  overview={overview}
-                  genres={genres}
+                  poster_path={movieDetails.poster_path}
+                  title={movieDetails.title}
+                  release_date={movieDetails.release_date}
+                  production_countries={movieDetails.production_countries}
+                  vote_average={movieDetails.vote_average}
+                  votes={movieDetails.vote_count}
+                  overview={movieDetails.overview}
+                  genres={movieDetails.genres}
                 />
                 <SectionTitle>Cast</SectionTitle>
-                <Section>{/*Cast content here */}</Section>
+                <Section>
+                  {credits.cast.map((member) => (
+                    <PersonTile key={member.credit_id} member={member} filmName={member.character ? member.character : "Unknown Character"} />
+                  ))}
+                </Section>
                 <SectionTitle>Crew</SectionTitle>
-                <Section>{/*Crew content here */}</Section>
+                <Section>
+                  {credits.crew.map((member) => (
+                    <PersonTile key={member.credit_id} member={member} />
+                  ))}
+                </Section>
               </Wrapper>
             </>
           ),

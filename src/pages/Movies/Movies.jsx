@@ -22,7 +22,7 @@ import {
 	Pagination,
 	StyledLeftIcon,
 	StyledNav,
-	StyledRightIcon
+	StyledRightIcon,
 } from "./styled";
 import { NavLink } from "react-router-dom";
 import { toMoviePage } from "../../routes";
@@ -43,63 +43,61 @@ export default function Movies() {
 		}
 	}, [searchQuery, dispatch]);
 
-
 	return (
 		<Container>
 			{status !== "error" && (
 				<Header>
 					{!searchQuery
 						? `Popular movies`
-						: (searchQuery && movies.length) > 0
+						: searchQuery && movies.length > 0
 							? `Search results for "${searchQuery}" (${movies.length})`
 							: `Sorry, there are no results for "${searchQuery}"`}
 				</Header>
 			)}
-			{
-				{
-					loading: <p>Loading...</p>, //Just to demo status pages
-					error: <p>Error!</p>,
-					success: (
-						<>
-							{movies.length > 0 ? (
-								<>
-									<Content>
-										{movies.map((movie) => (
-											<StyledNav to={toMoviePage({ id: movie.id })} key={movie.id}>
-												<SmallTile
-													movie={movie}
-												/>
-											</StyledNav>
+			{{
+				loading: <p>Loading...</p>, // Just to demo status pages
+				error: <p>Error!</p>,
+				success: (
+					<>
+						{movies.length > 0 ? (
+							<>
+								<Content>
+									{movies.map((movie) => (
+										<StyledNav
+											to={toMoviePage({ id: movie.id })}
+											key={movie.id}
+										>
+											<SmallTile movie={movie} />
+										</StyledNav>
+									))}
+								</Content>
 
-										))}
-									</Content>
-// 									<Pagination>
-// 										<Button>
-// 											<StyledLeftIcon />
-// 											<StyledLeftIcon />
-// 										</Button>
-// 										<Button>
-// 											<StyledLeftIcon />
-// 										</Button>
-// 										<span>
-// 											Page <strong>1</strong> of <strong>500</strong>
-// 										</span>
-// 										<Button>
-// 											<StyledRightIcon />
-// 										</Button>
-// 										<Button>
-// 											<StyledRightIcon />
-// 											<StyledRightIcon />
-// 										</Button>
-// 									</Pagination>
-// 								</>
-							) : (
-								<div>No results</div> //Just to demo no results page
-							)}
-						</>
-					)
-				}[status]
-			}
-		</Container >
+								<Pagination>
+									<Button>
+										<StyledLeftIcon />
+										<StyledLeftIcon />
+									</Button>
+									<Button>
+										<StyledLeftIcon />
+									</Button>
+									<span>
+										Page <strong>1</strong> of <strong>500</strong>
+									</span>
+									<Button>
+										<StyledRightIcon />
+									</Button>
+									<Button>
+										<StyledRightIcon />
+										<StyledRightIcon />
+									</Button>
+								</Pagination>
+							</>
+						) : (
+							<div>No results</div> // Just to demo no results page
+						)}
+					</>
+				),
+			}[status]}
+		</Container>
 	);
 }

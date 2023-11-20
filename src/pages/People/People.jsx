@@ -20,6 +20,7 @@ import {
 } from "../../utils/redux/searchSlice";
 import { nanoid } from "nanoid";
 import { useEffect } from "react";
+import { NoResult } from "../NoResult/NoResult";
 
 export default function People() {
   const dispatch = useDispatch();
@@ -87,7 +88,7 @@ export default function People() {
                   </Pagination>
                 </>
               ) : (
-                <div>No results</div>
+                <NoResult/>
               )}
             </>
           ),

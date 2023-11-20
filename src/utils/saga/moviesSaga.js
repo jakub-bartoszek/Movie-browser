@@ -6,15 +6,15 @@ import {
   setMovies,
   setStatus,
 } from "../redux/moviesSlice";
-import { getPopularMovies } from "./getPopularMovies";
+import { getPopular } from "./getPopular";
 import { getSearchResults } from "./getSearchResults";
 import { getGenres } from "./getGenres";
 
-function* fetchPopularMoviesHandler() {
+function* fetchPopularMoviesHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
     yield delay(1000);
-    const movies = yield call(getPopularMovies);
+    const movies = yield call(getPopular, payload.category);
     const genres = yield call(getGenres);
     yield put(setMovies(movies));
     yield put(setGenres(genres));
@@ -24,11 +24,15 @@ function* fetchPopularMoviesHandler() {
   }
 }
 
-function* fetchSearchResultsHandler(searchQuery) {
+function* fetchSearchResultsHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
     yield delay(1000);
-    const movies = yield call(getSearchResults, searchQuery.payload);
+    const movies = yield call(
+      getSearchResults,
+      payload.searchQuery,
+      payload.category
+    );
     const genres = yield call(getGenres);
     yield put(setMovies(movies));
     yield put(setGenres(genres));

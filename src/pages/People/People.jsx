@@ -1,47 +1,44 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SmallTile } from "../../components/common/Tile/SmallTile/SmallTile";
+import { PersonTile } from "../../components/common/Tile/PersonTile/PersonTile";
 import {
-  fetchPopularMovies,
+  Button,
+  Pagination,
+  StyledLeftIcon,
+  StyledRightIcon,
+} from "../Movies/styled";
+import { Container, Content, Header } from "./styled";
+import {
+  fetchPopularPeople,
   fetchSearchResults,
-  selectMovies,
+  selectPeople,
   selectStatus,
-} from "../../utils/redux/moviesSlice";
+} from "../../utils/redux/peopleSlice";
 import {
   selectSearchQuery,
   setCategory,
   setSearchQuery,
 } from "../../utils/redux/searchSlice";
 import { nanoid } from "nanoid";
+import { useEffect } from "react";
 
-import {
-  Button,
-  Container,
-  Content,
-  Header,
-  Pagination,
-  StyledLeftIcon,
-  StyledRightIcon,
-} from "./styled";
-
-export default function Movies() {
+export default function People() {
   const dispatch = useDispatch();
-  const movies = useSelector(selectMovies);
-  const searchQuery = useSelector(selectSearchQuery);
+  const people = useSelector(selectPeople);
   const status = useSelector(selectStatus);
+  const searchQuery = useSelector(selectSearchQuery);
 
   useEffect(() => {
     if (searchQuery) {
       dispatch(
-        fetchSearchResults({ category: "movie", searchQuery: searchQuery })
+        fetchSearchResults({ category: "person", searchQuery: searchQuery })
       );
     } else {
-      dispatch(fetchPopularMovies({ category: "movie" }));
+      dispatch(fetchPopularPeople({ category: "person" }));
     }
   }, [searchQuery, dispatch]);
 
   useEffect(() => {
-    dispatch(setCategory("movies"));
+    dispatch(setCategory("people"));
     dispatch(setSearchQuery(""));
   });
 
@@ -50,9 +47,9 @@ export default function Movies() {
       {status !== "error" && (
         <Header>
           {!searchQuery
-            ? `Popular movies`
-            : (searchQuery && movies.length) > 0
-            ? `Search results for "${searchQuery}" (${movies.length})`
+            ? `Popular people`
+            : (searchQuery && people.length) > 0
+            ? `Search results for "${searchQuery}" (${people.length})`
             : `Sorry, there are no results for "${searchQuery}"`}
         </Header>
       )}
@@ -62,11 +59,11 @@ export default function Movies() {
           error: <p>Error!</p>,
           success: (
             <>
-              {movies.length > 0 ? (
+              {people.length > 0 ? (
                 <>
                   <Content>
-                    {movies?.map((movie) => (
-                      <SmallTile key={nanoid()} movie={movie} />
+                    {people?.map((member) => (
+                      <PersonTile key={nanoid()} member={member} />
                     ))}
                   </Content>
                   <Pagination>
@@ -90,7 +87,7 @@ export default function Movies() {
                   </Pagination>
                 </>
               ) : (
-                <div>No results</div> //Just to demo no results page
+                <div>No results</div>
               )}
             </>
           ),

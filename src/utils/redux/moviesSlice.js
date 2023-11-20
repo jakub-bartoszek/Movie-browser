@@ -4,8 +4,8 @@ const moviesSlice = createSlice({
   name: "movies",
   initialState: {
     movies: [],
-    searchQuery: "",
     genres: [],
+<<<<<<< HEAD
     movieDetails: [],
     cast: [],
     crew: [],
@@ -25,14 +25,18 @@ const moviesSlice = createSlice({
     //   state.crew = credits.crew;
     // },
 
+=======
+    status: "",
+  },
+  reducers: {
+    fetchPopularMovies: (state) => {},
+    fetchSearchResults: (state) => {},
+>>>>>>> 3a6f27fdbd6ec70d0e218d19a5d7c12d86859ca9
     setMovies: (state, { payload }) => {
       state.movies = payload;
     },
     setStatus: (state, { payload }) => {
       state.status = payload;
-    },
-    setSearchQuery: (state, { payload }) => {
-      state.searchQuery = payload;
     },
     setGenres: (state, { payload }) => {
       state.genres = payload;
@@ -60,7 +64,8 @@ export const selectMoviesState = (state) => state.movies;
 
 export const selectMovies = (state) => selectMoviesState(state).movies;
 export const selectStatus = (state) => selectMoviesState(state).status;
-export const selectSearchQuery = (state) => selectMoviesState(state).searchQuery;
+export const selectSearchQuery = (state) =>
+  selectMoviesState(state).searchQuery;
 export const selectGenres = (state) => selectMoviesState(state).genres;
 
 // export const selectMovieById = (state, movieId) => selectMovies(state).find(({ id }) => id === movieId);

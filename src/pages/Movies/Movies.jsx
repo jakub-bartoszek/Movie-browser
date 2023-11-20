@@ -5,12 +5,17 @@ import {
 	fetchPopularMovies,
 	fetchSearchResults,
 	selectMovies,
-	selectSearchQuery,
-	selectStatus
+	selectStatus,
 } from "../../utils/redux/moviesSlice";
+import {
+	selectSearchQuery,
+	setCategory,
+	setSearchQuery,
+} from "../../utils/redux/searchSlice";
 import { nanoid } from "nanoid";
 
 import {
+<<<<<<< HEAD
 	Button,
 	Container,
 	Content,
@@ -19,6 +24,15 @@ import {
 	StyledLeftIcon,
 	StyledNav,
 	StyledRightIcon
+=======
+  Button,
+  Container,
+  Content,
+  Header,
+  Pagination,
+  StyledLeftIcon,
+  StyledRightIcon,
+>>>>>>> 3a6f27fdbd6ec70d0e218d19a5d7c12d86859ca9
 } from "./styled";
 import { NavLink } from "react-router-dom";
 import { toMoviePage } from "../../routes";
@@ -31,9 +45,11 @@ export default function Movies() {
 
 	useEffect(() => {
 		if (searchQuery) {
-			dispatch(fetchSearchResults(searchQuery));
+			dispatch(
+				fetchSearchResults({ category: "movie", searchQuery: searchQuery })
+			);
 		} else {
-			dispatch(fetchPopularMovies());
+			dispatch(fetchPopularMovies({ category: "movie" }));
 		}
 	}, [searchQuery, dispatch]);
 

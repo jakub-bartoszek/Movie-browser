@@ -1,11 +1,8 @@
 import { all } from "redux-saga/effects";
 
 import { moviesSaga } from "./moviesSaga";
-// import { personSaga } from "./personSagaA";
+import { peopleSaga } from "./peopleSaga";
 
 export default function* rootSaga() {
-  yield all([
-    moviesSaga(),
-    // personSaga(),
-  ]);
+  yield all([moviesSaga(), peopleSaga()]);
 }

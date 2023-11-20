@@ -11,7 +11,7 @@ import {
   Wrapper,
   ImageWrapper,
   StyledPictureIcon,
-  MovieInfo
+  MovieInfo,
 } from "./styled";
 
 export const SmallTile = ({ movie }) => {
@@ -41,4 +41,8 @@ export const SmallTile = ({ movie }) => {
       </Content>
     </Wrapper>
   );
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 3a6f27fdbd6ec70d0e218d19a5d7c12d86859ca9

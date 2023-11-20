@@ -17,6 +17,7 @@ import {
 	Header,
 	Pagination,
 	StyledLeftIcon,
+	StyledNav,
 	StyledRightIcon
 } from "./styled";
 import { NavLink } from "react-router-dom";
@@ -39,62 +40,33 @@ export default function Movies() {
 
 	return (
 		<Container>
-			<Header>Popular movies</Header>
-			<Content>
-				{movies.map((movie) => (
-					<NavLink to={toMoviePage({ id: movie.id })} key={movie.id}>
-						<SmallTile
-							movie={movie}
-						/>
-					</NavLink>
+			{status !== "error" && (
+				<Header>
+					{!searchQuery
+						? `Popular movies`
+						: (searchQuery && movies.length) > 0
+							? `Search results for "${searchQuery}" (${movies.length})`
+							: `Sorry, there are no results for "${searchQuery}"`}
+				</Header>
+			)}
+			{
+				{
+					loading: <p>Loading...</p>, //Just to demo status pages
+					error: <p>Error!</p>,
+					success: (
+						<>
+							{movies.length > 0 ? (
+								<>
+									<Content>
+										{movies.map((movie) => (
+											<StyledNav to={toMoviePage({ id: movie.id })} key={movie.id}>
+												<SmallTile
+													movie={movie}
+												/>
+											</StyledNav>
 
-				))}
-			</Content>
-			<Pagination>
-				<Button>
-					<StyledLeftIcon />
-					<StyledLeftIcon />
-				</Button>
-				<Button>
-					<StyledLeftIcon />
-				</Button>
-				<span>
-					Page <strong>1</strong> of <strong>500</strong>
-				</span>
-				<Button>
-					<StyledRightIcon />
-				</Button>
-				<Button>
-					<StyledRightIcon />
-					<StyledRightIcon />
-				</Button>
-			</Pagination>
-		</Container >
-// 			{status !== "error" && (
-// 				<Header>
-// 					{!searchQuery
-// 						? `Popular movies`
-// 						: (searchQuery && movies.length) > 0
-// 						? `Search results for "${searchQuery}" (${movies.length})`
-// 						: `Sorry, there are no results for "${searchQuery}"`}
-// 				</Header>
-// 			)}
-// 			{
-// 				{
-// 					loading: <p>Loading...</p>, //Just to demo status pages
-// 					error: <p>Error!</p>,
-// 					success: (
-// 						<>
-// 							{movies.length > 0 ? (
-// 								<>
-// 									<Content>
-// 										{movies?.map((movie) => (
-// 											<SmallTile
-// 												key={nanoid()}
-// 												movie={movie}
-// 											/>
-// 										))}
-// 									</Content>
+										))}
+									</Content>
 // 									<Pagination>
 // 										<Button>
 // 											<StyledLeftIcon />
@@ -115,13 +87,13 @@ export default function Movies() {
 // 										</Button>
 // 									</Pagination>
 // 								</>
-// 							) : (
-// 								<div>No results</div> //Just to demo no results page
-// 							)}
-// 						</>
-// 					)
-// 				}[status]
-// 			}
-// 		</Container>
-// 	);
-// }
+							) : (
+								<div>No results</div> //Just to demo no results page
+							)}
+						</>
+					)
+				}[status]
+			}
+		</Container >
+	);
+}

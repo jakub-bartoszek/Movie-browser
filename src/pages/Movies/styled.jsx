@@ -1,6 +1,17 @@
 import styled from "styled-components";
 import { ReactComponent as LeftIcon } from "../../assets/icons/left.svg";
 import { ReactComponent as RightIcon } from "../../assets/icons/right.svg";
+import { NavLink } from "react-router-dom";
+
+export const StyledNav = styled(NavLink)`
+	text-decoration: none;
+   color: ${({ theme }) => theme.colors.site.text};
+		&:hover{
+			filter: brightness(130%);//demo
+		}
+
+  `;
+
 
 export const Container = styled.div`
 	max-width: 1368px;

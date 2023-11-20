@@ -1,30 +1,19 @@
-<<<<<<< HEAD
-import { delay, put, call, takeEvery } from 'redux-saga/effects';
-=======
-import { put, call, takeLatest, delay } from "redux-saga/effects";
->>>>>>> cde895b40d4fb1438a481fd573b0194292029f98
+import { put, call, takeLatest, delay, } from "redux-saga/effects";
 import {
   fetchPopularMovies,
   fetchSearchResults,
   setGenres,
   setMovies,
-<<<<<<< HEAD
   setMovieDetails,
   fetchMovieDetails,
-  setCredits,
+  // setCredits,
+  setStatus,
 } from "../redux/moviesSlice";
 import { getPopularMovies } from './getPopularMovies';
 import { getSearchResults } from './getSearchResults';
 import { getGenres } from './getGenres';
 import { getMoviesDetails } from './getMovieDetails';
 import { getCredits } from './getCredits';
-=======
-  setStatus,
-} from "../redux/moviesSlice";
-import { getPopularMovies } from "./getPopularMovies";
-import { getSearchResults } from "./getSearchResults";
-import { getGenres } from "./getGenres";
->>>>>>> cde895b40d4fb1438a481fd573b0194292029f98
 
 function* fetchPopularMoviesHandler() {
   try {
@@ -41,24 +30,26 @@ function* fetchPopularMoviesHandler() {
 }
 export function* fetchMovieDetailsHandler({ payload: movieId }) {
   try {
-    yield delay(700);
+    yield put(setStatus("loading"))
+    yield delay(1000);
     const movieDetails = yield call(getMoviesDetails, movieId);
     yield put(setMovieDetails(movieDetails));
+    yield put(setStatus("success"));
   } catch (error) {
-    yield put(alert("Something went wrong!"));
+    yield put(setStatus("error"));
   }
 };
 
-export function* fetchCreditsHandler({ payload: movieId }) {
-  try {
-    yield delay(700);
+// export function* fetchCreditsHandler({ payload: movieId }) {
+//   try {
+//     yield delay(1000);
 
-    const credits = yield call(getCredits, movieId);
-    yield put(setCredits(credits));
-  } catch (error) {
-    yield put(alert("Something went wrong!"));
-  }
-};
+//     const credits = yield call(getCredits, movieId);
+//     yield put(setCredits(credits));
+//   } catch (error) {
+//     yield put(alert("Something went wrong!"));
+//   }
+// };
 
 
 function* fetchSearchResultsHandler(searchQuery) {
@@ -76,8 +67,8 @@ function* fetchSearchResultsHandler(searchQuery) {
 }
 
 export function* moviesSaga() {
-  yield takeEvery(fetchPopularMovies.type, fetchPopularMoviesHandler);
-  yield takeEvery(fetchSearchResults.type, fetchSearchResultsHandler);
-  yield takeEvery(fetchMovieDetails.type, fetchMovieDetailsHandler);
-  yield takeEvery(fetchMovieDetails.type, fetchCreditsHandler);
+  yield takeLatest(fetchPopularMovies.type, fetchPopularMoviesHandler);
+  yield takeLatest(fetchSearchResults.type, fetchSearchResultsHandler);
+  yield takeLatest(fetchMovieDetails.type, fetchMovieDetailsHandler);
+  // yield takeLatest(fetchMovieDetails.type, fetchCreditsHandler);
 }

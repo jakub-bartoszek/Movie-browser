@@ -34,7 +34,6 @@ export const Header = styled.div`
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
     height: 200px;
-    box-shadow: inset 8px -3px 100px 74px #1c1c1c;
   }
 `;
 
@@ -100,8 +99,8 @@ export const Rating = styled.div`
   font-size: 30px;
   font-weight: 500;
   display: flex;
-  align-items: center;
-  max-width: 200px;
+  align-items: flex-end;
+  max-width: 170px;
   flex-wrap: wrap;
   row-gap: 16px;
 

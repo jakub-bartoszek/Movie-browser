@@ -46,7 +46,6 @@ export function* fetchCreditsHandler({ payload: movieId }) {
   try {
     yield delay(1000);
     const credits = yield call(getCredits, movieId);
-    console.log("Credits from API:", credits);
     yield put(setMovieCredits(credits));
   } catch (error) {
     yield put(setStatus("error"));

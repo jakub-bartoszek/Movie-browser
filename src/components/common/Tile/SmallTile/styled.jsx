@@ -3,13 +3,12 @@ import { ReactComponent as PictureIcon } from "../../../../assets/icons/picture.
 import { ReactComponent as StarIcon } from "../../../../assets/icons/star.svg";
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 324px;
-  height: 650px;
-  padding: 16px;
-  box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
-  gap: 16px;
+	display: flex;
+	flex-direction: column;
+	width: 324px;
+	padding: 16px;
+	box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
+	gap: 16px;
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
     height: auto;
@@ -136,11 +135,12 @@ export const Year = styled.p`
 `;
 
 export const Rating = styled.div`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  font-size: 16px;
-  line-height: 150%;
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	font-size: 16px;
+	line-height: 150%;
+	margin-top: 16px;
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
     font-size: 13px;

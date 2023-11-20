@@ -9,7 +9,7 @@ import {
   // setCredits,
   setStatus,
 } from "../redux/moviesSlice";
-import { getPopularMovies } from './getPopularMovies';
+import { getPopular } from './getPopular';
 import { getSearchResults } from './getSearchResults';
 import { getGenres } from './getGenres';
 import { getMoviesDetails } from './getMovieDetails';

@@ -5,7 +5,6 @@ const moviesSlice = createSlice({
   initialState: {
     movies: [],
     genres: [],
-<<<<<<< HEAD
     movieDetails: [],
     cast: [],
     crew: [],
@@ -25,13 +24,6 @@ const moviesSlice = createSlice({
     //   state.crew = credits.crew;
     // },
 
-=======
-    status: "",
-  },
-  reducers: {
-    fetchPopularMovies: (state) => {},
-    fetchSearchResults: (state) => {},
->>>>>>> 3a6f27fdbd6ec70d0e218d19a5d7c12d86859ca9
     setMovies: (state, { payload }) => {
       state.movies = payload;
     },

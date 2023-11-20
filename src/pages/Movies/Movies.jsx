@@ -15,7 +15,6 @@ import {
 import { nanoid } from "nanoid";
 
 import {
-<<<<<<< HEAD
 	Button,
 	Container,
 	Content,
@@ -24,15 +23,6 @@ import {
 	StyledLeftIcon,
 	StyledNav,
 	StyledRightIcon
-=======
-  Button,
-  Container,
-  Content,
-  Header,
-  Pagination,
-  StyledLeftIcon,
-  StyledRightIcon,
->>>>>>> 3a6f27fdbd6ec70d0e218d19a5d7c12d86859ca9
 } from "./styled";
 import { NavLink } from "react-router-dom";
 import { toMoviePage } from "../../routes";

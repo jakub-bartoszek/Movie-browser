@@ -10,9 +10,10 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
-
+  
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
     gap: 16px;
+    margin: 0 16px;
   }
 `;
 

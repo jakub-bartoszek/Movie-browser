@@ -14,34 +14,39 @@ export const theme = {
     s: "714px",
     m: "900px",
     l: "1200px",
-    xl: "1536px",
+    xl: "1536px"
   },
   colors: {
     site: {
       background: colorNames.Whisper,
-      text: colorNames.Black,
+      text: colorNames.Black
     },
     navigation: {
       background: colorNames.Woodsmoke,
       text: colorNames.White,
-      mobileBackground: colorNames.Black,
+      mobileBackground: colorNames.Black
     },
     searchBar: {
       background: colorNames.White,
       text: colorNames.Black,
-      mutedText: colorNames.Waterloo,
+      mutedText: colorNames.Waterloo
     },
     tile: {
       background: colorNames.White,
       text: colorNames.Black,
       mutedText: colorNames.StormGrey,
+      genresBackground: colorNames.Mystic
+    },
+    moviePage: {
+      background: colorNames.Black,
+      headerText: colorNames.White,
       genresBackground: colorNames.Mystic,
       imageWrapper: colorNames.StormGrey,
-    },
+    }
   },
   properties: {
     tile: {
-      boxShadow: "0px 4px 12px 0px rgba(186, 199, 213, 0.5)",
-    },
-  },
+      boxShadow: "0px 4px 12px 0px rgba(186, 199, 213, 0.5)"
+    }
+  }
 };

@@ -13,7 +13,6 @@ import {
 	setCategory,
 	setSearchQuery
 } from "../../utils/redux/searchSlice";
-import { nanoid } from "nanoid";
 
 import {
 	Button,
@@ -22,8 +21,10 @@ import {
 	Header,
 	Pagination,
 	StyledLeftIcon,
+	StyledNav,
 	StyledRightIcon
 } from "./styled";
+import { toMoviePage } from "../../routes";
 import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
@@ -71,10 +72,12 @@ export default function Movies() {
 								<>
 									<Content>
 										{movies?.map((movie) => (
-											<SmallTile
-												key={nanoid()}
-												movie={movie}
-											/>
+											<StyledNav
+												to={toMoviePage({ id: movie.id })}
+												key={movie.id}
+											>
+												<SmallTile movie={movie} />
+											</StyledNav>
 										))}
 									</Content>
 									<Pagination>

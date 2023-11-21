@@ -8,10 +8,10 @@ import {
 	selectStatus
 } from "../../utils/redux/moviesSlice";
 import {
+	selectCategory,
 	selectSearchQuery,
 	setCategory,
-	setSearchQuery,
-	selectCategory
+	setSearchQuery
 } from "../../utils/redux/searchSlice";
 
 import {
@@ -26,6 +26,7 @@ import {
 } from "./styled";
 import { toMoviePage } from "../../routes";
 import { NoResult } from "../NoResult/NoResult";
+import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
 
 export default function Movies() {
@@ -64,7 +65,7 @@ export default function Movies() {
 			{
 				{
 					loading: <StyledLoader />,
-					error: <p>Error!</p>,
+					error: <Error />,
 					success: (
 						<>
 							{movies.length > 0 ? (

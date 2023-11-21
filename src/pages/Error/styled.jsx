@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as Attention } from "../../assets/icons/loading/attention.svg";
+import { ReactComponent as Attention } from "../../assets/icons/attention/attention.svg";
 import { NavLink } from "react-router-dom";
 
 export const Container = styled.div`

@@ -59,7 +59,7 @@ export default function People() {
       )}
       {
         {
-          loading: <StyledLoader />, //Just to demo status pages
+          loading: <StyledLoader />,
           error: <p>Error!</p>,
           success: (
             <>

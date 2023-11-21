@@ -1,3 +1,4 @@
+import { toMovies, toPeople } from "../../../routes";
 import { SearchBar } from "./SearchBar/SearchBar";
 import {
 	Container,
@@ -22,10 +23,10 @@ export const Navigation = () => {
 					</Logo>
 					<StyledUl>
 						<StyledLi>
-							<StyledNavLink to="/movies">movies</StyledNavLink>
+							<StyledNavLink to={toMovies()}>movies</StyledNavLink>
 						</StyledLi>
 						<StyledLi>
-							<StyledNavLink to="/people">people</StyledNavLink>
+							<StyledNavLink to={toPeople()}>people</StyledNavLink>
 						</StyledLi>
 					</StyledUl>
 				</Container>

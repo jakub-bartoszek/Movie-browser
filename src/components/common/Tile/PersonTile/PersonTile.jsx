@@ -1,7 +1,7 @@
-import { StyledPictureIcon } from "../SmallTile/styled";
-import { Image, ImageWrapper, Character, Name, Wrapper } from "./styled";
+import { Image, ImageWrapper, Character, Name, Wrapper, FilmName, PersonIcon } from "./styled";
 
-export const PersonTile = ({ member }) => {
+
+export const PersonTile = ({ member, filmName }) => {
   return (
     <Wrapper>
       <ImageWrapper>
@@ -11,11 +11,12 @@ export const PersonTile = ({ member }) => {
             alt=""
           />
         ) : (
-          <StyledPictureIcon />
+          <PersonIcon />
         )}
       </ImageWrapper>
       <Character>
         <Name>{member.name}</Name>
+        {filmName && <FilmName>{filmName}</FilmName>}
       </Character>
     </Wrapper>
   );

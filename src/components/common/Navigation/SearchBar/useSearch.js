@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 export const useSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const [value, setValue] = useState(searchParams.get("search"));
+  const [value, setValue] = useState(searchParams.get("search") || "");
   const category = useSelector(selectCategory);
 
   const onInputChange = (event) => {

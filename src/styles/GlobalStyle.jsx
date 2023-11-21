@@ -7,13 +7,6 @@ export const GlobalStyle = createGlobalStyle`
     overflow: hidden;
   }
 
-  #root{
-    height: 100%;
-    overflow: hidden;
-    display: grid;
-    grid-template-rows: auto 1fr;
-  }
-
   *, ::after, ::before{
     margin: 0;
     box-sizing: inherit;
@@ -25,4 +18,27 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     overflow: hidden;
   }
+
+  #root{
+    height: 100%;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  ::-webkit-scrollbar {
+  width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+  background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+  background: #555;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+  background: #888;
+  }  
 `;

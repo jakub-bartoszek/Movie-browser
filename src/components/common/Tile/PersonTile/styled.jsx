@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { ReactComponent as person } from "../../../../assets/icons/person.svg";
+
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   width: 208px;
   height: auto;
   padding: 16px;
@@ -18,12 +20,19 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const PersonIcon = styled(person)`
+  width: 72px;
+  height: 72px;
+  
+`;
 export const ImageWrapper = styled.div`
   display: flex;
   border-radius: 5px;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.tile.imageWrapper};
-  align-self: center;
+  background-color: #C4C4C4;
+  height: 250px;
   justify-content: center;
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
@@ -65,6 +74,7 @@ export const Name = styled.p`
 export const FilmName = styled.p`
   color: ${({ theme }) => theme.colors.tile.mutedText};
   font-size: 18px;
+  text-align: center;
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
     font-size: 13px;
   }

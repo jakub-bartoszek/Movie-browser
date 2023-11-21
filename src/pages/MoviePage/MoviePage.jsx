@@ -13,11 +13,12 @@ import {
   IconStar,
   Votes,
   RatingTopContent,
+  Container,
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { PersonTile } from "../../components/common/Tile/PersonTile/PersonTile";
 import { fetchMovieDetails, selectStatus, fetchCredits } from "../../utils/redux/moviesSlice";
-import { nanoid } from "@reduxjs/toolkit";
+import { StyledLoader } from "../../components/common/StyledLoader/styled";
 
 export default function MoviePage() {
   const { id } = useParams();
@@ -32,10 +33,10 @@ export default function MoviePage() {
   }, [dispatch, id]);
 
   return (
-    <div>
+    <Container>
       {
         {
-          loading: <p>Loading...</p>,
+          loading: <StyledLoader/>,
           error: <p>Error!</p>,
           success: (
             <>
@@ -81,6 +82,6 @@ export default function MoviePage() {
           ),
         }[status]
       }
-    </div>
+    </Container>
   );
 }

@@ -3,31 +3,28 @@ import { ReactComponent as LeftIcon } from "../../assets/icons/left.svg";
 import { ReactComponent as RightIcon } from "../../assets/icons/right.svg";
 
 export const Container = styled.div`
-	max-width: 1368px;
+	max-width: 1400px;
+	padding: 0 16px;
 	margin: 0 auto;
 	display: flex;
-	margin-top: 56px;
 	flex-direction: column;
 	justify-content: center;
-
-	@media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-		padding: 16px;
-		margin-top: 24px;
-	}
 `;
 
 export const Header = styled.h1`
-	font-size: 26px;
+	font-size: 36px;
 	font-weight: 600;
 	line-height: 120%;
-	margin-left: 16px;
-	margin-bottom: 24px;
+	margin: 56px 0px 24px 0px;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.l}) {
+		margin: 36px 0 24px 0;
+		font-size: 24px;
+	}
 
 	@media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-		margin-bottom: 12px;
+		margin: 24px 0 12px 0;
 		font-size: 18px;
-		font-weight: 600;
-		line-height: 120%;
 	}
 `;
 

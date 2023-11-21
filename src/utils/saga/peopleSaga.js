@@ -11,9 +11,9 @@ import { getSearchResults } from "./getSearchResults";
 function* fetchPopularPeopleHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    yield delay(1000);
     const people = yield call(getPopular, payload.category);
     yield put(setPeople(people));
+    yield delay(700);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));
@@ -23,13 +23,13 @@ function* fetchPopularPeopleHandler({ payload }) {
 function* fetchSearchResultsHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    yield delay(1000);
     const people = yield call(
       getSearchResults,
       payload.searchQuery,
       payload.category
     );
     yield put(setPeople(people));
+    yield delay(700);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));

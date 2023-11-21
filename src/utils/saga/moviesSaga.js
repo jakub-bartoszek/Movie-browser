@@ -13,11 +13,11 @@ import { getGenres } from "./getGenres";
 function* fetchPopularMoviesHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    yield delay(1000);
     const movies = yield call(getPopular, payload.category);
     const genres = yield call(getGenres);
     yield put(setMovies(movies));
     yield put(setGenres(genres));
+    yield delay(700);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));
@@ -27,7 +27,6 @@ function* fetchPopularMoviesHandler({ payload }) {
 function* fetchSearchResultsHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    yield delay(1000);
     const movies = yield call(
       getSearchResults,
       payload.searchQuery,
@@ -36,6 +35,7 @@ function* fetchSearchResultsHandler({ payload }) {
     const genres = yield call(getGenres);
     yield put(setMovies(movies));
     yield put(setGenres(genres));
+    yield delay(700);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));

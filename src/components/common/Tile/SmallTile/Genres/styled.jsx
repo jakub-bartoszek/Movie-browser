@@ -18,7 +18,6 @@ export const Genre = styled.li`
 	align-items: center;
 	border-radius: 5px;
 	background: #e4e6f0;
-	font-family: Poppins;
 	font-size: 14px;
 	line-height: 140%;
 

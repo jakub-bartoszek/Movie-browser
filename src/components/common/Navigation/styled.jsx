@@ -36,10 +36,11 @@ export const Container = styled.div`
 	}
 `;
 
-export const Logo = styled.div`
+export const Logo = styled(NavLink)`
 	display: flex;
 	align-items: center;
 	gap: 12px;
+	text-decoration: none;
 `;
 
 export const StyledVideoIcon = styled(VideoIcon)`
@@ -81,7 +82,7 @@ export const StyledLi = styled.div`
 
 export const StyledNavLink = styled(NavLink)`
 	text-decoration: none;
-	color: ${({theme}) => theme.colors.navigation.text};
+	color: ${({ theme }) => theme.colors.navigation.text};
 	display: flex;
 	align-items: center;
 	padding: 8px 24px;

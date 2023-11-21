@@ -14,18 +14,22 @@ import {
   selectStatus,
 } from "../../utils/redux/peopleSlice";
 import {
+  selectCategory,
   selectSearchQuery,
   setCategory,
   setSearchQuery,
 } from "../../utils/redux/searchSlice";
 import { nanoid } from "nanoid";
 import { useEffect } from "react";
+import { NoResult } from "../NoResult/NoResult";
+import { StyledLoader } from "../../components/common/StyledLoader/styled";
 
 export default function People() {
   const dispatch = useDispatch();
   const people = useSelector(selectPeople);
   const status = useSelector(selectStatus);
   const searchQuery = useSelector(selectSearchQuery);
+  const category = useSelector(selectCategory);
 
   useEffect(() => {
     if (searchQuery) {
@@ -40,7 +44,7 @@ export default function People() {
   useEffect(() => {
     dispatch(setCategory("people"));
     dispatch(setSearchQuery(""));
-  });
+  }, [category]);
 
   return (
     <Container>
@@ -55,7 +59,7 @@ export default function People() {
       )}
       {
         {
-          loading: <p>Loading...</p>, //Just to demo status pages
+          loading: <StyledLoader />, //Just to demo status pages
           error: <p>Error!</p>,
           success: (
             <>
@@ -87,7 +91,7 @@ export default function People() {
                   </Pagination>
                 </>
               ) : (
-                <div>No results</div>
+                <NoResult />
               )}
             </>
           ),

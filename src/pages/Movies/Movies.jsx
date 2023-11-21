@@ -5,14 +5,14 @@ import {
 	fetchPopularMovies,
 	fetchSearchResults,
 	selectMovies,
-	selectStatus,
+	selectStatus
 } from "../../utils/redux/moviesSlice";
 import {
 	selectSearchQuery,
 	setCategory,
 	setSearchQuery,
+	selectCategory
 } from "../../utils/redux/searchSlice";
-import { nanoid } from "nanoid";
 
 import {
 	Button,
@@ -22,16 +22,18 @@ import {
 	Pagination,
 	StyledLeftIcon,
 	StyledNav,
-	StyledRightIcon,
+	StyledRightIcon
 } from "./styled";
-import { NavLink } from "react-router-dom";
 import { toMoviePage } from "../../routes";
+import { NoResult } from "../NoResult/NoResult";
+import { StyledLoader } from "../../components/common/StyledLoader/styled";
 
 export default function Movies() {
 	const dispatch = useDispatch();
 	const movies = useSelector(selectMovies);
 	const searchQuery = useSelector(selectSearchQuery);
 	const status = useSelector(selectStatus);
+	const category = useSelector(selectCategory);
 
 	useEffect(() => {
 		if (searchQuery) {
@@ -43,61 +45,67 @@ export default function Movies() {
 		}
 	}, [searchQuery, dispatch]);
 
+	useEffect(() => {
+		dispatch(setCategory("movies"));
+		dispatch(setSearchQuery(""));
+	}, [dispatch, category]);
+
 	return (
 		<Container>
 			{status !== "error" && (
 				<Header>
 					{!searchQuery
 						? `Popular movies`
-						: searchQuery && movies.length > 0
-							? `Search results for "${searchQuery}" (${movies.length})`
-							: `Sorry, there are no results for "${searchQuery}"`}
+						: (searchQuery && movies.length) > 0
+						? `Search results for "${searchQuery}" (${movies.length})`
+						: `Sorry, there are no results for "${searchQuery}"`}
 				</Header>
 			)}
-			{{
-				loading: <p>Loading...</p>, // Just to demo status pages
-				error: <p>Error!</p>,
-				success: (
-					<>
-						{movies.length > 0 ? (
-							<>
-								<Content>
-									{movies.map((movie) => (
-										<StyledNav
-											to={toMoviePage({ id: movie.id })}
-											key={movie.id}
-										>
-											<SmallTile movie={movie} />
-										</StyledNav>
-									))}
-								</Content>
-
-								<Pagination>
-									<Button>
-										<StyledLeftIcon />
-										<StyledLeftIcon />
-									</Button>
-									<Button>
-										<StyledLeftIcon />
-									</Button>
-									<span>
-										Page <strong>1</strong> of <strong>500</strong>
-									</span>
-									<Button>
-										<StyledRightIcon />
-									</Button>
-									<Button>
-										<StyledRightIcon />
-										<StyledRightIcon />
-									</Button>
-								</Pagination>
-							</>
-						) : (
-							<div>No results</div> // Just to demo no results page
-						)}
-					</>
-				),
-			}[status]}
+			{
+				{
+					loading: <StyledLoader />,
+					error: <p>Error!</p>,
+					success: (
+						<>
+							{movies.length > 0 ? (
+								<>
+									<Content>
+										{movies?.map((movie) => (
+											<StyledNav
+												to={toMoviePage({ id: movie.id })}
+												key={movie.id}
+											>
+												<SmallTile movie={movie} />
+											</StyledNav>
+										))}
+									</Content>
+									<Pagination>
+										<Button>
+											<StyledLeftIcon />
+											<StyledLeftIcon />
+										</Button>
+										<Button>
+											<StyledLeftIcon />
+										</Button>
+										<span>
+											Page <strong>1</strong> of <strong>500</strong>
+										</span>
+										<Button>
+											<StyledRightIcon />
+										</Button>
+										<Button>
+											<StyledRightIcon />
+											<StyledRightIcon />
+										</Button>
+									</Pagination>
+								</>
+							) : (
+								<NoResult />
+							)}
+						</>
+					)
+				}[status]
+			}
 		</Container>
 	);
 }

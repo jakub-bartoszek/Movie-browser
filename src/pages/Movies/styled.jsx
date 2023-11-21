@@ -14,32 +14,29 @@ export const StyledNav = styled(NavLink)`
 `;
 
 export const Container = styled.div`
-  max-width: 1368px;
-  margin: 0 auto;
-  display: flex;
-  margin-top: 56px;
-  flex-direction: column;
-  justify-content: center;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    padding: 16px;
-    margin-top: 24px;
-  }
+	max-width: 1400px;
+	padding: 0 16px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 `;
 
 export const Header = styled.h1`
-  font-size: 26px;
-  font-weight: 600;
-  line-height: 120%;
-  margin-left: 16px;
-  margin-bottom: 24px;
+	font-size: 36px;
+	font-weight: 600;
+	line-height: 120%;
+	margin: 56px 0px 24px 0px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    margin-bottom: 12px;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 120%;
-  }
+	@media (max-width: ${({ theme }) => theme.breakpoints.l}) {
+		margin: 36px 0 24px 0;
+		font-size: 24px;
+	}
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		margin: 24px 0 12px 0;
+		font-size: 18px;
+	}
 `;
 
 export const Content = styled.div`

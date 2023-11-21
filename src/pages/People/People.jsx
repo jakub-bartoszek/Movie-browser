@@ -22,7 +22,7 @@ import {
 import { nanoid } from "nanoid";
 import { useEffect } from "react";
 import { NoResult } from "../NoResult/NoResult";
-import { Loading } from "../Loading/Loading";
+import { StyledLoader } from "../../components/common/StyledLoader/styled";
 
 export default function People() {
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ export default function People() {
       )}
       {
         {
-          loading: <Loading />, //Just to demo status pages
+          loading: <StyledLoader />, //Just to demo status pages
           error: <p>Error!</p>,
           success: (
             <>

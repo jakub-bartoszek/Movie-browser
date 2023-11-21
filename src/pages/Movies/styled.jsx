@@ -6,9 +6,10 @@ import { NavLink } from "react-router-dom";
 export const StyledNav = styled(NavLink)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.site.text};
+  transition: 1s;
   &:hover {
-    filter: brightness(130%); //demo
-    box-shadow: -1px 2px 7px 8px rgba(148, 255, 249, 1);//demo
+    filter: brightness(110%); 
+    box-shadow: -1px 2px 7px 8px rgba(148, 255, 249, 1);
   }
 `;
 

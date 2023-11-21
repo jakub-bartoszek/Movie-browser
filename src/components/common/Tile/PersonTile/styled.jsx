@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-content: center;
-
+  justify-content: center;
   width: 208px;
   height: auto;
   padding: 16px;
@@ -23,7 +22,6 @@ export const ImageWrapper = styled.div`
   display: flex;
   border-radius: 5px;
   width: 100%;
-  height: 75%;
   background-color: ${({ theme }) => theme.colors.tile.imageWrapper};
   align-self: center;
   justify-content: center;
@@ -48,10 +46,8 @@ export const Character = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 10px;
   margin: 10px 0;
-  height: 25%;
 `;
 
 export const Name = styled.p`
@@ -69,4 +65,7 @@ export const Name = styled.p`
 export const FilmName = styled.p`
   color: ${({ theme }) => theme.colors.tile.mutedText};
   font-size: 18px;
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+    font-size: 13px;
+  }
 `;

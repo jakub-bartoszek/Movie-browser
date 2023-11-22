@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
 	flex-direction: column;
 	width: 324px;
 	padding: 16px;
+  height: 100%;
 	box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
 	gap: 16px;
 

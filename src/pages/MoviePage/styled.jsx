@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import { ReactComponent as StarIcon } from "../../assets/icons/star.svg";
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+`
+
 export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;

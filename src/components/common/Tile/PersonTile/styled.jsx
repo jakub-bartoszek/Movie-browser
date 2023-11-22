@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-content: center;
   width: 208px;
   height: auto;
   padding: 16px;
@@ -67,6 +68,7 @@ export const Name = styled.p`
   overflow: hidden;
   font-weight: 500;
   line-height: 130%;
+
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
     font-size: 14px;
   }

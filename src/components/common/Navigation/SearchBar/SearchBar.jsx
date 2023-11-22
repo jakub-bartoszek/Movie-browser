@@ -1,18 +1,19 @@
 import { useSelector } from "react-redux";
-import { selectCategory } from "../../../../utils/redux/searchSlice";
+import { selectCategory, selectSearchQuery } from "../../../../utils/redux/searchSlice";
 import { SearchInput, StyledSearchIcon, Wrapper } from "./styled";
 import { useSearch } from "./useSearch";
 
 export const SearchBar = () => {
 	const category = useSelector(selectCategory)
+	const searchQuery = useSelector(selectSearchQuery)
 	
-	const { onInputChange, value } = useSearch();
+	const { onInputChange } = useSearch();
 	return (
 		<Wrapper>
 			<StyledSearchIcon />
 			<SearchInput
 				placeholder={`Search for ${category}...`}
-				value={value}
+				value={searchQuery}
 				onChange={onInputChange}
 			/>
 		</Wrapper>

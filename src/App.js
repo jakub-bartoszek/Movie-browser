@@ -11,12 +11,12 @@ function App() {
     <HashRouter>
       <Navigation />
       <Container>
-      <Routes>
-        <Route path={toMoviePage()} element={<MoviePage />} />
-        <Route path={toMovies()} element={<Movies />} />
-        <Route path={toPeople()} element={<People />} />
-        <Route path="/" element={<Movies />} />
-      </Routes>
+        <Routes>
+          <Route path={toMoviePage()} element={<MoviePage />} />
+          <Route path={toMovies()} element={<Movies />} />
+          <Route path={toPeople()} element={<People />} />
+          <Route path="/" element={<Navigate to="/movies" />} />
+        </Routes>
       </Container>
     </HashRouter>
   );

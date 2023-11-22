@@ -14,6 +14,7 @@ import {
   Votes,
   RatingTopContent,
   ContainerRateText,
+  Container
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { PersonTile } from "../../components/common/Tile/PersonTile/PersonTile";

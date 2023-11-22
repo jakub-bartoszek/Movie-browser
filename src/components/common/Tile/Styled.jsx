@@ -13,7 +13,7 @@ export const Container = styled.div`
   
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
     gap: 16px;
-    margin: 0 16px;
+    padding: 16px;
   }
 `;
 
@@ -171,4 +171,7 @@ export const Discription = styled.div`
     font-size: 14px;
     line-height: 160%;
   }
+`;
+export const ContainerRateText = styled.div`
+  align-items: flex-end;
 `;

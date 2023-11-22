@@ -50,10 +50,12 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 64px;
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
     gap: 16px;
+  }
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    margin:0 16px;
   }
 `;
 
@@ -61,11 +63,22 @@ export const Section = styled.section`
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-`;
+  justify-content: flex-start;
+
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+    gap:16px;
+  }
+ `;
 
 export const SectionTitle = styled.h2`
   font-size: 36px;
   font-weight: 600;
+  margin: 64px 0 32px 0; 
+
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+    font-size: 20px;
+    margin: 21px 0 12px 0; 
+  }
 `;
 
 export const RatingTopContent = styled.div`
@@ -134,6 +147,7 @@ export const Rate = styled.span`
   margin-right: 12px;
   margin-left: 8px;
   color: white;
+  align-items: flex-end;
 
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
     display: none;
@@ -148,4 +162,8 @@ export const Votes = styled.span`
     font-size: 10px;
     margin-left: 7px;
   }
+`;
+
+export const ContainerRateText = styled.div`
+  align-items: flex-end;
 `;

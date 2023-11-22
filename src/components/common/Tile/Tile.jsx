@@ -14,6 +14,7 @@ import {
   Rate,
   Votes,
   Discription,
+  ContainerRateText,
 } from "./Styled";
 
 export const Tile = ({ poster_path, title, release_date, production_countries, vote_average, votes, overview, genres }) => {
@@ -30,7 +31,7 @@ export const Tile = ({ poster_path, title, release_date, production_countries, v
         <Year>{year}</Year>
         <Release>
           <GreyRelease>Production:</GreyRelease>
-          {countryNames}
+          {countryNames.toString().replace(",", ', ')}
         </Release>
         <ReleaseDate>
           <GreyRelease>Release date:</GreyRelease>
@@ -43,9 +44,11 @@ export const Tile = ({ poster_path, title, release_date, production_countries, v
         </Genres>
         <Rating>
           <IconStar />
-          {vote_average ? vote_average.toFixed(2) : ""}
-          <Rate>/ 10</Rate>
-          <Votes>{votes}</Votes>
+          <ContainerRateText>
+            {vote_average ? vote_average.toFixed(2).toString().replace(".", ',') : "No votes yet"}
+            <Rate>/ 10</Rate>
+            <Votes>{votes}&nbsp;votes</Votes>
+          </ContainerRateText>
         </Rating>
       </Content>
       <Discription>

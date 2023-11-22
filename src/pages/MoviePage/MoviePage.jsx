@@ -13,11 +13,11 @@ import {
   IconStar,
   Votes,
   RatingTopContent,
+  ContainerRateText,
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { PersonTile } from "../../components/common/Tile/PersonTile/PersonTile";
 import { fetchMovieDetails, selectStatus, fetchCredits } from "../../utils/redux/moviesSlice";
-import { nanoid } from "@reduxjs/toolkit";
 
 export default function MoviePage() {
   const { id } = useParams();
@@ -45,8 +45,11 @@ export default function MoviePage() {
                     <LongTitle>{movieDetails.title}</LongTitle>
                     <Rating>
                       <IconStar />
-                      {movieDetails.vote_average ? movieDetails.vote_average.toFixed(2) : ""}
-                      <Rate>/ 10</Rate>
+                      <ContainerRateText>
+                        {movieDetails.vote_average ? movieDetails.vote_average.toFixed(2).toString().replace(".", ',') : "No votes yet"}
+                        <Rate>/ 10</Rate>
+                      </ContainerRateText>
+
                       <Votes>{movieDetails.vote_count}&nbsp;votes</Votes>
                     </Rating>
                   </RatingTopContent>

@@ -15,7 +15,7 @@ import {
   Votes,
   Discription,
   ContainerRateText,
-} from "./Styled";
+} from "./styled";
 
 export const Tile = ({ poster_path, title, release_date, production_countries, vote_average, votes, overview, genres }) => {
   const isMobile = window.innerWidth < 767;

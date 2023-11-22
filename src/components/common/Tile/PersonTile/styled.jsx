@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
     justify-self: center;
     width: 136px;
-    height: 245px;
+    max-height: 300px;
     gap: 8px;
   }
 `;

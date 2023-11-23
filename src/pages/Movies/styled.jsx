@@ -44,8 +44,6 @@ export const Content = styled.div`
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
   gap: 24px;
-
-
 `;
 
 export const Pagination = styled.div`

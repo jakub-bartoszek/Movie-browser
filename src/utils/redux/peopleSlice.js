@@ -5,10 +5,16 @@ const peopleSlice = createSlice({
   initialState: {
     people: [],
     status: "",
+    personDetails: [],
   },
   reducers: {
-    fetchPopularPeople: (state) => {},
-    fetchSearchResults: (state) => {},
+    fetchPopularPeople: (state) => { },
+    fetchSearchResults: (state) => { },
+    fetchPersonDetails: (state) => { },
+
+    setPersonDetails: (state, { payload }) => {
+      state.personDetails = payload;
+    },
     setPeople: (state, { payload }) => {
       state.people = payload;
     },
@@ -18,7 +24,7 @@ const peopleSlice = createSlice({
   },
 });
 
-export const { setPeople, setStatus, fetchSearchResults, fetchPopularPeople } =
+export const { setPeople, setStatus, fetchPersonDetails, setPersonDetails, fetchSearchResults, fetchPopularPeople } =
   peopleSlice.actions;
 
 export const selectPeopleState = (state) => state.people;

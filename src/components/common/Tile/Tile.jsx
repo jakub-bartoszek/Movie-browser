@@ -34,7 +34,7 @@ export const Tile = ({
 			isMobile ? country.iso_3166_1 : country.name
 		) || [];
 	const releaseDate = new Date(release_date);
-	const year = releaseDate.getFullYear().toString();
+	const year = releaseDate.getFullYear();
 
 	return (
 		<Container>

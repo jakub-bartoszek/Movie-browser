@@ -42,12 +42,8 @@ export const Header = styled.h1`
 export const Content = styled.div`
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, 324px);
+  grid-template-columns: repeat(auto-fill, minmax(324px, 1fr));
   gap: 24px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 export const Pagination = styled.div`

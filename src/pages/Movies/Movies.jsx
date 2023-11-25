@@ -23,6 +23,7 @@ import {
   StyledLeftIcon,
   StyledNav,
   StyledRightIcon,
+  Text,
 } from "./styled";
 import { toMoviePage } from "../../routes";
 import { NoResult } from "../NoResult/NoResult";
@@ -114,24 +115,62 @@ export default function Movies() {
                     ))}
                   </Content>
                   <Pagination>
-                    <Button onClick={firstPageHandler}>
-                      <StyledLeftIcon />
-                      <StyledLeftIcon />
-                    </Button>
-                    <Button onClick={prevPageHandler}>
-                      <StyledLeftIcon />
-                    </Button>
+                    {currentPage === 1 ? (
+                      <>
+                        <Button disabled>
+                          <StyledLeftIcon disabled />
+                          <StyledLeftIcon disabled />
+                          <p>First</p>
+                        </Button>
+						
+                        <Button disabled>
+                          <StyledLeftIcon />
+                          <p>Previous</p>
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <Button onClick={firstPageHandler}>
+                          <StyledLeftIcon />
+                          <StyledLeftIcon />
+                          <p>First</p>
+                        </Button>
+                        <Button onClick={prevPageHandler}>
+                          <StyledLeftIcon />
+                          <p>Previous</p>
+                        </Button>
+                      </>
+                    )}
+
                     <span>
-                      Page <strong>{currentPage}</strong> of{" "}
-                      <strong>{totalPages}</strong>
+                      <Text>Page</Text> <strong>{currentPage}</strong>{" "}
+                      <Text>of</Text> <strong>{totalPages}</strong>
                     </span>
-                    <Button onClick={nextPageHandler}>
-                      <StyledRightIcon />
-                    </Button>
-                    <Button onClick={lastPageHandler}>
-                      <StyledRightIcon />
-                      <StyledRightIcon />
-                    </Button>
+                    {currentPage === totalPages ? (
+                      <>
+                        <Button disabled={true}>
+                          <p>Next</p>
+                          <StyledRightIcon />
+                        </Button>
+                        <Button disabled={true}>
+                          <p>Last</p>
+                          <StyledRightIcon disabled={true} />
+                          <StyledRightIcon disabled={true} />
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <Button onClick={nextPageHandler}>
+                          <p>Next</p>
+                          <StyledRightIcon />
+                        </Button>
+                        <Button onClick={lastPageHandler}>
+                          <p>Last</p>
+                          <StyledRightIcon />
+                          <StyledRightIcon />
+                        </Button>
+                      </>
+                    )}
                   </Pagination>
                 </>
               ) : (

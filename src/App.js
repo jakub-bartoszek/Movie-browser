@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Movies from "./pages/Movies/Movies";
 import People from "./pages/People/People";
 import { Navigation } from "./components/common/Navigation/Navigation";
@@ -11,12 +11,12 @@ function App() {
     <HashRouter>
       <Navigation />
       <Container>
-      <Routes>
-        <Route path={toMoviePage()} element={<MoviePage />} />
-        <Route path={toMovies()} element={<Movies />} />
-        <Route path={toPeople()} element={<People />} />
-        <Route path="/" element={<Movies />} />
-      </Routes>
+        <Routes>
+          <Route path={toMoviePage()} element={<MoviePage />} />
+          <Route path={toMovies()} element={<Movies />} />
+          <Route path={toPeople()} element={<People />} />
+          <Route path="/" element={<Movies />} />
+        </Routes>
       </Container>
     </HashRouter>
   );

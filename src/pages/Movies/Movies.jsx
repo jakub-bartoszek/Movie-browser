@@ -37,15 +37,6 @@ export default function Movies() {
   const status = useSelector(selectStatus);
   const category = useSelector(selectCategory);
 
-  const [itemsPerPage, setItemsPerPage] = useState(8);
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(movies.length / itemsPerPage);
-
-  const indexOfLastItem = currentPage + itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
-  const visibleItems = movies.slice(indexOfFirstItem, indexOfLastItem);
-
   useEffect(() => {
     if (searchQuery) {
       dispatch(
@@ -60,6 +51,14 @@ export default function Movies() {
     dispatch(setCategory("movies"));
     dispatch(setSearchQuery(""));
   }, [dispatch, category]);
+
+  const isMobile = window.innerWidth < 767;
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = isMobile ? 6 : 8;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const visibleItems = movies.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(movies.length / itemsPerPage);
 
   const prevPageHandler = () => {
     if (currentPage !== 1) {
@@ -122,9 +121,9 @@ export default function Movies() {
                           <StyledLeftIcon disabled />
                           <p>First</p>
                         </Button>
-						
+
                         <Button disabled>
-                          <StyledLeftIcon />
+                          <StyledLeftIcon disabled />
                           <p>Previous</p>
                         </Button>
                       </>
@@ -141,21 +140,24 @@ export default function Movies() {
                         </Button>
                       </>
                     )}
-
                     <span>
                       <Text>Page</Text> <strong>{currentPage}</strong>{" "}
                       <Text>of</Text> <strong>{totalPages}</strong>
                     </span>
+                    <PaginationUI
+                      itemsPerPage={itemsPerPage}
+                      totalItems={movies.length}
+                    ></PaginationUI>
                     {currentPage === totalPages ? (
                       <>
-                        <Button disabled={true}>
+                        <Button disabled>
                           <p>Next</p>
-                          <StyledRightIcon />
+                          <StyledRightIcon disabled />
                         </Button>
-                        <Button disabled={true}>
+                        <Button disabled>
                           <p>Last</p>
-                          <StyledRightIcon disabled={true} />
-                          <StyledRightIcon disabled={true} />
+                          <StyledRightIcon disabled />
+                          <StyledRightIcon disabled />
                         </Button>
                       </>
                     ) : (

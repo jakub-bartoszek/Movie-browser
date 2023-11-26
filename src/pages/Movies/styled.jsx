@@ -72,6 +72,7 @@ export const Text = styled.span`
 export const Button = styled.button`
   display: flex;
   align-items: center;
+  cursor: pointer;
   padding: 8px 16px;
   gap: 8px;
   border-radius: 5px;

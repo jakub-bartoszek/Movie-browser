@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     height: 100vh;
     overflow: hidden;
+    scroll-behavior: smooth;
   }
 
   *, ::after, ::before{

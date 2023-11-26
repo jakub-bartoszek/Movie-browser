@@ -16,7 +16,7 @@ import {
 	Production,
 	OutOf,
 	ReleaseDate
-} from "./styled";
+} from "./Styled";
 
 export const Tile = ({
 	poster_path,
@@ -34,7 +34,7 @@ export const Tile = ({
 			isMobile ? country.iso_3166_1 : country.name
 		) || [];
 	const releaseDate = new Date(release_date);
-	const year = releaseDate.getFullYear();
+	const year = releaseDate.getFullYear().toString();
 
 	return (
 		<Container>
@@ -48,8 +48,8 @@ export const Tile = ({
 				<Title>{title}</Title>
 				<Year>{year}</Year>
 				<Release>
-					<Production>{countryNames.toString().replace(",", ", ")}</Production>
-					<ReleaseDate>{release_date.toString().replaceAll("-", ".")}</ReleaseDate>
+					<Production>{countryNames ? countryNames.toString().replace(",", ", ") : ""}</Production>
+					<ReleaseDate>{release_date ? release_date.toString().split("-").reverse().join(".") : ""}</ReleaseDate>
 				</Release>
 				<Genres>
 					{genres &&

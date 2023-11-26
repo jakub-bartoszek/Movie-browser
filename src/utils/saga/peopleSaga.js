@@ -42,9 +42,9 @@ function* fetchPopularPeopleHandler({ payload }) {
 function* fethPersonDetailsHandler({ payload: personId }) {
   try {
     yield put(setStatus("loading"));
-    yield delay(700);
     const personDetails = yield call(getPersonDetails, personId);
     yield put(setPersonDetails(personDetails));
+    yield delay(1000);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));

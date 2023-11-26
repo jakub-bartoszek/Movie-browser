@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
 	display: grid;
 	grid-template-rows: auto 1fr;
 	padding: 16px;
-  /* height: 100%; */
 	box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
 	gap: 16px;
 	height: 100%;
@@ -76,8 +75,8 @@ export const Subtitle = styled.p`
 	color: var(--Darker-grey, #7e839a);
 
 	${({ actorFilmName }) =>
-    actorFilmName &&
-    css`
+		actorFilmName &&
+		css`
 			font-size: 33px;
 		`};
 

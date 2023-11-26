@@ -66,6 +66,14 @@ export const Section = styled.section`
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
 		grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
 	}
+
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	}
+
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.xs}) {
+		grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+	}
 `;
 
 export const SectionTitle = styled.h2`

@@ -67,6 +67,10 @@ export const Pagination = styled.div`
 
 export const Text = styled.span`
   color: ${({ theme }) => theme.colors.pagination.text};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
+    font-size: 12px;
+  }
 `;
 
 export const Button = styled.button`
@@ -80,8 +84,11 @@ export const Button = styled.button`
   background: ${({ theme }) => theme.colors.pagination.background};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    padding: 8px 12px;
+    padding: 12px 20px;
     gap: 8px;
+    p {
+      display: none;
+    }
   }
 `;
 

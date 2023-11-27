@@ -32,3 +32,5 @@ export const Content = styled.div`
 	grid-template-columns: repeat(auto-fill, 208px);
 	gap: 24px;
 `;
+
+

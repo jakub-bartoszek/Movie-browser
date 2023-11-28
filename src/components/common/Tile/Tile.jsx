@@ -48,8 +48,8 @@ export const Tile = ({
 				<Title>{title}</Title>
 				<Year>{year}</Year>
 				<Release>
-					<Production>{countryNames?.toString().replace(",", ", ")}</Production>
-					<ReleaseDate>{release_date?.toString().replaceAll("-", ".")}</ReleaseDate>
+					<Production>{countryNames ? countryNames.toString().replace(",", ", ") : ""}</Production>
+					<ReleaseDate>{release_date ? release_date.toString().split("-").reverse().join(".") : ""}</ReleaseDate>
 				</Release>
 				<Genres>
 					{genres &&

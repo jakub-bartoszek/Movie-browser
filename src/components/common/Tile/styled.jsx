@@ -240,3 +240,6 @@ export const Discription = styled.div`
 		line-height: 160%;
 	}
 `;
+export const ContainerRateText = styled.div`
+  align-items: flex-end;
+`;

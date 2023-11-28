@@ -48,8 +48,8 @@ export const Tile = ({
 				<Title>{title}</Title>
 				<Year>{year}</Year>
 				<Release>
-					<Production>{countryNames.toString().replace(",", ", ")}</Production>
-					<ReleaseDate>{release_date.toString().replaceAll("-", ".")}</ReleaseDate>
+					<Production>{countryNames?.toString().replace(",", ", ")}</Production>
+					<ReleaseDate>{release_date?.toString().replaceAll("-", ".")}</ReleaseDate>
 				</Release>
 				<Genres>
 					{genres &&
@@ -59,7 +59,7 @@ export const Tile = ({
 				{vote_average ? (
 					<Rating>
 						<IconStar />
-						<Rate>{vote_average.toFixed(2).toString().replace(".", ",")}</Rate>
+						<Rate>{vote_average?.toFixed(2).toString().replace(".", ",")}</Rate>
 						<OutOf>/ 10</OutOf>
 						<Votes>{votes} votes</Votes>
 					</Rating>

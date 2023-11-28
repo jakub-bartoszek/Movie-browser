@@ -5,17 +5,21 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 import { GlobalStyle } from './styles/GlobalStyle';
-import { themeLight } from "./styles/theme";
+import { theme } from "./styles/theme";
+import store from './utils/redux/store';
+import { Provider } from 'react-redux';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={themeLight}>
-      <Normalize />
-      <GlobalStyle />
-      <App />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Normalize />
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 

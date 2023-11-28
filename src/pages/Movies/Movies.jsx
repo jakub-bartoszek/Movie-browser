@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SmallTile } from "../../components/common/Tile/SmallTile/SmallTile";
 import {
@@ -9,9 +9,12 @@ import {
 } from "../../utils/redux/moviesSlice";
 import {
   selectCategory,
+  selectPage,
   selectSearchQuery,
+  selectTotalPages,
   setCategory,
   setSearchQuery,
+  setPage,
 } from "../../utils/redux/searchSlice";
 
 import {
@@ -36,14 +39,8 @@ export default function Movies() {
   const searchQuery = useSelector(selectSearchQuery);
   const status = useSelector(selectStatus);
   const category = useSelector(selectCategory);
-
-  const isMobile = window.innerWidth < 767;
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = isMobile ? 6 : 8;
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = movies.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(movies.length / itemsPerPage);
+  const page = useSelector(selectPage);
+  const totalPages = useSelector(selectTotalPages);
 
   useEffect(() => {
     if (searchQuery) {
@@ -51,36 +48,37 @@ export default function Movies() {
         fetchSearchResults({ category: "movie", searchQuery: searchQuery })
       );
     } else {
-      dispatch(fetchPopularMovies({ category: "movie" }));
+      dispatch(fetchPopularMovies({ category: "movie", page: page }));
     }
-  }, [searchQuery, dispatch]);
+  }, [searchQuery, page, dispatch]);
 
   useEffect(() => {
     dispatch(setCategory("movies"));
     dispatch(setSearchQuery(""));
+    dispatch(setPage(1));
   }, [dispatch, category]);
 
   const prevPageHandler = () => {
-    if (currentPage !== 1) {
-      setCurrentPage(currentPage - 1);
+    if (page !== 1) {
+      dispatch(setPage(page - 1));
     }
   };
 
   const nextPageHandler = () => {
-    if (currentPage !== totalPages) {
-      setCurrentPage(currentPage + 1);
+    if (page !== totalPages) {
+      dispatch(setPage(page + 1));
     }
   };
 
   const firstPageHandler = () => {
-    if (currentPage !== 1) {
-      setCurrentPage(1);
+    if (page !== 1) {
+      dispatch(setPage(1));
     }
   };
 
   const lastPageHandler = () => {
-    if (currentPage !== totalPages) {
-      setCurrentPage(totalPages);
+    if (page !== totalPages) {
+      dispatch(setPage(totalPages));
     }
   };
 
@@ -104,7 +102,7 @@ export default function Movies() {
               {movies.length > 0 ? (
                 <>
                   <Content>
-                    {currentItems?.map((movie) => (
+                    {movies?.map((movie) => (
                       <StyledNav
                         to={toMoviePage({ id: movie.id })}
                         key={movie.id}
@@ -114,7 +112,7 @@ export default function Movies() {
                     ))}
                   </Content>
                   <Pagination>
-                    {currentPage === 1 ? (
+                    {page === 1 ? (
                       <>
                         <Button disabled>
                           <StyledLeftIcon disabled />
@@ -140,10 +138,10 @@ export default function Movies() {
                       </>
                     )}
                     <span>
-                      <Text>Page</Text> <strong>{currentPage}</strong>{" "}
-                      <Text>of</Text> <strong>{totalPages}</strong>
+                      <Text>Page</Text> <strong>{page}</strong> <Text>of</Text>{" "}
+                      <strong>{totalPages}</strong>
                     </span>
-                    {currentPage === totalPages ? (
+                    {page === totalPages ? (
                       <>
                         <Button disabled>
                           <p>Next</p>

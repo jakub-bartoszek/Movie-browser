@@ -11,7 +11,7 @@ const store = configureStore({
   reducer: {
     movies: moviesReducer,
     people: peopleReducer,
-    search: searchReducer
+    search: searchReducer,
   },
   middleware: [sagaMiddleware],
 });

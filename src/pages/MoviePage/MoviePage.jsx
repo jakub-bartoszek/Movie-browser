@@ -42,7 +42,7 @@ export default function MoviePage() {
           success: (
             <>
               <MainWrapper>
-                <Header backdropPath={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}>
+                <Header backdroppath={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}>
                   <RatingTopContent>
                     <LongTitle>{movieDetails.title}</LongTitle>
                     <Rating>

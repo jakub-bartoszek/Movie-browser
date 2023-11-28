@@ -16,7 +16,7 @@ import {
 	Production,
 	OutOf,
 	ReleaseDate
-} from "./Styled";
+} from "./styled";
 
 export const Tile = ({
 	poster_path,
@@ -59,7 +59,7 @@ export const Tile = ({
 				{vote_average ? (
 					<Rating>
 						<IconStar />
-						<Rate>{vote_average.toFixed(2).toString().replace(".", ",")}</Rate>
+						<Rate>{vote_average?.toFixed(2).toString().replace(".", ",")}</Rate>
 						<OutOf>/ 10</OutOf>
 						<Votes>{votes} votes</Votes>
 					</Rating>

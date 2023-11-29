@@ -26,8 +26,12 @@ export const Header = styled.h1`
 `;
 
 export const Content = styled.div`
-	display: grid;
-	justify-content: center;
-	grid-template-columns: repeat(auto-fill, 208px);
-	gap: 24px;
+ display: grid;
+ justify-content: center;
+ grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+ gap: 24px;
+
+ @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+ }
 `;

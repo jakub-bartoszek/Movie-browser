@@ -5,8 +5,9 @@ export const StyledNav = styled(NavLink)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.site.text};
   transition: 1s;
+  
   &:hover {
-    filter: brightness(110%);
+    scale: 101%;
     box-shadow: -1px 2px 7px 8px rgba(148, 255, 249, 1);
   }
 `;

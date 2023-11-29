@@ -30,6 +30,9 @@ export const PersonTile = styled.div`
  max-width: 1368px;
  padding: 40px;
  column-gap: 40px;
+ -webkit-column-gap: 40px;
+ -moz-column-gap: 40px;
+ column-gap: 40px;
  row-gap: 24px;
  box-shadow: 0px 4px 12px 0px rgba(186, 199, 213, 0.5);
  display: grid;

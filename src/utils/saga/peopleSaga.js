@@ -7,12 +7,15 @@ import {
 } from "../redux/peopleSlice";
 import { getPopular } from "./getPopular";
 import { getSearchResults } from "./getSearchResults";
+import { setPage, setTotalPages } from "../redux/searchSlice";
 
 function* fetchPopularPeopleHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    const people = yield call(getPopular, payload.category);
-    yield put(setPeople(people));
+    const data = yield call(getPopular, payload.category, payload.page);
+    yield put(setPage(data.page));
+    yield put(setTotalPages(data.total_pages));
+    yield put(setPeople(data.results));
     yield delay(700);
     yield put(setStatus("success"));
   } catch (error) {

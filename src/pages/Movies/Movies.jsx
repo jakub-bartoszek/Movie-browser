@@ -45,7 +45,11 @@ export default function Movies() {
   useEffect(() => {
     if (searchQuery) {
       dispatch(
-        fetchSearchResults({ category: "movie", searchQuery: searchQuery })
+        fetchSearchResults({
+          category: "movie",
+          searchQuery: searchQuery,
+          page: page,
+        })
       );
     } else {
       dispatch(fetchPopularMovies({ category: "movie", page: page }));

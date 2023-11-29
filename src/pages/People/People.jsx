@@ -5,6 +5,7 @@ import {
   Pagination,
   StyledLeftIcon,
   StyledRightIcon,
+  Text,
 } from "../Movies/styled";
 import { Container, Content, Header } from "./styled";
 import {
@@ -15,8 +16,11 @@ import {
 } from "../../utils/redux/peopleSlice";
 import {
   selectCategory,
+  selectPage,
   selectSearchQuery,
+  selectTotalPages,
   setCategory,
+  setPage,
   setSearchQuery,
 } from "../../utils/redux/searchSlice";
 import { nanoid } from "nanoid";
@@ -31,21 +35,52 @@ export default function People() {
   const status = useSelector(selectStatus);
   const searchQuery = useSelector(selectSearchQuery);
   const category = useSelector(selectCategory);
+  const page = useSelector(selectPage);
+  const totalPages = useSelector(selectTotalPages);
 
   useEffect(() => {
     if (searchQuery) {
       dispatch(
-        fetchSearchResults({ category: "person", searchQuery: searchQuery })
+        fetchSearchResults({
+          category: "person",
+          searchQuery: searchQuery,
+          page: page,
+        })
       );
     } else {
-      dispatch(fetchPopularPeople({ category: "person" }));
+      dispatch(fetchPopularPeople({ category: "person", page: page }));
     }
-  }, [searchQuery, dispatch]);
+  }, [searchQuery, dispatch, page]);
 
   useEffect(() => {
     dispatch(setCategory("people"));
     dispatch(setSearchQuery(""));
+    dispatch(setPage(1));
   }, [dispatch, category]);
+
+  const prevPageHandler = () => {
+    if (page !== 1) {
+      dispatch(setPage(page - 1));
+    }
+  };
+
+  const nextPageHandler = () => {
+    if (page !== totalPages) {
+      dispatch(setPage(page + 1));
+    }
+  };
+
+  const firstPageHandler = () => {
+    if (page !== 1) {
+      dispatch(setPage(1));
+    }
+  };
+
+  const lastPageHandler = () => {
+    if (page !== totalPages) {
+      dispatch(setPage(totalPages));
+    }
+  };
 
   return (
     <Container>
@@ -72,23 +107,60 @@ export default function People() {
                     ))}
                   </Content>
                   <Pagination>
-                    <Button>
-                      <StyledLeftIcon />
-                      <StyledLeftIcon />
-                    </Button>
-                    <Button>
-                      <StyledLeftIcon />
-                    </Button>
+                    {page === 1 ? (
+                      <>
+                        <Button disabled>
+                          <StyledLeftIcon disabled />
+                          <StyledLeftIcon disabled />
+                          <p>First</p>
+                        </Button>
+                        <Button disabled>
+                          <StyledLeftIcon disabled />
+                          <p>Previous</p>
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <Button onClick={firstPageHandler}>
+                          <StyledLeftIcon />
+                          <StyledLeftIcon />
+                          <p>First</p>
+                        </Button>
+                        <Button onClick={prevPageHandler}>
+                          <StyledLeftIcon />
+                          <p>Previous</p>
+                        </Button>
+                      </>
+                    )}
                     <span>
-                      Page <strong>1</strong> of <strong>500</strong>
+                      <Text>Page</Text> <strong>{page}</strong> <Text>of</Text>{" "}
+                      <strong>{totalPages}</strong>
                     </span>
-                    <Button>
-                      <StyledRightIcon />
-                    </Button>
-                    <Button>
-                      <StyledRightIcon />
-                      <StyledRightIcon />
-                    </Button>
+                    {page === totalPages ? (
+                      <>
+                        <Button disabled>
+                          <p>Next</p>
+                          <StyledRightIcon disabled />
+                        </Button>
+                        <Button disabled>
+                          <p>Last</p>
+                          <StyledRightIcon disabled />
+                          <StyledRightIcon disabled />
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <Button onClick={nextPageHandler}>
+                          <p>Next</p>
+                          <StyledRightIcon />
+                        </Button>
+                        <Button onClick={lastPageHandler}>
+                          <p>Last</p>
+                          <StyledRightIcon />
+                          <StyledRightIcon />
+                        </Button>
+                      </>
+                    )}
                   </Pagination>
                 </>
               ) : (

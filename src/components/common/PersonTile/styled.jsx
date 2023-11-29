@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
  padding: 16px;
  gap: 12px;
  height: 100%;
+ width: 100%;
  box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
 `;
 
@@ -33,6 +34,8 @@ export const ImageWrapper = styled.div`
  border-radius: 5px;
  background-color: ${({ theme }) => theme.colors.tile.imageWrapper};
  aspect-ratio: 6/9;
+ width: 100%;
+ height: 100%;
  display: flex;
  justify-content: center;
  align-items: center;

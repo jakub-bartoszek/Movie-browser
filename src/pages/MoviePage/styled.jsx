@@ -45,7 +45,7 @@ export const Header = styled.div`
 
 export const Wrapper = styled.div`
  max-width: 1400px;
- padding: 0 16px;
+ padding: 0 16px 32px 16px;
  margin: 0 auto;
  display: flex;
  flex-direction: column;

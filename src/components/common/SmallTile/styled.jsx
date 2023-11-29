@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components";
-import { ReactComponent as PictureIcon } from "../../../../assets/icons/picture.svg";
-import { ReactComponent as StarIcon } from "../../../../assets/icons/star.svg";
+import { ReactComponent as PictureIcon } from "../../../assets/icons/picture.svg";
+import { ReactComponent as StarIcon } from "../../../assets/icons/star.svg";
 
 export const Wrapper = styled.div`
 	display: grid;
 	grid-template-rows: auto 1fr;
 	padding: 16px;
+	box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
 	gap: 16px;
 	height: 100%;
 	box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};

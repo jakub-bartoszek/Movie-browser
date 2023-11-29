@@ -1,5 +1,17 @@
 import styled from "styled-components";
-import { ReactComponent as person } from "../../../../assets/icons/person.svg";
+import { ReactComponent as person } from "../../../assets/icons/person.svg";
+import { NavLink } from "react-router-dom";
+
+export const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: inherit;
+  transition: 1s;
+  display: flex;
+
+  &:hover {
+    box-shadow: -1px 2px 7px 8px rgba(148, 255, 249, 1);
+  }
+`;
 
 export const Wrapper = styled.div`
  overflow: hidden;
@@ -8,6 +20,7 @@ export const Wrapper = styled.div`
  padding: 16px;
  gap: 12px;
  height: 100%;
+ width: 100%;
  box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
 `;
 
@@ -20,6 +33,8 @@ export const ImageWrapper = styled.div`
  border-radius: 5px;
  background-color: ${({ theme }) => theme.colors.tile.imageWrapper};
  aspect-ratio: 6/9;
+ width: 100%;
+ height: 100%;
  display: flex;
  justify-content: center;
  align-items: center;

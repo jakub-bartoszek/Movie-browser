@@ -7,7 +7,6 @@ export const StyledNav = styled(NavLink)`
  transition: 1s;
 
  &:hover {
-  scale: 101%;
   box-shadow: -1px 2px 7px 8px rgba(148, 255, 249, 1);
  }
 `;

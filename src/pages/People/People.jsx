@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { PersonTile } from "../../components/common/Tile/PersonTile/PersonTile";
+import { PersonTile } from "../../components/common/PersonTile/PersonTile";
 import {
 	Button,
 	Pagination,

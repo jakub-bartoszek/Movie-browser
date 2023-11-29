@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as person } from "../../../../assets/icons/person.svg";
+import { ReactComponent as person } from "../../../assets/icons/person.svg";
 import { NavLink } from "react-router-dom";
 
 export const StyledNavLink = styled(NavLink)`

@@ -17,7 +17,7 @@ import {
   Container
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
-import { PersonTile } from "../../components/common/Tile/PersonTile/PersonTile";
+import { PersonTile } from "../../components/common/PersonTile/PersonTile";
 import { fetchMovieDetails, selectStatus, fetchCredits } from "../../utils/redux/moviesSlice";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
 

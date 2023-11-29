@@ -17,14 +17,12 @@ import {
  BirthDate,
  BirthPlace,
  Content,
- GreyText,
  Image,
  ImageWrapper,
  Name,
  PersonTile,
  Section,
  SectionTitle,
- SpecialContent,
  Wrapper,
  StyledNav
 } from "./styled";
@@ -59,55 +57,46 @@ export default function PersonPage() {
         </ImageWrapper>
         <Content>
          <Name>{personDetails.name}</Name>
-         <SpecialContent>
-          <GreyText>
-           <Birth>
-            <BirthDate>
-             {personDetails && personDetails.birthday
-              ? personDetails.birthday.toString().split("-").reverse().join(".")
-              : "N/A"}
-            </BirthDate>
-           </Birth>
-          </GreyText>
-          <GreyText>
-           Place of birth:
-           <BirthPlace>{personDetails.place_of_birth}</BirthPlace>
-          </GreyText>
-         </SpecialContent>
+         <Birth>
+          <BirthDate>
+           {personDetails && personDetails.birthday
+            ? personDetails.birthday.toString().split("-").reverse().join(".")
+            : "N/A"}
+          </BirthDate>
+          <BirthPlace>{personDetails.place_of_birth}</BirthPlace>
+         </Birth>
         </Content>
         <Biography>{personDetails.biography}</Biography>
        </PersonTile>
-       <SectionTitle>
-        Movies - cast
-        {credits.cast && credits.cast.length > 0
-         ? `(${credits.cast.length})`
-         : ""}
-       </SectionTitle>
-       <Section>
-        {credits.cast && credits.cast.length > 0 ? (
-         credits.cast.map((movie) => (
-          <StyledNav
-           to={toMoviePage({ id: movie.id })}
-           key={movie.id}
-          >
-           <SmallTile movie={movie} />
-          </StyledNav>
-         ))
-        ) : (
-         <Error />
-        )}
-       </Section>
-       {(credits.crew && credits.crew.length) > 0 && (
+       {credits.cast && credits.cast.length > 0 && (
+        <>
+         <SectionTitle>
+          Movies - cast
+          {credits.cast.length > 0 ? ` (${credits.cast.length})` : ""}
+         </SectionTitle>
+         <Section>
+          {credits.cast.map((movie) => (
+           <StyledNav
+            to={toMoviePage({ id: movie.id })}
+            key={movie.id}
+           >
+            <SmallTile movie={movie} />
+           </StyledNav>
+          ))}
+         </Section>
+        </>
+       )}
+       {credits.crew && credits.crew.length > 0 && (
         <>
          <SectionTitle>
           Movies - crew
-          {credits.crew.length}
+          {credits.crew.length > 0 ? ` (${credits.crew.length})` : ""}
          </SectionTitle>
          <Section>
           {credits.crew.map((movie) => (
            <StyledNav
             to={toMoviePage({ id: movie.id })}
-            key={nanoid()}
+            key={movie.id}
            >
             <SmallTile movie={movie} />
            </StyledNav>

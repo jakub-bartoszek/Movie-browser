@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { ReactComponent as PictureIcon } from "../../../../assets/icons/picture.svg";
-import { ReactComponent as StarIcon } from "../../../../assets/icons/star.svg";
+import { ReactComponent as PictureIcon } from "../../../assets/icons/picture.svg";
+import { ReactComponent as StarIcon } from "../../../assets/icons/star.svg";
 
 export const Wrapper = styled.div`
 	display: grid;

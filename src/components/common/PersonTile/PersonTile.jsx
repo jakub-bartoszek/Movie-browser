@@ -1,5 +1,5 @@
 import { Image, ImageWrapper, Character, Name, Wrapper, FilmName, PersonIcon, StyledNavLink } from "./styled";
-import { toPersonPage } from "../../../../routes";
+import { toPersonPage } from "../../../routes";
 
 export const PersonTile = ({ member, filmName }) => {
   return (

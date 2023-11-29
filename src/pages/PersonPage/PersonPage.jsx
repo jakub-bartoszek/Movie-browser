@@ -70,7 +70,7 @@ export default function PersonPage() {
            </Birth>
           </GreyText>
           <GreyText>
-           Place of birth:{" "}
+           Place of birth:
            <BirthPlace>{personDetails.place_of_birth}</BirthPlace>
           </GreyText>
          </SpecialContent>
@@ -78,7 +78,7 @@ export default function PersonPage() {
         <Biography>{personDetails.biography}</Biography>
        </PersonTile>
        <SectionTitle>
-        Movies - cast{" "}
+        Movies - cast
         {credits.cast && credits.cast.length > 0
          ? `(${credits.cast.length})`
          : ""}

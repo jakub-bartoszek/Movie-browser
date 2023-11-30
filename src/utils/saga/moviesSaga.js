@@ -23,7 +23,7 @@ function* fetchPopularMoviesHandler({ payload }) {
     const data = yield call(getPopular, payload.category, payload.page);
     const genres = yield call(getGenres);
     yield put(setPage(data.page));
-    yield put(setTotalPages(data.total_pages));
+    yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setMovies(data.results));
     yield put(setGenres(genres));
     yield delay(700);
@@ -65,7 +65,7 @@ function* fetchSearchResultsHandler({ payload }) {
     );
     const genres = yield call(getGenres);
     yield put(setPage(data.page));
-    yield put(setTotalPages(data.total_pages));
+    yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setMovies(data.results));
     yield put(setGenres(genres));
     yield delay(700);

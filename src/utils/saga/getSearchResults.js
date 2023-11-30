@@ -11,6 +11,6 @@ export const getSearchResults = async (searchQuery, category, page) => {
       },
     }
   );
-  console.log(response.data);
+
   return await response.data;
 };

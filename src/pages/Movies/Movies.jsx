@@ -57,9 +57,10 @@ export default function Movies() {
     <Header>
      {!searchQuery
       ? `Popular movies`
-      : (searchQuery && movies.length) > 0
-      ? `Search results for "${searchQuery}"
-      ${status === "success" ? `(${movies.length})` : ""}`
+      : status === "loading"
+      ? `Search results for "${searchQuery}"`
+      : status === "success" && movies.length > 0
+      ? `Search results for "${searchQuery}" (${movies.length})`
       : `Sorry, there are no results for "${searchQuery}"`}
     </Header>
    )}

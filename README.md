@@ -8,7 +8,6 @@ Welcome to the Movie Browser project! This collaborative effort is being underta
 
 ## Project Description
 
-<img src="https://github.com/jakub-bartoszek-developer/Movie-browser/blob/master/images/task_screen.jpg" width="360px">
 
 The Movie Browser is a web application designed to provide information about popular movies, actors, directors, and more. Users can explore details about their favorite films and the talented individuals involved in the film industry.
 
@@ -29,8 +28,11 @@ The project leverages the following technologies:
 
 To see the project in action, check out the [Demo](https://jakub-bartoszek-developer.github.io/Movie-browser/). Please note that the project is still ongoing and you can follow the progress at the link provided.
 
-![Project Screenshot](/readme.png)
-![Project Screenshot](/readme1.png)
+![Project Screenshot](/readmeMovies.png)
+
+![Project Screenshot](/readmeMovie.png)
+
+![Project Screenshot](/readmePeople.png)
 
 # How it works and looks
 

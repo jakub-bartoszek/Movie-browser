@@ -10,7 +10,7 @@ import {
  Year,
  Wrapper,
  ImageWrapper,
- StyledPictureIcon,
+ StyledVideoIcon,
  MovieInfo
 } from "./styled";
 
@@ -24,7 +24,7 @@ export const SmallTile = ({ movie }) => {
       alt=""
      />
     ) : (
-     <StyledPictureIcon />
+     <StyledVideoIcon />
     )}
    </ImageWrapper>
    <Content>

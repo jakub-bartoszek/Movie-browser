@@ -26,12 +26,15 @@ function* fetchPopularPeopleHandler({ payload }) {
 function* fetchSearchResultsHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    const people = yield call(
+    const data = yield call(
       getSearchResults,
       payload.searchQuery,
-      payload.category
+      payload.category,
+      payload.page
     );
-    yield put(setPeople(people));
+    yield put(setPage(data.page));
+    yield put(setTotalPages(data.total_pages));
+    yield put(setPeople(data.results));
     yield delay(700);
     yield put(setStatus("success"));
   } catch (error) {

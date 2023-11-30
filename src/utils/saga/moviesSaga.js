@@ -57,13 +57,16 @@ export function* fetchCreditsHandler({ payload: movieId }) {
 function* fetchSearchResultsHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    const movies = yield call(
+    const data = yield call(
       getSearchResults,
       payload.searchQuery,
-      payload.category
+      payload.category,
+      payload.page
     );
     const genres = yield call(getGenres);
-    yield put(setMovies(movies));
+    yield put(setPage(data.page));
+    yield put(setTotalPages(data.total_pages));
+    yield put(setMovies(data.results));
     yield put(setGenres(genres));
     yield delay(700);
     yield put(setStatus("success"));

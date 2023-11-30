@@ -45,7 +45,7 @@ export const PersonTile = styled.div`
   grid-template-columns: minmax(114px, 1fr) 1.5fr;
   padding: 16px;
   gap: 16px;
-  margin: 0 16px;
+  margin: 0 16px 8px 16px;
  }
 `;
 
@@ -163,6 +163,7 @@ export const Section = styled.section`
 
  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
   grid-template-columns: 1fr;
+  gap:16px;
  }
 `;
 

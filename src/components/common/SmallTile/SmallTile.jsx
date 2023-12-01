@@ -33,15 +33,17 @@ export const SmallTile = ({ movie }) => {
      <Year>{movie.release_date.slice(0, 4)}</Year>
      <Genres genreIds={movie.genre_ids} />
     </MovieInfo>
-    {movie.vote_count > 0 ? (
-     <Rating>
-      <IconStar />
-      <Rate>{movie.vote_average.toFixed(1)}</Rate>
-      <Votes>{`${movie.vote_count} votes`}</Votes>
-     </Rating>
-    ) : (
-     <Votes>No votes</Votes>
-    )}
+    <Rating>
+     {movie.vote_count > 0 ? (
+      <>
+       <IconStar />
+       <Rate>{movie.vote_average.toFixed(1)}</Rate>
+       <Votes>{`${movie.vote_count} votes`}</Votes>
+      </>
+     ) : (
+      <Votes>No votes yet</Votes>
+     )}
+    </Rating>
    </Content>
   </Wrapper>
  );

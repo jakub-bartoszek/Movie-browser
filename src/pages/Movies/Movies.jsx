@@ -21,7 +21,7 @@ import {
  Header,
  Pagination,
  StyledLeftIcon,
- StyledNav,
+ StyledLink,
  StyledRightIcon
 } from "./styled";
 import { toMoviePage } from "../../routes";
@@ -74,12 +74,12 @@ export default function Movies() {
         <>
          <Content>
           {movies?.map((movie) => (
-           <StyledNav
+           <StyledLink
             to={toMoviePage({ id: movie.id })}
             key={movie.id}
            >
             <SmallTile movie={movie} />
-           </StyledNav>
+           </StyledLink>
           ))}
          </Content>
          <Pagination>

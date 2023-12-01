@@ -1,9 +1,10 @@
 import styled, { css } from "styled-components";
-import { ReactComponent as PictureIcon } from "../../../assets/icons/picture.svg";
+import { ReactComponent as VideoIcon } from "../../../assets/icons/video.svg";
 import { ReactComponent as StarIcon } from "../../../assets/icons/star.svg";
 
 export const Wrapper = styled.div`
 	display: grid;
+	background-color: ${({theme}) => theme.colors.tile.background};
 	grid-template-rows: auto 1fr;
 	padding: 16px;
 	box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
@@ -23,6 +24,7 @@ export const ImageWrapper = styled.div`
 	aspect-ratio: 6/9;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 
 	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
 		width: 114px;
@@ -32,14 +34,20 @@ export const ImageWrapper = styled.div`
 	}
 `;
 
-export const StyledPictureIcon = styled(PictureIcon)`
-	width: 48px;
+export const StyledVideoIcon = styled(VideoIcon)`
+	width: 72px;
 	color: ${({ theme }) => theme.colors.tile.background};
+
+	@media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		width: 48px;
+	}
 `;
 
 export const Image = styled.img`
 	border-radius: 5px;
 	width: 100%;
+	height: 100%;
+	object-fit: cover;
 `;
 
 export const Content = styled.div`

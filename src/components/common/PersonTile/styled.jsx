@@ -15,6 +15,7 @@ export const StyledNavLink = styled(NavLink)`
 
 export const Wrapper = styled.div`
  overflow: hidden;
+ background-color: ${({theme}) => theme.colors.tile.background};
  display: grid;
  grid-template-rows: auto 1fr;
  padding: 16px;
@@ -43,6 +44,8 @@ export const ImageWrapper = styled.div`
 export const Image = styled.img`
  border-radius: 5px;
  width: 100%;
+ height: 100%;
+ object-fit: cover;
 `;
 
 export const Character = styled.div`

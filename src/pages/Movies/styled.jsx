@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { ReactComponent as LeftIcon } from "../../assets/icons/left.svg";
 import { ReactComponent as RightIcon } from "../../assets/icons/right.svg";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export const StyledNav = styled(NavLink)`
+export const StyledLink = styled(Link)`
  text-decoration: none;
  color: ${({ theme }) => theme.colors.site.text};
  transition: 1s;

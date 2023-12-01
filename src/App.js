@@ -13,7 +13,6 @@ function App() {
       <Navigation />
       <Container>
         <Routes>
-
           <Route path={toPersonPage()} element={<PersonPage />} />
           <Route path={toMoviePage()} element={<MoviePage />} />
           <Route path={toMovies()} element={<Movies />} />

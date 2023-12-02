@@ -83,8 +83,6 @@ export default function People() {
     }
   };
 
-  console.log(totalPages);
-
   return (
     <Container>
       {status !== "error" && (

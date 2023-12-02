@@ -24,6 +24,7 @@ import {
   Header,
   Pagination,
   StyledLeftIcon,
+  StyledLink,
   StyledRightIcon,
   Text,
 } from "./styled";
@@ -31,7 +32,6 @@ import { toMoviePage } from "../../routes";
 import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
-import { StyledNav } from "../../components/common/Navigation/styled";
 
 export default function Movies() {
   const dispatch = useDispatch();
@@ -61,7 +61,6 @@ export default function Movies() {
     dispatch(setSearchQuery(""));
     dispatch(setPage(1));
   }, [dispatch, category]);
-  console.log(totalPages);
 
   const prevPageHandler = () => {
     if (page !== 1) {
@@ -108,12 +107,12 @@ export default function Movies() {
                 <>
                   <Content>
                     {movies?.map((movie) => (
-                      <StyledNav
+                      <StyledLink
                         to={toMoviePage({ id: movie.id })}
                         key={movie.id}
                       >
                         <SmallTile movie={movie} />
-                      </StyledNav>
+                      </StyledLink>
                     ))}
                   </Content>
                   <Pagination>

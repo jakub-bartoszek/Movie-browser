@@ -37,7 +37,6 @@ function* fetchPopularPeopleHandler({ payload }) {
     yield put(setPeople(data.results));
     yield delay(1000);
     yield put(setStatus("success"));
-    console.log(data.total_pages, "Saga people pages");
   } catch (error) {
     yield put(setStatus("error"));
   }

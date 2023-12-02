@@ -29,7 +29,6 @@ function* fetchPopularMoviesHandler({ payload }) {
     yield put(setGenres(genres));
     yield delay(1000);
     yield put(setStatus("success"));
-    console.log(data.total_pages, "Saga movies pages");
   } catch (error) {
     yield put(setStatus("error"));
   }
@@ -72,7 +71,6 @@ function* fetchSearchResultsHandler({ payload }) {
     yield put(setGenres(genres));
     yield delay(1000);
     yield put(setStatus("success"));
-    console.log(data.total_pages, "Saga search movies pages");
   } catch (error) {
     yield put(setStatus("error"));
   }

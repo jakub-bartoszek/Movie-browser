@@ -6,15 +6,15 @@ import {
   fetchSearchResults,
   selectMovies,
   selectStatus,
+  setPage,
+  selectPage,
+  selectTotalPages,
 } from "../../utils/redux/moviesSlice";
 import {
   selectCategory,
-  selectPage,
   selectSearchQuery,
-  selectTotalPages,
   setCategory,
   setSearchQuery,
-  setPage,
 } from "../../utils/redux/searchSlice";
 
 import {
@@ -61,6 +61,7 @@ export default function Movies() {
     dispatch(setSearchQuery(""));
     dispatch(setPage(1));
   }, [dispatch, category]);
+  console.log(page);
 
   const prevPageHandler = () => {
     if (page !== 1) {

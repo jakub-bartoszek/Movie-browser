@@ -13,14 +13,14 @@ import {
   fetchSearchResults,
   selectPeople,
   selectStatus,
+  selectTotalPages,
+  selectPage,
+  setPage,
 } from "../../utils/redux/peopleSlice";
 import {
   selectCategory,
-  selectPage,
   selectSearchQuery,
-  selectTotalPages,
   setCategory,
-  setPage,
   setSearchQuery,
 } from "../../utils/redux/searchSlice";
 import { nanoid } from "nanoid";

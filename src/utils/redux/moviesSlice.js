@@ -32,6 +32,12 @@ const moviesSlice = createSlice({
     setMovieDetails: (state, { payload: movieDetails }) => {
       state.movieDetails = movieDetails;
     },
+    setPage: (state, { payload }) => {
+      state.page = payload;
+    },
+    setTotalPages: (state, { payload }) => {
+      state.totalPages = payload;
+    },
   },
 });
 export const {
@@ -45,6 +51,8 @@ export const {
   setMovieCredits,
   setMovieDetails,
   setStatus,
+  setPage,
+  setTotalPages,
 } = moviesSlice.actions;
 
 export const selectMoviesState = (state) => state.movies;
@@ -54,5 +62,7 @@ export const selectStatus = (state) => selectMoviesState(state).status;
 export const selectSearchQuery = (state) =>
   selectMoviesState(state).searchQuery;
 export const selectGenres = (state) => selectMoviesState(state).genres;
+export const selectPage = (state) => selectMoviesState(state).page;
+export const selectTotalPages = (state) => selectMoviesState(state).totalPages;
 
 export default moviesSlice.reducer;

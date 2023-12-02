@@ -26,7 +26,7 @@ function* fetchPopularMoviesHandler({ payload }) {
     yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setMovies(data.results));
     yield put(setGenres(genres));
-    yield delay(700);
+    yield delay(1000);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));
@@ -68,7 +68,7 @@ function* fetchSearchResultsHandler({ payload }) {
     yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setMovies(data.results));
     yield put(setGenres(genres));
-    yield delay(700);
+    yield delay(1000);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));

@@ -82,6 +82,9 @@ export const Button = styled.button`
   border-radius: 5px;
   border: none;
   background: ${({ theme }) => theme.colors.pagination.background};
+  &:disabled path {
+    fill: currentColor;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
     padding: 12px 20px;

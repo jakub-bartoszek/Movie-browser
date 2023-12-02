@@ -16,7 +16,7 @@ function* fetchPopularPeopleHandler({ payload }) {
     yield put(setPage(data.page));
     yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setPeople(data.results));
-    yield delay(700);
+    yield delay(1500);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));
@@ -35,7 +35,7 @@ function* fetchSearchResultsHandler({ payload }) {
     yield put(setPage(data.page));
     yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setPeople(data.results));
-    yield delay(700);
+    yield delay(1500);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));

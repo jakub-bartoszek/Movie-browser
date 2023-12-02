@@ -119,22 +119,24 @@ export default function Movies() {
                     {page === 1 ? (
                       <>
                         <Button disabled>
-                          <StyledLeftIcon disabled>&laquo;</StyledLeftIcon>
+                          <StyledLeftIcon />
+                          <StyledLeftIcon />
                           <p>First</p>
                         </Button>
                         <Button disabled>
-                          <StyledLeftIcon disabled>&lt;</StyledLeftIcon>
+                          <StyledLeftIcon />
                           <p>Previous</p>
                         </Button>
                       </>
                     ) : (
                       <>
                         <Button onClick={firstPageHandler}>
-                          <StyledLeftIcon disabled>&laquo;</StyledLeftIcon>
+                          <StyledLeftIcon />
+                          <StyledLeftIcon />
                           <p>First</p>
                         </Button>
                         <Button onClick={prevPageHandler}>
-                          <StyledLeftIcon disabled>&lt;</StyledLeftIcon>
+                          <StyledLeftIcon />
                           <p>Previous</p>
                         </Button>
                       </>
@@ -147,22 +149,24 @@ export default function Movies() {
                       <>
                         <Button disabled>
                           <p>Next</p>
-                          <StyledRightIcon disabled>&gt;</StyledRightIcon>
+                          <StyledRightIcon disabled />
                         </Button>
                         <Button disabled>
                           <p>Last</p>
-                          <StyledRightIcon disabled>&raquo;</StyledRightIcon>
+                          <StyledRightIcon />
+                          <StyledRightIcon />
                         </Button>
                       </>
                     ) : (
                       <>
                         <Button onClick={nextPageHandler}>
                           <p>Next</p>
-                          <StyledRightIcon disabled>&gt;</StyledRightIcon>
+                          <StyledRightIcon />
                         </Button>
                         <Button onClick={lastPageHandler}>
                           <p>Last</p>
-                          <StyledRightIcon disabled>&raquo;</StyledRightIcon>
+                          <StyledRightIcon />
+                          <StyledRightIcon />
                         </Button>
                       </>
                     )}

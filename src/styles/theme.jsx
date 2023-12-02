@@ -1,20 +1,19 @@
 const colorNames = {
   White: "#FFFFFF",
   Whisper: "#F5F5FA",
-  Black: "#000000",
-  Blue: "#0044CC",
-  Woodsmoke: "#18181B",
+  Mystic: "#E4E6F0",
+  Silver: "#C4C4C4",
   Waterloo: "#7E839A",
   StormGrey: "#74788B",
-  Mystic: "#E4E6F0",
-  PattensBlue: "#D6E4FF",
+  Woodsmoke: "#18181B",
+  Black: "#000000",
 };
 
 export const theme = {
   breakpoints: {
     xs: "414px",
-    s: "714px",
-    m: "900px",
+    s: "713px",
+    m: "1000px",
     l: "1200px",
     xl: "1536px",
   },
@@ -28,11 +27,6 @@ export const theme = {
       text: colorNames.White,
       mobileBackground: colorNames.Black,
     },
-    pagination: {
-      background: colorNames.PattensBlue,
-      arrowsColor: colorNames.Blue,
-      text: colorNames.StormGrey,
-    },
     searchBar: {
       background: colorNames.White,
       text: colorNames.Black,
@@ -43,6 +37,7 @@ export const theme = {
       text: colorNames.Black,
       mutedText: colorNames.StormGrey,
       genresBackground: colorNames.Mystic,
+      imageWrapper: colorNames.Silver,
     },
     moviePage: {
       background: colorNames.Black,

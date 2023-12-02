@@ -23,8 +23,15 @@ import {
   setCategory,
   setSearchQuery,
 } from "../../utils/redux/searchSlice";
+import {
+  Button,
+  Pagination,
+  StyledLeftIcon,
+  StyledRightIcon,
+} from "../Movies/styled";
 import { nanoid } from "nanoid";
-import { useEffect } from "react";
+import { PersonTile } from "../../components/common/PersonTile/PersonTile";
+import { Container, Content, Header } from "./styled";
 import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";

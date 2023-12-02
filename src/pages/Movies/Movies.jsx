@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SmallTile } from "../../components/common/Tile/SmallTile/SmallTile";
+import { SmallTile } from "../../components/common/SmallTile/SmallTile";
 import {
   fetchPopularMovies,
   fetchSearchResults,

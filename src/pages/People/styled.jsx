@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-	max-width: 1400px;
-	padding: 0 16px;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+ max-width: 1400px;
+ padding: 0 16px;
+ margin: 0 auto;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
 `;
 
 export const Header = styled.h1`
@@ -27,10 +27,14 @@ export const Header = styled.h1`
 `;
 
 export const Content = styled.div`
-	display: grid;
-	justify-content: center;
-	grid-template-columns: repeat(auto-fill, 208px);
-	gap: 24px;
+ display: grid;
+ justify-content: center;
+ grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+ gap: 24px;
+
+ @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
+		grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+ }
 `;
 
 

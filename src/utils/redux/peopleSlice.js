@@ -7,10 +7,21 @@ const peopleSlice = createSlice({
     status: "",
     page: 1,
     totalPages: "",
+    personDetails: [],
   },
   reducers: {
     fetchPopularPeople: (state) => {},
     fetchSearchResults: (state) => {},
+    fetchPersonDetails: (state) => {},
+    fetchCreditsForPerson: (state) => {},
+
+    setCreditsForPerson: (state, { payload }) => {
+      state.cast = payload.cast;
+      state.crew = payload.crew;
+    },
+    setPersonDetails: (state, { payload }) => {
+      state.personDetails = payload;
+    },
     setPeople: (state, { payload }) => {
       state.people = payload;
     },
@@ -33,6 +44,10 @@ export const {
   fetchPopularPeople,
   setPage,
   setTotalPages,
+  fetchPersonDetails,
+  setPersonDetails,
+  fetchCreditsForPerson,
+  setCreditsForPerson,
 } = peopleSlice.actions;
 
 export const selectPeopleState = (state) => state.people;

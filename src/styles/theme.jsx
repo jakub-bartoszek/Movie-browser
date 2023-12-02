@@ -7,6 +7,7 @@ const colorNames = {
   StormGrey: "#74788B",
   Woodsmoke: "#18181B",
   Black: "#000000",
+  PattensBlue: "#D6E4FF",
 };
 
 export const theme = {
@@ -26,6 +27,10 @@ export const theme = {
       background: colorNames.Woodsmoke,
       text: colorNames.White,
       mobileBackground: colorNames.Black,
+    },
+    pagination: {
+      background: colorNames.PattensBlue,
+      text: colorNames.Waterloo,
     },
     searchBar: {
       background: colorNames.White,

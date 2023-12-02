@@ -8,10 +8,11 @@ import {
   fetchPersonDetails,
   setCreditsForPerson,
   fetchCreditsForPerson,
+  setTotalPages,
+  setPage,
 } from "../redux/peopleSlice";
 import { getPopular } from "./getPopular";
 import { getSearchResults } from "./getSearchResults";
-import { setPage, setTotalPages } from "../redux/searchSlice";
 import { getPersonDetails } from "./getPersonDetails";
 import { getCreditsForPerson } from "./getCreditsForPerson";
 
@@ -20,7 +21,7 @@ function* fetchCreditsForPersonHandler({ payload: personId }) {
     yield put(setStatus("loading"));
     const personCredits = yield call(getCreditsForPerson, personId);
     yield put(setCreditsForPerson(personCredits));
-    yield delay(700);
+    yield delay(1000);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));
@@ -34,8 +35,9 @@ function* fetchPopularPeopleHandler({ payload }) {
     yield put(setPage(data.page));
     yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setPeople(data.results));
-    yield delay(1500);
+    yield delay(1000);
     yield put(setStatus("success"));
+    console.log(data.total_pages, "Saga people pages");
   } catch (error) {
     yield put(setStatus("error"));
   }
@@ -65,7 +67,7 @@ function* fetchSearchResultsHandler({ payload }) {
     yield put(setPage(data.page));
     yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setPeople(data.results));
-    yield delay(1500);
+    yield delay(1000);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));

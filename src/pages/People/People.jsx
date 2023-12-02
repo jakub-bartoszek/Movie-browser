@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { PersonTile } from "../../components/common/Tile/PersonTile/PersonTile";
+
 import {
   Button,
   Pagination,
@@ -23,18 +23,12 @@ import {
   setCategory,
   setSearchQuery,
 } from "../../utils/redux/searchSlice";
-import {
-  Button,
-  Pagination,
-  StyledLeftIcon,
-  StyledRightIcon,
-} from "../Movies/styled";
 import { nanoid } from "nanoid";
 import { PersonTile } from "../../components/common/PersonTile/PersonTile";
-import { Container, Content, Header } from "./styled";
 import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
+import { useEffect } from "react";
 
 export default function People() {
   const dispatch = useDispatch();
@@ -88,6 +82,8 @@ export default function People() {
       dispatch(setPage(totalPages));
     }
   };
+
+  console.log(totalPages);
 
   return (
     <Container>

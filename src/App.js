@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import Movies from "./pages/Movies/Movies";
 import People from "./pages/People/People";
 import { Navigation } from "./components/common/Navigation/Navigation";

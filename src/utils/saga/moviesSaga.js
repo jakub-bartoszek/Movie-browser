@@ -9,13 +9,14 @@ import {
   setStatus,
   fetchCredits,
   setMovieCredits,
+  setPage,
+  setTotalPages,
 } from "../redux/moviesSlice";
 import { getPopular } from "./getPopular";
 import { getSearchResults } from "./getSearchResults";
 import { getGenres } from "./getGenres";
 import { getMoviesDetails } from "./getMovieDetails";
 import { getCredits } from "./getCredits";
-import { setTotalPages, setPage } from "../redux/searchSlice";
 
 function* fetchPopularMoviesHandler({ payload }) {
   try {
@@ -28,6 +29,7 @@ function* fetchPopularMoviesHandler({ payload }) {
     yield put(setGenres(genres));
     yield delay(1000);
     yield put(setStatus("success"));
+    console.log(data.total_pages, "Saga movies pages");
   } catch (error) {
     yield put(setStatus("error"));
   }
@@ -70,6 +72,7 @@ function* fetchSearchResultsHandler({ payload }) {
     yield put(setGenres(genres));
     yield delay(1000);
     yield put(setStatus("success"));
+    console.log(data.total_pages, "Saga search movies pages");
   } catch (error) {
     yield put(setStatus("error"));
   }

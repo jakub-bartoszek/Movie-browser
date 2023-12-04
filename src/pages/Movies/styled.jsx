@@ -14,12 +14,12 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Container = styled.div`
-  max-width: 1400px;
-  padding: 0 16px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+ max-width: 1400px;
+ padding: 0 16px;
+ margin: 0 auto;
+ display: flex;
+ flex-direction: column;
+ height: 100%;
 `;
 
 export const Header = styled.h1`
@@ -51,18 +51,19 @@ export const Content = styled.div`
 `;
 
 export const Pagination = styled.div`
-  margin: 40px 0;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 140%;
+ margin: 40px 0;
+ display: flex;
+ justify-content: center;
+ gap: 12px;
+ align-items: center;
+ font-size: 14px;
+ font-weight: 400;
+ line-height: 140%;
+ padding-bottom: 32px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    gap: 8px;
-  }
+ @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
+  gap: 8px;
+ }
 `;
 
 export const Text = styled.span`

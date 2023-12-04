@@ -12,17 +12,16 @@ export const StyledNav = styled(NavLink)`
 `;
 
 export const Wrapper = styled.div`
-  max-width: 1400px;
-  padding: 0 16px 32px 16px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-wrap: wrap;
+ max-width: 1400px;
+ height: 100%;
+ padding: 16px 16px 32px 16px;
+ margin: 0 auto;
+ display: flex;
+ flex-direction: column;
 
-  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-    gap: 16px;
-  }
+ @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+  gap: 16px;
+ }
 `;
 
 export const PersonTile = styled.div`
@@ -156,15 +155,16 @@ export const Biography = styled.div`
 `;
 
 export const Section = styled.section`
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
+ display: grid;
+ justify-content: center;
+ grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+ gap: 24px;
+ padding-bottom: 16px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+ @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
+  grid-template-columns: 1fr;
+  gap: 16px;
+ }
 `;
 
 export const SectionTitle = styled.h2`

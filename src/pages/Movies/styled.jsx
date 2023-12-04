@@ -19,7 +19,7 @@ export const Container = styled.div`
  margin: 0 auto;
  display: flex;
  flex-direction: column;
- justify-content: center;
+ height: 100%;
 `;
 
 export const Header = styled.h1`
@@ -59,6 +59,7 @@ export const Pagination = styled.div`
  font-size: 14px;
  font-weight: 400;
  line-height: 140%;
+ padding-bottom: 32px;
 
  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
   gap: 8px;

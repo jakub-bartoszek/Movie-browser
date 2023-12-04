@@ -1,4 +1,4 @@
-import { put, call, takeLatest, delay, } from "redux-saga/effects";
+import { put, call, takeLatest, delay } from "redux-saga/effects";
 import {
   fetchPopularMovies,
   fetchSearchResults,
@@ -9,30 +9,34 @@ import {
   setStatus,
   fetchCredits,
   setMovieCredits,
-
+  setPage,
+  setTotalPages,
 } from "../redux/moviesSlice";
-import { getPopular } from './getPopular';
-import { getSearchResults } from './getSearchResults';
-import { getGenres } from './getGenres';
-import { getMoviesDetails } from './getMovieDetails';
-import { getCredits } from './getCredits';
+import { getPopular } from "./getPopular";
+import { getSearchResults } from "./getSearchResults";
+import { getGenres } from "./getGenres";
+import { getMoviesDetails } from "./getMovieDetails";
+import { getCredits } from "./getCredits";
 
 function* fetchPopularMoviesHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    const movies = yield call(getPopular, payload.category);
+    const data = yield call(getPopular, payload.category, payload.page);
     const genres = yield call(getGenres);
-    yield put(setMovies(movies));
+    yield put(setPage(data.page));
+    yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
+    yield put(setMovies(data.results));
     yield put(setGenres(genres));
-    yield delay(700);
+    yield delay(1000);
     yield put(setStatus("success"));
+    console.log(data.total_pages, "Saga movies pages");
   } catch (error) {
     yield put(setStatus("error"));
   }
 }
 export function* fetchMovieDetailsHandler({ payload: movieId }) {
   try {
-    yield put(setStatus("loading"))
+    yield put(setStatus("loading"));
     yield delay(1000);
     const movieDetails = yield call(getMoviesDetails, movieId);
     yield put(setMovieDetails(movieDetails));
@@ -40,7 +44,7 @@ export function* fetchMovieDetailsHandler({ payload: movieId }) {
   } catch (error) {
     yield put(setStatus("error"));
   }
-};
+}
 
 export function* fetchCreditsHandler({ payload: movieId }) {
   try {
@@ -50,22 +54,25 @@ export function* fetchCreditsHandler({ payload: movieId }) {
   } catch (error) {
     yield put(setStatus("error"));
   }
-};
-
+}
 
 function* fetchSearchResultsHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    const movies = yield call(
+    const data = yield call(
       getSearchResults,
       payload.searchQuery,
-      payload.category
+      payload.category,
+      payload.page
     );
     const genres = yield call(getGenres);
-    yield put(setMovies(movies));
+    yield put(setPage(data.page));
+    yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
+    yield put(setMovies(data.results));
     yield put(setGenres(genres));
-    yield delay(700);
+    yield delay(1000);
     yield put(setStatus("success"));
+    console.log(data.total_pages, "Saga search movies pages");
   } catch (error) {
     yield put(setStatus("error"));
   }

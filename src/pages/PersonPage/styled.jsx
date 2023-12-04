@@ -13,12 +13,11 @@ export const StyledNav = styled(NavLink)`
 
 export const Wrapper = styled.div`
  max-width: 1400px;
- padding: 0 16px 32px 16px;
+ height: 100%;
+ padding: 16px 16px 32px 16px;
  margin: 0 auto;
  display: flex;
  flex-direction: column;
- justify-content: center;
- flex-wrap: wrap;
 
  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
   gap: 16px;
@@ -45,7 +44,7 @@ export const PersonTile = styled.div`
   grid-template-columns: minmax(114px, 1fr) 1.5fr;
   padding: 16px;
   gap: 16px;
-  margin: 0 16px;
+  margin: 0 16px 8px 16px;
  }
 `;
 
@@ -160,9 +159,11 @@ export const Section = styled.section`
  justify-content: center;
  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
  gap: 24px;
+ padding-bottom: 16px;
 
  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
   grid-template-columns: 1fr;
+  gap: 16px;
  }
 `;
 

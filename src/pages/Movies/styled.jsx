@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { ReactComponent as LeftIcon } from "../../assets/icons/left.svg";
 import { ReactComponent as RightIcon } from "../../assets/icons/right.svg";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export const StyledNav = styled(NavLink)`
+export const StyledLink = styled(Link)`
  text-decoration: none;
  color: ${({ theme }) => theme.colors.site.text};
  transition: 1s;
@@ -19,7 +19,7 @@ export const Container = styled.div`
  margin: 0 auto;
  display: flex;
  flex-direction: column;
- justify-content: center;
+ height: 100%;
 `;
 
 export const Header = styled.h1`
@@ -59,10 +59,41 @@ export const Pagination = styled.div`
  font-size: 14px;
  font-weight: 400;
  line-height: 140%;
+ padding-bottom: 32px;
 
  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
   gap: 8px;
  }
+`;
+
+export const Text = styled.span`
+  color: ${({ theme }) => theme.colors.pagination.text};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
+    font-size: 12px;
+  }
+`;
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 16px;
+  gap: 8px;
+  border-radius: 5px;
+  border: none;
+  background: ${({ theme }) => theme.colors.pagination.background};
+  &:disabled path {
+    fill: currentColor;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
+    padding: 12px 20px;
+    gap: 8px;
+    p {
+      display: none;
+    }
+  }
 `;
 
 export const StyledLeftIcon = styled(LeftIcon)`
@@ -82,20 +113,5 @@ export const StyledRightIcon = styled(RightIcon)`
  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
   width: 5px;
   height: 8px;
- }
-`;
-
-export const Button = styled.button`
- display: flex;
- align-items: center;
- padding: 8px 16px;
- gap: 8px;
- border-radius: 5px;
- border: none;
- background: var(--Grey, #e4e6f0);
-
- @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-  padding: 8px 12px;
-  gap: 8px;
  }
 `;

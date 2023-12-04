@@ -8,36 +8,40 @@ import {
   fetchPersonDetails,
   setCreditsForPerson,
   fetchCreditsForPerson,
+  setTotalPages,
+  setPage,
 } from "../redux/peopleSlice";
 import { getPopular } from "./getPopular";
 import { getSearchResults } from "./getSearchResults";
 import { getPersonDetails } from "./getPersonDetails";
-import { getCreditsForPerson } from "./getCreditsForPerson"
+import { getCreditsForPerson } from "./getCreditsForPerson";
 
 function* fetchCreditsForPersonHandler({ payload: personId }) {
   try {
     yield put(setStatus("loading"));
-    const personCredits = yield call(getCreditsForPerson, personId)
+    const personCredits = yield call(getCreditsForPerson, personId);
     yield put(setCreditsForPerson(personCredits));
-    yield delay(700);
+    yield delay(1000);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));
   }
-};
-
+}
 
 function* fetchPopularPeopleHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    const people = yield call(getPopular, payload.category);
-    yield put(setPeople(people));
-    yield delay(700);
+    const data = yield call(getPopular, payload.category, payload.page);
+    yield put(setPage(data.page));
+    yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
+    yield put(setPeople(data.results));
+    yield delay(1000);
     yield put(setStatus("success"));
+    console.log(data.total_pages, "Saga people pages");
   } catch (error) {
     yield put(setStatus("error"));
   }
-};
+}
 
 function* fethPersonDetailsHandler({ payload: personId }) {
   try {
@@ -49,18 +53,21 @@ function* fethPersonDetailsHandler({ payload: personId }) {
   } catch (error) {
     yield put(setStatus("error"));
   }
-};
+}
 
 function* fetchSearchResultsHandler({ payload }) {
   try {
     yield put(setStatus("loading"));
-    const people = yield call(
+    const data = yield call(
       getSearchResults,
       payload.searchQuery,
-      payload.category
+      payload.category,
+      payload.page
     );
-    yield put(setPeople(people));
-    yield delay(700);
+    yield put(setPage(data.page));
+    yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
+    yield put(setPeople(data.results));
+    yield delay(1000);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));

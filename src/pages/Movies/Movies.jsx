@@ -12,8 +12,11 @@ import {
 } from "../../utils/redux/moviesSlice";
 import {
   selectCategory,
+  selectSearchPage,
   selectSearchQuery,
+  selectSearchTotalPages,
   setCategory,
+  setSearchPage,
   setSearchQuery,
 } from "../../utils/redux/searchSlice";
 
@@ -41,6 +44,8 @@ export default function Movies() {
   const category = useSelector(selectCategory);
   const page = useSelector(selectPage);
   const totalPages = useSelector(selectTotalPages);
+  const searchPage = useSelector(selectSearchPage);
+  const searchTotalPages = useSelector(selectSearchTotalPages);
 
   useEffect(() => {
     if (searchQuery) {
@@ -48,13 +53,13 @@ export default function Movies() {
         fetchSearchResults({
           category: "movie",
           searchQuery: searchQuery,
-          page: page,
+          page: searchPage,
         })
       );
     } else {
       dispatch(fetchPopularMovies({ category: "movie", page: page }));
     }
-  }, [searchQuery, page, dispatch]);
+  }, [searchQuery, page, searchPage, dispatch]);
 
   useEffect(() => {
     dispatch(setCategory("movies"));
@@ -68,9 +73,21 @@ export default function Movies() {
     }
   };
 
+  const prevSearchPageHandler = () => {
+    if (searchPage !== 1) {
+      dispatch(setSearchPage(searchPage - 1));
+    }
+  };
+
   const nextPageHandler = () => {
     if (page !== totalPages) {
       dispatch(setPage(page + 1));
+    }
+  };
+
+  const nextSearchPageHandler = () => {
+    if (searchPage !== searchTotalPages) {
+      dispatch(setSearchPage(searchPage + 1));
     }
   };
 
@@ -80,9 +97,21 @@ export default function Movies() {
     }
   };
 
+  const firstSearchPageHandler = () => {
+    if (searchPage !== 1) {
+      dispatch(setSearchPage(1));
+    }
+  };
+
   const lastPageHandler = () => {
     if (page !== totalPages) {
       dispatch(setPage(totalPages));
+    }
+  };
+
+  const lastSearchPageHandler = () => {
+    if (searchPage !== searchTotalPages) {
+      dispatch(setSearchPage(searchTotalPages));
     }
   };
 
@@ -116,7 +145,7 @@ export default function Movies() {
                     ))}
                   </Content>
                   <Pagination>
-                    {page === 1 ? (
+                    {page && searchPage === 1 ? (
                       <>
                         <Button disabled>
                           <StyledLeftIcon />
@@ -130,22 +159,41 @@ export default function Movies() {
                       </>
                     ) : (
                       <>
-                        <Button onClick={firstPageHandler}>
+                        <Button
+                          onClick={
+                            !searchQuery
+                              ? firstPageHandler
+                              : firstSearchPageHandler
+                          }
+                        >
                           <StyledLeftIcon />
                           <StyledLeftIcon />
                           <p>First</p>
                         </Button>
-                        <Button onClick={prevPageHandler}>
+                        <Button
+                          onClick={
+                            !searchQuery
+                              ? prevPageHandler
+                              : prevSearchPageHandler
+                          }
+                        >
                           <StyledLeftIcon />
                           <p>Previous</p>
                         </Button>
                       </>
                     )}
-                    <span>
-                      <Text>Page</Text> <strong>{page}</strong> <Text>of</Text>{" "}
-                      <strong>{totalPages}</strong>
-                    </span>
-                    {page === totalPages ? (
+                    {searchQuery ? (
+                      <span>
+                        <Text>Page</Text> <strong>{searchPage}</strong>{" "}
+                        <Text>of</Text> <strong>{searchTotalPages}</strong>
+                      </span>
+                    ) : (
+                      <span>
+                        <Text>Page</Text> <strong>{page}</strong>{" "}
+                        <Text>of</Text> <strong>{totalPages}</strong>
+                      </span>
+                    )}
+                    {page === totalPages && searchPage === searchTotalPages ? (
                       <>
                         <Button disabled>
                           <p>Next</p>
@@ -159,11 +207,23 @@ export default function Movies() {
                       </>
                     ) : (
                       <>
-                        <Button onClick={nextPageHandler}>
+                        <Button
+                          onClick={
+                            !searchQuery
+                              ? nextPageHandler
+                              : nextSearchPageHandler
+                          }
+                        >
                           <p>Next</p>
                           <StyledRightIcon />
                         </Button>
-                        <Button onClick={lastPageHandler}>
+                        <Button
+                          onClick={
+                            !searchQuery
+                              ? lastPageHandler
+                              : lastSearchPageHandler
+                          }
+                        >
                           <p>Last</p>
                           <StyledRightIcon />
                           <StyledRightIcon />

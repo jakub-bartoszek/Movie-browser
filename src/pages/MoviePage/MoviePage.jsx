@@ -14,11 +14,15 @@ import {
   Votes,
   RatingTopContent,
   ContainerRateText,
-  Container
+  Container,
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { PersonTile } from "../../components/common/PersonTile/PersonTile";
-import { fetchMovieDetails, selectStatus, fetchCredits } from "../../utils/redux/moviesSlice";
+import {
+  fetchMovieDetails,
+  selectStatus,
+  fetchCredits,
+} from "../../utils/redux/moviesSlice";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
 import { Error } from "../Error/Error";
 
@@ -27,7 +31,7 @@ export default function MoviePage() {
   const dispatch = useDispatch();
   const movieDetails = useSelector((state) => state.movies.movieDetails);
   const status = useSelector(selectStatus);
-  const credits = useSelector(state => state.movies);
+  const credits = useSelector((state) => state.movies);
 
   useEffect(() => {
     dispatch(fetchMovieDetails(id));
@@ -39,17 +43,24 @@ export default function MoviePage() {
       {
         {
           loading: <StyledLoader />,
-          error: <Error/>,
+          error: <Error />,
           success: (
             <>
               <MainWrapper>
-                <Header backdroppath={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}>
+                <Header
+                  backdroppath={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}
+                >
                   <RatingTopContent>
                     <LongTitle>{movieDetails.title}</LongTitle>
                     <Rating>
                       <IconStar />
                       <ContainerRateText>
-                        {movieDetails.vote_average ? movieDetails.vote_average.toFixed(2).toString().replace(".", ',') : "No votes yet"}
+                        {movieDetails.vote_average
+                          ? movieDetails.vote_average
+                              .toFixed(2)
+                              .toString()
+                              .replace(".", ",")
+                          : "No votes yet"}
                         <Rate>/ 10</Rate>
                       </ContainerRateText>
 
@@ -73,7 +84,15 @@ export default function MoviePage() {
                 <SectionTitle>Cast</SectionTitle>
                 <Section>
                   {credits.cast.map((member) => (
-                    <PersonTile key={member.credit_id} member={member} filmName={member.character ? member.character : "Unknown Character"} />
+                    <PersonTile
+                      key={member.credit_id}
+                      member={member}
+                      filmName={
+                        member.character
+                          ? member.character
+                          : "Unknown Character"
+                      }
+                    />
                   ))}
                 </Section>
                 <SectionTitle>Crew</SectionTitle>

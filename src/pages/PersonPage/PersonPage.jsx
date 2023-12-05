@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCreditsForPerson,
-  selectStatus
+  selectStatus,
 } from "../../utils/redux/peopleSlice";
 import { fetchPersonDetails } from "../../utils/redux/peopleSlice";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
@@ -24,7 +24,7 @@ import {
   Section,
   SectionTitle,
   Wrapper,
-  StyledNav
+  StyledNav,
 } from "./styled";
 
 export default function PersonPage() {
@@ -59,7 +59,11 @@ export default function PersonPage() {
                   <Birth>
                     <BirthDate>
                       {personDetails && personDetails.birthday
-                        ? personDetails.birthday.toString().split("-").reverse().join(".")
+                        ? personDetails.birthday
+                            .toString()
+                            .split("-")
+                            .reverse()
+                            .join(".")
                         : "N/A"}
                     </BirthDate>
                     <BirthPlace>{personDetails.place_of_birth}</BirthPlace>
@@ -104,7 +108,7 @@ export default function PersonPage() {
                 </>
               )}
             </Wrapper>
-          )
+          ),
         }[status]
       }
     </Container>

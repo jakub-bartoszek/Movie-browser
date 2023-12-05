@@ -2,60 +2,53 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SmallTile } from "../../components/common/SmallTile/SmallTile";
 import {
- fetchPopularMovies,
+  fetchPopularMovies,
  fetchSearchResults,
  selectMovies,
  selectStatus,
- setPage,
- selectPage,
- selectTotalPages
-} from "../../utils/redux/moviesSlice";
-import {
+ selectTotalPages,
  selectCategory,
- selectSearchPage,
- selectSearchQuery,
  selectSearchTotalPages,
- setCategory,
- setSearchQuery
-} from "../../utils/redux/searchSlice";
+ setCategory
+} from "../../utils/redux/dataSlice";
 
 import { Container, Content, Header, StyledLink } from "./styled";
 import { toMoviePage } from "../../routes";
 import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
-import { PaginationMovies } from "../../components/common/Navigation/Pagination/PaginationMovies";
+import { Pagination } from "../../components/common/Navigation/Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
+import { nanoid } from "nanoid";
 
 export default function Movies() {
  const dispatch = useDispatch();
  const movies = useSelector(selectMovies);
- const searchQuery = useSelector(selectSearchQuery);
  const status = useSelector(selectStatus);
  const category = useSelector(selectCategory);
- const page = useSelector(selectPage);
  const totalPages = useSelector(selectTotalPages);
- const searchPage = useSelector(selectSearchPage);
+ const searchPage = useSelector(selectSearchTotalPages);
  const searchTotalPages = useSelector(selectSearchTotalPages);
  const [searchParams, setSearchParams] = useSearchParams();
+ const searchQuery = searchParams.get("search") || "";
+ const page = searchParams.get("page") || "1";
 
  useEffect(() => {
-  if (searchParams.get("search")) {
+  if (searchQuery) {
    dispatch(
     fetchSearchResults({
      category: "movie",
-     searchQuery: searchParams.get("search"),
-     page: searchPage
+     searchQuery: searchQuery,
+     page: page
     })
    );
   } else {
    dispatch(fetchPopularMovies({ category: "movie", page: page }));
   }
- }, [searchParams, searchQuery, page, searchPage, dispatch]);
+ }, [searchQuery, page, searchPage, dispatch]);
 
  useEffect(() => {
   dispatch(setCategory("movies"));
-  dispatch(setPage(1));
  }, [dispatch, category]);
 
  return (
@@ -83,13 +76,13 @@ export default function Movies() {
           {movies?.map((movie) => (
            <StyledLink
             to={toMoviePage({ id: movie.id })}
-            key={movie.id}
+            key={nanoid()}
            >
             <SmallTile movie={movie} />
            </StyledLink>
           ))}
          </Content>
-         <PaginationMovies
+         <Pagination
           page={page}
           totalPages={totalPages}
           searchTotalPages={searchTotalPages}

@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import {
 	Container,
 	Content,
@@ -53,7 +54,7 @@ export const Tile = ({
 				</Release>
 				<Genres>
 					{genres &&
-						genres.map((genre) => <Genre key={genre.id}>{genre.name}</Genre>)}
+						genres.map((genre) => <Genre key={nanoid()}>{genre.name}</Genre>)}
 				</Genres>
 
 				{vote_average ? (

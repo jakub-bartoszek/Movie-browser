@@ -8,7 +8,7 @@ import {
  PersonIcon,
  StyledNavLink
 } from "./styled";
-import { toPersonPage } from "../../../routes";
+import { toPersonPage } from "../../../routes/routes";
 import { nanoid } from "nanoid";
 
 export const PersonTile = ({ member, filmName }) => {

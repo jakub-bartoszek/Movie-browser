@@ -12,7 +12,7 @@ import { StyledLoader } from "../../components/common/StyledLoader/styled";
 import { Container } from "../Error/styled";
 import { SmallTile } from "../../components/common/SmallTile/SmallTile";
 import { Error } from "../Error/Error";
-import { toMoviePage } from "../../routes";
+import { toMoviePage } from "../../routes/routes";
 import {
  Biography,
  Birth,

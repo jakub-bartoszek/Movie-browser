@@ -13,7 +13,7 @@ import {
 } from "../../utils/redux/dataSlice";
 
 import { Container, Content, Header, StyledLink } from "./styled";
-import { toMoviePage } from "../../routes";
+import { toMoviePage } from "../../routes/routes";
 import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";

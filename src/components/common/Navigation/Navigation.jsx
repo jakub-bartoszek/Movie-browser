@@ -1,4 +1,4 @@
-import { toMovies, toPeople } from "../../../routes";
+import { toMovies, toPeople } from "../../../routes/routes";
 import { SearchBar } from "./SearchBar/SearchBar";
 import {
  Container,

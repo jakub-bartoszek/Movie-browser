@@ -42,12 +42,18 @@ export const Pagination = ({ totalPages }) => {
  return (
   <>
    <Wrapper>
-    <Button disabled={page === 1} onClick={firstPageHandler}>
+    <Button
+     disabled={page === 1}
+     onClick={firstPageHandler}
+    >
      <StyledLeftIcon />
      <StyledLeftIcon />
      <p>First</p>
     </Button>
-    <Button disabled={page === 1} onClick={prevPageHandler}>
+    <Button
+     disabled={page === 1}
+     onClick={prevPageHandler}
+    >
      <StyledLeftIcon />
      <p>Previous</p>
     </Button>
@@ -55,11 +61,17 @@ export const Pagination = ({ totalPages }) => {
      <Text>Page</Text> <strong>{page}</strong> <Text>of</Text>
      <strong>{totalPages}</strong>
     </span>
-    <Button disabled={page === totalPages} onClick={nextPageHandler}>
+    <Button
+     disabled={page === totalPages}
+     onClick={nextPageHandler}
+    >
      <p>Next</p>
      <StyledRightIcon />
     </Button>
-    <Button disabled={page === totalPages} onClick={lastPageHandler}>
+    <Button
+     disabled={page === totalPages}
+     onClick={lastPageHandler}
+    >
      <p>Last</p>
      <StyledRightIcon />
      <StyledRightIcon />

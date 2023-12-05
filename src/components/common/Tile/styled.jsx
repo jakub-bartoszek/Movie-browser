@@ -241,5 +241,5 @@ export const Discription = styled.div`
  }
 `;
 export const ContainerRateText = styled.div`
-  align-items: flex-end;
+ align-items: flex-end;
 `;

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 export const useSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchQuery = searchParams.get("search")
+  const searchQuery = searchParams.get("search");
   const dispatch = useDispatch();
 
   const onInputChange = (event) => {

@@ -49,7 +49,7 @@ export function* fetchMovieCreditsHandler({ payload: movieId }) {
   try {
     yield delay(1000);
     const credits = yield call(getMovieCredits, movieId);
-    yield put(setMovieCredits({cast: credits.cast, crew: credits.crew}));
+    yield put(setMovieCredits({ cast: credits.cast, crew: credits.crew }));
   } catch (error) {
     yield put(setStatus("error"));
   }

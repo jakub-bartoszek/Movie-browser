@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SmallTile } from "../../components/common/SmallTile/SmallTile";
 import {
-  fetchPopularMovies,
+ fetchPopularMovies,
  fetchSearchResults,
  selectMovies,
  selectStatus,
@@ -17,7 +17,7 @@ import { toMoviePage } from "../../routes";
 import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
-import { Pagination } from "../../components/common/Navigation/Pagination/Pagination";
+import { Pagination } from "../../components/common/Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 import { nanoid } from "nanoid";
 

@@ -17,7 +17,7 @@ import {
  selectTotalPages,
  setCategory
 } from "../../utils/redux/dataSlice";
-import { Pagination } from "../../components/common/Navigation/Pagination/Pagination";
+import { Pagination } from "../../components/common/Pagination/Pagination";
 
 export default function People() {
  const dispatch = useDispatch();

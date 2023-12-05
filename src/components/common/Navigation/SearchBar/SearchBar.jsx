@@ -3,8 +3,8 @@ import { useSearch } from "./useSearch";
 
 export const SearchBar = () => {
  const category = "movies";
-
  const { onInputChange, searchQuery } = useSearch();
+ 
  return (
   <Wrapper>
    <StyledSearchIcon />

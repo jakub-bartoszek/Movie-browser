@@ -35,6 +35,7 @@ export const Button = styled.button`
  border-radius: 5px;
  border: none;
  background: ${({ theme }) => theme.colors.pagination.background};
+ 
  &:disabled path {
   fill: currentColor;
  }

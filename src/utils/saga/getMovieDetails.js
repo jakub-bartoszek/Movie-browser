@@ -2,7 +2,6 @@
 import axios from "axios";
 
 export const getMoviesDetails = async (movieId) => {
-   try {
       const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, {
          headers: {
             accept: 'application/json',
@@ -10,9 +9,5 @@ export const getMoviesDetails = async (movieId) => {
          }
       });
       return response.data;
-   } catch (error) {
-      console.error("Error fetching movie details:", error);
-      throw error;
-   }
 };
 

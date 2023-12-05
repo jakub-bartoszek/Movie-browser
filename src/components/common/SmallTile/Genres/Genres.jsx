@@ -1,4 +1,4 @@
-import { selectGenres } from "../../../../utils/redux/moviesSlice";
+import { selectGenres } from "../../../../utils/redux/dataSlice";
 import { Genre, Wrapper } from "./styled";
 import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";

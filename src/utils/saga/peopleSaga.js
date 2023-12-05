@@ -6,21 +6,21 @@ import {
   setStatus,
   setPersonDetails,
   fetchPersonDetails,
-  setCreditsForPerson,
-  fetchCreditsForPerson,
   setTotalPages,
   setPage,
-} from "../redux/peopleSlice";
+  fetchPersonCredits,
+  setPersonCredits,
+} from "../redux/dataSlice";
 import { getPopular } from "./getPopular";
 import { getSearchResults } from "./getSearchResults";
 import { getPersonDetails } from "./getPersonDetails";
-import { getCreditsForPerson } from "./getCreditsForPerson";
+import { getPersonCredits } from "./getPersonCredits";
 
-function* fetchCreditsForPersonHandler({ payload: personId }) {
+function* fetchPersonCreditsHandler({ payload: personId }) {
   try {
     yield put(setStatus("loading"));
-    const personCredits = yield call(getCreditsForPerson, personId);
-    yield put(setCreditsForPerson(personCredits));
+    const credits = yield call(getPersonCredits, personId);
+    yield put(setPersonCredits(credits));
     yield delay(1000);
     yield put(setStatus("success"));
   } catch (error) {
@@ -74,8 +74,8 @@ function* fetchSearchResultsHandler({ payload }) {
 }
 
 export function* peopleSaga() {
-  yield takeEvery(fetchPopularPeople.type, fetchPopularPeopleHandler);
-  yield takeEvery(fetchSearchResults.type, fetchSearchResultsHandler);
+  yield takeLatest(fetchPopularPeople.type, fetchPopularPeopleHandler);
+  yield takeLatest(fetchSearchResults.type, fetchSearchResultsHandler);
   yield takeLatest(fetchPersonDetails.type, fethPersonDetailsHandler);
-  yield takeEvery(fetchCreditsForPerson.type, fetchCreditsForPersonHandler);
+  yield takeLatest(fetchPersonCredits.type, fetchPersonCreditsHandler);
 }

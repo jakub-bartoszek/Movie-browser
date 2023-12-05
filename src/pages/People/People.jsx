@@ -1,60 +1,50 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Content, Header } from "./styled";
-import {
- fetchPopularPeople,
- fetchSearchResults,
- selectPeople,
- selectStatus,
- selectTotalPages,
- selectPage,
- setPage
-} from "../../utils/redux/peopleSlice";
-import {
- selectCategory,
- selectSearchPage,
- selectSearchQuery,
- selectSearchTotalPages,
- setCategory,
- setSearchQuery
-} from "../../utils/redux/searchSlice";
+
 import { nanoid } from "nanoid";
 import { PersonTile } from "../../components/common/PersonTile/PersonTile";
 import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
 import { useEffect } from "react";
-import { PaginationPeople } from "../../components/common/Navigation/Pagination/PaginationPeople";
 import { useSearchParams } from "react-router-dom";
+import {
+ fetchPopularPeople,
+ fetchSearchResults,
+ selectCategory,
+ selectPeople,
+ selectStatus,
+ selectTotalPages,
+ setCategory
+} from "../../utils/redux/dataSlice";
+import { Pagination } from "../../components/common/Navigation/Pagination/Pagination";
 
 export default function People() {
  const dispatch = useDispatch();
  const people = useSelector(selectPeople);
  const status = useSelector(selectStatus);
- const searchQuery = useSelector(selectSearchQuery);
  const category = useSelector(selectCategory);
- const page = useSelector(selectPage);
  const totalPages = useSelector(selectTotalPages);
- const searchPage = useSelector(selectSearchPage);
- const searchTotalPages = useSelector(selectSearchTotalPages);
  const [searchParams, setSearchParams] = useSearchParams();
+ const searchQuery = searchParams.get("search") || "";
+ const page = searchParams.get("page") || "1";
 
  useEffect(() => {
-  if (searchParams.get("search")) {
+  if (searchQuery) {
    dispatch(
     fetchSearchResults({
      category: "person",
-     searchQuery: searchParams.get("search"),
-     page: searchPage
+     searchQuery: searchQuery,
+     page: page
     })
    );
   } else {
    dispatch(fetchPopularPeople({ category: "person", page: page }));
   }
- }, [searchParams, searchQuery, page, searchPage, dispatch]);
+ }, [searchQuery, page, dispatch]);
 
  useEffect(() => {
   dispatch(setCategory("people"));
-  dispatch(setPage(1));
  }, [dispatch, category]);
 
  return (
@@ -86,13 +76,7 @@ export default function People() {
            />
           ))}
          </Content>
-         <PaginationPeople
-          page={page}
-          totalPages={totalPages}
-          searchPage={searchPage}
-          searchTotalPages={searchTotalPages}
-          searchQuery={searchQuery}
-         />
+         <Pagination totalPages={totalPages} />
         </>
        ) : (
         <NoResult />

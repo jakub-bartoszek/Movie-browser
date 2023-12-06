@@ -1,8 +1,12 @@
 import styled, { css } from "styled-components";
 import { ReactComponent as VideoIcon } from "../../../assets/icons/video.svg";
 import { ReactComponent as StarIcon } from "../../../assets/icons/star.svg";
+import { Link } from "react-router-dom";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(Link)`
+ text-decoration: none;
+ color: inherit;
+ transition: 1s;
  display: grid;
  background-color: ${({ theme }) => theme.colors.tile.background};
  grid-template-rows: auto 1fr;
@@ -11,6 +15,10 @@ export const Wrapper = styled.div`
  gap: 16px;
  height: 100%;
  box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
+
+ &:hover {
+  box-shadow: -1px 2px 7px 8px rgba(148, 255, 249, 1);
+ }
 
  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.s}) {
   grid-template-rows: 1fr;

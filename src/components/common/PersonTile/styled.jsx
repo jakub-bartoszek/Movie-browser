@@ -1,19 +1,11 @@
 import styled from "styled-components";
 import { ReactComponent as person } from "../../../assets/icons/person.svg";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export const StyledNavLink = styled(NavLink)`
+export const Wrapper = styled(Link)`
  text-decoration: none;
  color: inherit;
  transition: 1s;
- display: flex;
-
- &:hover {
-  box-shadow: -1px 2px 7px 8px rgba(148, 255, 249, 1);
- }
-`;
-
-export const Wrapper = styled.div`
  overflow: hidden;
  background-color: ${({ theme }) => theme.colors.tile.background};
  display: grid;
@@ -23,6 +15,10 @@ export const Wrapper = styled.div`
  height: 100%;
  width: 100%;
  box-shadow: ${({ theme }) => theme.properties.tile.boxShadow};
+
+ &:hover {
+  box-shadow: -1px 2px 7px 8px rgba(148, 255, 249, 1);
+ }
 `;
 
 export const PersonIcon = styled(person)`

@@ -10,6 +10,7 @@ import {
   setPage,
   fetchPersonCredits,
   setPersonCredits,
+  fetchPeopleSearchResults,
 } from "../redux/dataSlice";
 import { getPopular } from "./getPopular";
 import { getSearchResults } from "./getSearchResults";
@@ -75,7 +76,7 @@ function* fetchSearchResultsHandler({ payload }) {
 
 export function* peopleSaga() {
   yield takeLatest(fetchPopularPeople.type, fetchPopularPeopleHandler);
-  yield takeLatest(fetchSearchResults.type, fetchSearchResultsHandler);
+  yield takeLatest(fetchPeopleSearchResults.type, fetchSearchResultsHandler);
   yield takeLatest(fetchPersonDetails.type, fethPersonDetailsHandler);
   yield takeLatest(fetchPersonCredits.type, fetchPersonCreditsHandler);
 }

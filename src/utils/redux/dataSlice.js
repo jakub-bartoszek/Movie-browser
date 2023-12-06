@@ -26,7 +26,8 @@ const dataSlice = createSlice({
  reducers: {
   fetchPopularMovies: (state) => { },
   fetchPopularPeople: (state) => { },
-  fetchSearchResults: (state) => { },
+  fetchMoviesSearchResults: (state) => { },
+  fetchPeopleSearchResults: (state) => { },
   fetchMovieDetails: (state) => { },
   fetchPersonDetails: (state) => { },
   fetchMovieCredits: (state) => { },
@@ -71,7 +72,8 @@ const dataSlice = createSlice({
  }
 });
 export const {
- fetchSearchResults,
+ fetchMoviesSearchResults,
+ fetchPeopleSearchResults,
  fetchMovieDetails,
  fetchPersonDetails,
  fetchMovieCredits,

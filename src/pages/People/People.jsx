@@ -9,6 +9,7 @@ import { StyledLoader } from "../../components/common/StyledLoader/styled";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import {
+  fetchPeopleSearchResults,
  fetchPopularPeople,
  fetchSearchResults,
  selectCategory,
@@ -32,7 +33,7 @@ export default function People() {
  useEffect(() => {
   if (searchQuery) {
    dispatch(
-    fetchSearchResults({
+    fetchPeopleSearchResults({
      category: "person",
      searchQuery: searchQuery,
      page: page

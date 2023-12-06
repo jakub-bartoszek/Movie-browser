@@ -9,7 +9,8 @@ import {
  selectTotalPages,
  selectCategory,
  selectSearchTotalPages,
- setCategory
+ setCategory,
+ fetchMoviesSearchResults
 } from "../../utils/redux/dataSlice";
 
 import { Container, Content, Header, StyledLink } from "./styled";
@@ -36,7 +37,7 @@ export default function Movies() {
  useEffect(() => {
   if (searchQuery) {
    dispatch(
-    fetchSearchResults({
+    fetchMoviesSearchResults({
      category: "movie",
      searchQuery: searchQuery,
      page: page
@@ -74,12 +75,10 @@ export default function Movies() {
         <>
          <Content>
           {movies?.map((movie) => (
-           <StyledLink
-            to={toMoviePage({ id: movie.id })}
+           <SmallTile
             key={nanoid()}
-           >
-            <SmallTile movie={movie} />
-           </StyledLink>
+            movie={movie}
+           />
           ))}
          </Content>
          <Pagination

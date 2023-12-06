@@ -1,3 +1,4 @@
+import { toMoviePage } from "../../../routes/routes";
 import { Genres } from "./Genres/Genres";
 import {
  Content,
@@ -16,7 +17,7 @@ import {
 
 export const SmallTile = ({ movie }) => {
  return (
-  <Wrapper>
+  <Wrapper to={toMoviePage({ id: movie.id })}>
    <ImageWrapper>
     {movie.poster_path ? (
      <Image

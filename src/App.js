@@ -3,7 +3,7 @@ import Movies from "./pages/Movies/Movies";
 import People from "./pages/People/People";
 import { Navigation } from "./components/common/Navigation/Navigation";
 import MoviePage from "./pages/MoviePage/MoviePage";
-import { toMoviePage, toMovies, toPeople, toPersonPage } from "./routes";
+import { toMoviePage, toMovies, toPeople, toPersonPage } from "./routes/routes";
 import { Container } from "./components/common/Container/styled";
 import PersonPage from "./pages/PersonPage/PersonPage";
 

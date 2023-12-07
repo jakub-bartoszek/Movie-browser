@@ -1,3 +1,4 @@
+import { toMoviePage } from "../../../routes/routes";
 import { Genres } from "./Genres/Genres";
 import {
  Content,
@@ -16,11 +17,11 @@ import {
 
 export const SmallTile = ({ movie }) => {
  return (
-  <Wrapper>
+  <Wrapper to={toMoviePage({ id: movie.id })}>
    <ImageWrapper>
     {movie.poster_path ? (
      <Image
-      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
       alt=""
      />
     ) : (

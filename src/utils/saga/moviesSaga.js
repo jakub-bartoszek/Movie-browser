@@ -1,23 +1,22 @@
 import { put, call, takeLatest, delay } from "redux-saga/effects";
 import {
-  fetchPopularMovies,
-  fetchSearchResults,
   setGenres,
   setMovies,
   setMovieDetails,
   fetchMovieDetails,
   setStatus,
-  fetchCredits,
   setMovieCredits,
   setPage,
   setTotalPages,
-} from "../redux/moviesSlice";
+  fetchPopularMovies,
+  fetchMovieCredits,
+  fetchMoviesSearchResults,
+} from "../redux/dataSlice";
 import { getPopular } from "./getPopular";
 import { getSearchResults } from "./getSearchResults";
 import { getGenres } from "./getGenres";
 import { getMoviesDetails } from "./getMovieDetails";
-import { getCredits } from "./getCredits";
-import { setSearchPage, setSearchTotalPages } from "../redux/searchSlice";
+import { getMovieCredits } from "./getMovieCredits";
 
 function* fetchPopularMoviesHandler({ payload }) {
   try {
@@ -37,20 +36,20 @@ function* fetchPopularMoviesHandler({ payload }) {
 export function* fetchMovieDetailsHandler({ payload: movieId }) {
   try {
     yield put(setStatus("loading"));
-    yield delay(1000);
     const movieDetails = yield call(getMoviesDetails, movieId);
     yield put(setMovieDetails(movieDetails));
+    yield delay(1000);
     yield put(setStatus("success"));
   } catch (error) {
     yield put(setStatus("error"));
   }
 }
 
-export function* fetchCreditsHandler({ payload: movieId }) {
+export function* fetchMovieCreditsHandler({ payload: movieId }) {
   try {
     yield delay(1000);
-    const credits = yield call(getCredits, movieId);
-    yield put(setMovieCredits(credits));
+    const credits = yield call(getMovieCredits, movieId);
+    yield put(setMovieCredits({ cast: credits.cast, crew: credits.crew }));
   } catch (error) {
     yield put(setStatus("error"));
   }
@@ -66,8 +65,8 @@ function* fetchSearchResultsHandler({ payload }) {
       payload.page
     );
     const genres = yield call(getGenres);
-    yield put(setSearchPage(data.page));
-    yield put(setSearchTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
+    yield put(setPage(data.page));
+    yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setMovies(data.results));
     yield put(setGenres(genres));
     yield delay(1000);
@@ -79,7 +78,7 @@ function* fetchSearchResultsHandler({ payload }) {
 
 export function* moviesSaga() {
   yield takeLatest(fetchPopularMovies.type, fetchPopularMoviesHandler);
-  yield takeLatest(fetchSearchResults.type, fetchSearchResultsHandler);
+  yield takeLatest(fetchMoviesSearchResults.type, fetchSearchResultsHandler);
   yield takeLatest(fetchMovieDetails.type, fetchMovieDetailsHandler);
-  yield takeLatest(fetchCredits.type, fetchCreditsHandler);
+  yield takeLatest(fetchMovieCredits.type, fetchMovieCreditsHandler);
 }

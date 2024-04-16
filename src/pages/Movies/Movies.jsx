@@ -3,13 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 import { useSearchParams } from "react-router-dom";
 import {
- fetchPopularMovies,
- selectMovies,
  selectStatus,
  selectTotalPages,
  selectCategory,
- setCategory,
- fetchMoviesSearchResults
+ setCategory
 } from "../../utils/redux/dataSlice";
 import { SmallTile } from "../../components/common/SmallTile/SmallTile";
 import { Container, Content, Header } from "./styled";
@@ -17,6 +14,11 @@ import { Pagination } from "../../components/common/Pagination/Pagination";
 import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
+import {
+ fetchMoviesSearchResults,
+ fetchPopularMovies,
+ selectMovies
+} from "../../utils/redux/moviesSlice";
 
 export default function Movies() {
  const dispatch = useDispatch();

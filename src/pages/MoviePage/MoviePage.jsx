@@ -18,17 +18,16 @@ import {
 } from "./styled";
 import { useDispatch, useSelector } from "react-redux";
 import { PersonTile } from "../../components/common/PersonTile/PersonTile";
-import {
- fetchMovieDetails,
- selectStatus,
- fetchCredits,
- selectMovieDetails,
- selectMovieCredits,
- fetchMovieCredits
-} from "../../utils/redux/dataSlice";
+import { selectStatus } from "../../utils/redux/dataSlice";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
 import { Error } from "../Error/Error";
 import { nanoid } from "nanoid";
+import {
+ fetchMovieCredits,
+ fetchMovieDetails,
+ selectMovieCredits,
+ selectMovieDetails
+} from "../../utils/redux/moviesSlice";
 
 export default function MoviePage() {
  const { id } = useParams();
@@ -51,9 +50,7 @@ export default function MoviePage() {
      success: (
       <>
        <MainWrapper>
-        <Header
-         $backdropPath={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}
-        >
+        <Header $backdropPath={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}>
          <RatingTopContent>
           <LongTitle>{movieDetails.title}</LongTitle>
           <Rating>

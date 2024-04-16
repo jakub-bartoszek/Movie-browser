@@ -8,17 +8,16 @@ import {
  PersonIcon,
 } from "./styled";
 import { toPersonPage } from "../../../routes/routes";
-import { nanoid } from "nanoid";
 
-export const PersonTile = ({ member, filmName }) => {
+export const PersonTile = ({ person, filmName }) => {
  return (
   <Wrapper
-   to={toPersonPage({ id: member.id })}
+   to={toPersonPage({ id: person.id })}
   >
    <ImageWrapper>
-    {member.profile_path ? (
+    {person.profile_path ? (
      <Image
-      src={`https://image.tmdb.org/t/p/w500/${member.profile_path}`}
+      src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
       alt=""
      />
     ) : (
@@ -26,7 +25,7 @@ export const PersonTile = ({ member, filmName }) => {
     )}
    </ImageWrapper>
    <Character>
-    <Name>{member.name}</Name>
+    <Name>{person.name}</Name>
     {filmName && <FilmName>{filmName}</FilmName>}
    </Character>
   </Wrapper>

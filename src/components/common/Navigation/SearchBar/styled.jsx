@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "../../../../assets/icons/search.svg";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
  display: flex;
  align-items: center;
  background-color: ${({ theme }) => theme.colors.searchBar.background};

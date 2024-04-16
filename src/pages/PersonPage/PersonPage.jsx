@@ -1,13 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import {
- fetchPersonCredits,
- fetchPersonDetails,
- selectPersonCredits,
- selectPersonDetails,
- selectStatus
-} from "../../utils/redux/dataSlice";
+import { selectStatus } from "../../utils/redux/dataSlice";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
 import { Container } from "../Error/styled";
 import { SmallTile } from "../../components/common/SmallTile/SmallTile";
@@ -29,6 +23,12 @@ import {
  StyledNav
 } from "./styled";
 import { nanoid } from "nanoid";
+import {
+ fetchPersonCredits,
+ fetchPersonDetails,
+ selectPersonCredits,
+ selectPersonDetails
+} from "../../utils/redux/peopleSlice";
 
 export default function PersonPage() {
  const status = useSelector(selectStatus);
@@ -74,9 +74,7 @@ export default function PersonPage() {
         <>
          <SectionTitle>
           Movies - cast
-          {personCredits.cast.length > 0
-           ? ` (${personCredits.cast.length})`
-           : ""}
+          {personCredits.cast.length > 0 ? ` (${personCredits.cast.length})` : ""}
          </SectionTitle>
          <Section>
           {personCredits.cast.map((movie) => (
@@ -94,9 +92,7 @@ export default function PersonPage() {
         <>
          <SectionTitle>
           Movies - crew
-          {personCredits.crew.length > 0
-           ? ` (${personCredits.crew.length})`
-           : ""}
+          {personCredits.crew.length > 0 ? ` (${personCredits.crew.length})` : ""}
          </SectionTitle>
          <Section>
           {personCredits.crew.map((movie) => (

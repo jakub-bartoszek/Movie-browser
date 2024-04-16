@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { SmallTile } from "../../components/common/SmallTile/SmallTile";
 import {
  fetchPopularMovies,
- fetchSearchResults,
  selectMovies,
  selectStatus,
  selectTotalPages,
@@ -13,8 +12,7 @@ import {
  fetchMoviesSearchResults
 } from "../../utils/redux/dataSlice";
 
-import { Container, Content, Header, StyledLink } from "./styled";
-import { toMoviePage } from "../../routes/routes";
+import { Container, Content, Header } from "./styled";
 import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
@@ -52,50 +50,59 @@ export default function Movies() {
   dispatch(setCategory("movies"));
  }, [dispatch, category]);
 
+ const renderContent = () => {
+  switch (status) {
+   case "error":
+    return <Error />;
+   case "loading":
+    return <StyledLoader />;
+   case "success":
+    return (
+     <>
+      {movies.length > 0 ? (
+       <>
+        <Content>
+         {movies?.map((movie) => (
+          <SmallTile
+           key={nanoid()}
+           movie={movie}
+          />
+         ))}
+        </Content>
+        <Pagination
+         page={page}
+         totalPages={totalPages}
+         searchTotalPages={searchTotalPages}
+         searchPage={searchPage}
+         searchQuery={searchQuery}
+        />
+       </>
+      ) : (
+       <NoResult />
+      )}
+     </>
+    );
+   default:
+    return null;
+  }
+ };
+
+ function renderHeaderText() {
+  if (!searchQuery) {
+   return "Popular movies";
+  } else if (status === "loading") {
+   return `Search results for "${searchQuery}"`;
+  } else if (status === "success" && movies.length > 0) {
+   return `Search results for "${searchQuery}" (${movies.length})`;
+  } else {
+   return `Sorry, there are no results for "${searchQuery}"`;
+  }
+ }
+
  return (
   <Container>
-   {status !== "error" && (
-    <Header>
-     {!searchQuery
-      ? `Popular movies`
-      : status === "loading"
-      ? `Search results for "${searchQuery}"`
-      : status === "success" && movies.length > 0
-      ? `Search results for "${searchQuery}" (${movies.length})`
-      : `Sorry, there are no results for "${searchQuery}"`}
-    </Header>
-   )}
-   {
-    {
-     loading: <StyledLoader />,
-     error: <Error />,
-     success: (
-      <>
-       {movies.length > 0 ? (
-        <>
-         <Content>
-          {movies?.map((movie) => (
-           <SmallTile
-            key={nanoid()}
-            movie={movie}
-           />
-          ))}
-         </Content>
-         <Pagination
-          page={page}
-          totalPages={totalPages}
-          searchTotalPages={searchTotalPages}
-          searchPage={searchPage}
-          searchQuery={searchQuery}
-         />
-        </>
-       ) : (
-        <NoResult />
-       )}
-      </>
-     )
-    }[status]
-   }
+   <Header>{renderHeaderText()}</Header>
+   {renderContent()}
   </Container>
  );
 }

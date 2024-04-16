@@ -103,7 +103,6 @@ export const selectGenres = (state) => selectDataState(state).genres;
 export const selectPage = (state) => selectDataState(state).page;
 export const selectTotalPages = (state) => selectDataState(state).totalPages;
 export const selectCategory = (state) => selectDataState(state).category;
-export const selectSearchTotalPages = (state) => selectDataState(state).totalPages;
 export const selectMovieDetails = (state) => selectDataState(state).movieDetails;
 export const selectPersonDetails = (state) => selectDataState(state).personDetails;
 export const selectMovieCredits = (state) => selectDataState(state).movieCredits;

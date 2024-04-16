@@ -11,6 +11,6 @@ export const getPopular = async (category, page) => {
       },
     }
   );
-
+  
   return await response.data;
 };

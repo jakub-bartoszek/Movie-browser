@@ -1,21 +1,14 @@
-import { put, call, takeEvery, delay, takeLatest } from "redux-saga/effects";
+import { put, call, delay, takeLatest } from "redux-saga/effects";
 import {
-  fetchPopularPeople,
-  fetchSearchResults,
-  setPeople,
   setStatus,
-  setPersonDetails,
-  fetchPersonDetails,
   setTotalPages,
   setPage,
-  fetchPersonCredits,
-  setPersonCredits,
-  fetchPeopleSearchResults,
 } from "../redux/dataSlice";
 import { getPopular } from "./getPopular";
 import { getSearchResults } from "./getSearchResults";
 import { getPersonDetails } from "./getPersonDetails";
 import { getPersonCredits } from "./getPersonCredits";
+import { fetchPeopleSearchResults, fetchPersonCredits, fetchPersonDetails, fetchPopularPeople, setPeople, setPersonCredits, setPersonDetails } from "../redux/peopleSlice";
 
 function* fetchPersonCreditsHandler({ payload: personId }) {
   try {

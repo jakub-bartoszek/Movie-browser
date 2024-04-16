@@ -1,17 +1,19 @@
 import { put, call, takeLatest, delay } from "redux-saga/effects";
 import {
   setGenres,
-  setMovies,
-  setMovieDetails,
-  fetchMovieDetails,
   setStatus,
-  setMovieCredits,
   setPage,
   setTotalPages,
-  fetchPopularMovies,
-  fetchMovieCredits,
-  fetchMoviesSearchResults,
 } from "../redux/dataSlice";
+import {
+  fetchMovieCredits,
+  fetchMovieDetails,
+  fetchMoviesSearchResults,
+  fetchPopularMovies,
+  setMovieCredits,
+  setMovieDetails,
+  setMovies
+} from "../redux/moviesSlice";
 import { getPopular } from "./getPopular";
 import { getSearchResults } from "./getSearchResults";
 import { getGenres } from "./getGenres";

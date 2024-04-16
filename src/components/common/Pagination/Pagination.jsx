@@ -7,9 +7,8 @@ import {
 } from "./styled";
 import { useSearchParams } from "react-router-dom";
 
-export const Pagination = ({ totalPages }) => {
+export const Pagination = ({ totalPages, page }) => {
  const [searchParams, setSearchParams] = useSearchParams();
- const page = parseInt(searchParams.get("page")) || 1;
 
  const prevPageHandler = () => {
   if (page !== 1) {

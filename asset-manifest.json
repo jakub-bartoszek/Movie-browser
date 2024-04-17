@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/Movie-browser/static/js/main.377b012d.js",
+    "main.js": "/Movie-browser/static/js/main.6b9469ae.js",
     "static/js/787.9ba826ac.chunk.js": "/Movie-browser/static/js/787.9ba826ac.chunk.js",
-    "static/media/paperplane.svg": "/Movie-browser/static/media/paperplane.03778e104c236c2e6f3a37f0afbb2311.svg",
-    "static/media/star.svg": "/Movie-browser/static/media/star.291f146da8ec732e66d3333dc945ea1b.svg",
-    "static/media/person.svg": "/Movie-browser/static/media/person.2ccdfab47538c3e373ec79b889b7611a.svg",
-    "static/media/attention.svg": "/Movie-browser/static/media/attention.1a50ec90bf2543fe78aca794450d3b21.svg",
+    "static/media/paperplane.svg": "/Movie-browser/static/media/paperplane.d286a671797f1244d0ba26eeaa04cf6f.svg",
+    "static/media/star.svg": "/Movie-browser/static/media/star.8663155c38d2739a01d98dddbf5d2ae1.svg",
+    "static/media/person.svg": "/Movie-browser/static/media/person.84ee2f70a012064cf4e0ada716554d50.svg",
+    "static/media/attention.svg": "/Movie-browser/static/media/attention.a514e9c64a76d5cf149bdd7443857605.svg",
     "index.html": "/Movie-browser/index.html",
-    "static/media/right.svg": "/Movie-browser/static/media/right.f9c50d79e4ee35a3ae81230ffab6b4f9.svg",
-    "static/media/video.svg": "/Movie-browser/static/media/video.197638773dfbb9161831b4f84aacd222.svg",
-    "static/media/left.svg": "/Movie-browser/static/media/left.80cb030965c71dcfbf9a92d42e33c44c.svg",
-    "static/media/search.svg": "/Movie-browser/static/media/search.65152feae0c2482d7500abd94eca22ef.svg",
-    "static/media/loader.svg": "/Movie-browser/static/media/loader.17b2cd246403596367f2437ec95272ba.svg",
-    "main.377b012d.js.map": "/Movie-browser/static/js/main.377b012d.js.map",
+    "static/media/right.svg": "/Movie-browser/static/media/right.d15b73505e766f202cbc427cc555fb9f.svg",
+    "static/media/video.svg": "/Movie-browser/static/media/video.84349dc8ca1736f4272e1bd6e09dac70.svg",
+    "static/media/left.svg": "/Movie-browser/static/media/left.f0ced4289d658659fa4fd0c3d14fc1e2.svg",
+    "static/media/search.svg": "/Movie-browser/static/media/search.1272b926129123e0dca8155efa5b7cd3.svg",
+    "static/media/loader.svg": "/Movie-browser/static/media/loader.c5f29646f52eed97faa98a9f6f43ce08.svg",
+    "main.6b9469ae.js.map": "/Movie-browser/static/js/main.6b9469ae.js.map",
     "787.9ba826ac.chunk.js.map": "/Movie-browser/static/js/787.9ba826ac.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.377b012d.js"
+    "static/js/main.6b9469ae.js"
   ]
 }

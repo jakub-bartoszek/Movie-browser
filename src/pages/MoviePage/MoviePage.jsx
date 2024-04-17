@@ -36,6 +36,8 @@ export default function MoviePage() {
  const status = useSelector(selectStatus);
  const movieCredits = useSelector(selectMovieCredits);
 
+ console.log(movieCredits)
+
  useEffect(() => {
   dispatch(fetchMovieDetails(id));
   dispatch(fetchMovieCredits(id));
@@ -81,20 +83,20 @@ export default function MoviePage() {
         />
         <SectionTitle>Cast</SectionTitle>
         <Section>
-         {movieCredits.cast.map((member) => (
+         {movieCredits.cast.map((person) => (
           <PersonTile
            key={nanoid()}
-           member={member}
-           filmName={member.character ? member.character : "Unknown Character"}
+           person={person}
+           filmName={person.character ? person.character : "Unknown Character"}
           />
          ))}
         </Section>
         <SectionTitle>Crew</SectionTitle>
         <Section>
-         {movieCredits.crew.map((member) => (
+         {movieCredits.crew.map((person) => (
           <PersonTile
            key={nanoid()}
-           member={member}
+           person={person}
           />
          ))}
         </Section>

@@ -10,6 +10,9 @@ import {
 import { toPersonPage } from "../../../routes/routes";
 
 export const PersonTile = ({ person, filmName }) => {
+
+console.log(person)
+
  return (
   <Wrapper
    to={toPersonPage({ id: person.id })}

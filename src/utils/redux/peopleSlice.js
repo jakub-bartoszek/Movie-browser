@@ -33,15 +33,9 @@ export const {
  fetchPersonDetails,
  fetchPersonCredits,
  fetchPopularPeople,
- setStatus,
  setPeople,
  setPersonDetails,
  setPersonCredits,
- setSearchQuery,
- setGenres,
- setPage,
- setTotalPages,
- setCategory
 } = peopleSlice.actions;
 
 export const selectPeopleSlice = (state) => state.people;

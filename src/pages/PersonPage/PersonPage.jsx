@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { selectStatus } from "../../utils/redux/dataSlice";
+import { selectStatus, setCategory } from "../../utils/redux/dataSlice";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
 import { Container } from "../Error/styled";
 import { SmallTile } from "../../components/common/SmallTile/SmallTile";
@@ -31,11 +31,15 @@ import {
 } from "../../utils/redux/peopleSlice";
 
 export default function PersonPage() {
- const status = useSelector(selectStatus);
  const dispatch = useDispatch();
  const { id } = useParams();
+ const status = useSelector(selectStatus);
  const personDetails = useSelector(selectPersonDetails);
  const personCredits = useSelector(selectPersonCredits);
+
+ useEffect(() => {
+  dispatch(setCategory("people"));
+ }, []);
 
  useEffect(() => {
   dispatch(fetchPersonDetails(id));

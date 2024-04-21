@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { nanoid } from "nanoid";
 import { useSearchParams } from "react-router-dom";
 import { selectStatus, selectTotalPages, setCategory } from "../../utils/redux/dataSlice";
 import {

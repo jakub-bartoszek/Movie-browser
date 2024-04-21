@@ -1,15 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-
-export const StyledLink = styled(Link)`
- text-decoration: none;
- color: ${({ theme }) => theme.colors.site.text};
- transition: 1s;
-
- &:hover {
-  box-shadow: -1px 2px 7px 8px rgba(148, 255, 249, 1);
- }
-`;
 
 export const Container = styled.div`
  max-width: 1400px;

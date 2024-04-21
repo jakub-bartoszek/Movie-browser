@@ -9,25 +9,12 @@ import {
  selectMovieDetails
 } from "../../utils/redux/moviesSlice";
 import { selectStatus, setCategory } from "../../utils/redux/dataSlice";
-import {
- MainWrapper,
- Header,
- Wrapper,
- Section,
- SectionTitle,
- LongTitle,
- Rating,
- Rate,
- IconStar,
- Votes,
- RatingTopContent,
- ContainerRateText,
- Container
-} from "./styled";
+import { Wrapper, Section, SectionTitle, Container } from "./styled";
 import { Tile } from "../../components/common/Tile/Tile";
 import { PersonTile } from "../../components/common/PersonTile/PersonTile";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
 import { Error } from "../Error/Error";
+import { MovieBanner } from "../../components/common/MovieBanner/MovieBanner";
 
 export default function MoviePage() {
  const dispatch = useDispatch();
@@ -54,23 +41,7 @@ export default function MoviePage() {
    case "success":
     return (
      <>
-      <MainWrapper>
-       <Header $backdropPath={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}>
-        <RatingTopContent>
-         <LongTitle>{movieDetails.title}</LongTitle>
-         <Rating>
-          <IconStar />
-          <ContainerRateText>
-           {movieDetails.vote_average
-            ? movieDetails.vote_average.toFixed(2).toString().replace(".", ",")
-            : "No votes yet"}
-           <Rate>/ 10</Rate>
-          </ContainerRateText>
-          <Votes>{movieDetails.vote_count}&nbsp;votes</Votes>
-         </Rating>
-        </RatingTopContent>
-       </Header>
-      </MainWrapper>
+      <MovieBanner movieDetails={movieDetails} />
       <Wrapper>
        <Tile
         poster_path={movieDetails.poster_path}

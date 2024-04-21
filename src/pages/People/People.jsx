@@ -8,17 +8,17 @@ import {
  selectCategory,
  setCategory
 } from "../../utils/redux/dataSlice";
-import { Container, Content, Header } from "./styled";
-import { Pagination } from "../../components/common/Pagination/Pagination";
-import { NoResult } from "../NoResult/NoResult";
-import { Error } from "../Error/Error";
-import { StyledLoader } from "../../components/common/StyledLoader/styled";
 import {
  fetchPeopleSearchResults,
  fetchPopularPeople,
  selectPeople
 } from "../../utils/redux/peopleSlice";
+import { Container, Content, Header } from "./styled";
 import { PersonTile } from "../../components/common/PersonTile/PersonTile";
+import { Pagination } from "../../components/common/Pagination/Pagination";
+import { NoResult } from "../NoResult/NoResult";
+import { Error } from "../Error/Error";
+import { StyledLoader } from "../../components/common/StyledLoader/styled";
 
 export default function Movies() {
  const dispatch = useDispatch();
@@ -55,6 +55,8 @@ export default function Movies() {
    return `Search results for "${searchQuery}"`;
   } else if (status === "success" && people?.length > 0) {
    return `Search results for "${searchQuery}" (${people.length})`;
+  } else if (status === "error") {
+   return null;
   } else {
    return `Sorry, there are no results for "${searchQuery}"`;
   }
@@ -65,40 +67,37 @@ export default function Movies() {
    case "error":
     return <Error />;
    case "loading":
-    return (
-     <>
-      <Header>{renderHeaderText()}</Header>
-      <StyledLoader />
-     </>
-    );
+    return <StyledLoader />;
    case "success":
-    return (
-     <>
-      <Header>{renderHeaderText()}</Header>
-      {people?.length > 0 ? (
-       <>
-        <Content>
-         {people.map((person) => (
-          <PersonTile
-           key={nanoid()}
-           person={person}
-          />
-         ))}
-        </Content>
-        <Pagination
-         totalPages={totalPages}
-         page={page}
-        />
-       </>
-      ) : (
-       <NoResult />
-      )}
-     </>
-    );
+    if (people?.length > 0) {
+     return (
+      <>
+       <Content>
+        {people.map((person) => (
+         <PersonTile
+          key={nanoid()}
+          person={person}
+         />
+        ))}
+       </Content>
+       <Pagination
+        totalPages={totalPages}
+        page={page}
+       />
+      </>
+     );
+    } else {
+     return <NoResult />;
+    }
    default:
     return null;
   }
  };
 
- return <Container>{renderContent()}</Container>;
+ return (
+  <Container>
+   <Header>{renderHeaderText()}</Header>
+   {renderContent()}
+  </Container>
+ );
 }

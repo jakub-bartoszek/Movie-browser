@@ -2,7 +2,6 @@ import { put, call, takeLatest, delay } from "redux-saga/effects";
 import {
   setGenres,
   setStatus,
-  setPage,
   setTotalPages,
 } from "../redux/dataSlice";
 import {
@@ -25,7 +24,6 @@ function* fetchPopularMoviesHandler({ payload }) {
     yield put(setStatus("loading"));
     const data = yield call(getPopular, payload.category, payload.page);
     const genres = yield call(getGenres);
-    yield put(setPage(data.page));
     yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setMovies(data.results));
     yield put(setGenres(genres));
@@ -67,7 +65,6 @@ function* fetchSearchResultsHandler({ payload }) {
       payload.page
     );
     const genres = yield call(getGenres);
-    yield put(setPage(data.page));
     yield put(setTotalPages(data.total_pages > 500 ? 500 : data.total_pages));
     yield put(setMovies(data.results));
     yield put(setGenres(genres));

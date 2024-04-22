@@ -5,9 +5,7 @@ const dataSlice = createSlice({
  initialState: {
   genres: [],
   status: "",
-  page: 1,
   totalPages: 1,
-  searchQuery: "",
   category: "movies"
  },
 
@@ -15,17 +13,11 @@ const dataSlice = createSlice({
   setStatus: (state, { payload }) => {
    state.status = payload;
   },
-  setSearchQuery: (state, { payload }) => {
-   state.searchQuery = payload;
-  },
   setCategory: (state, { payload }) => {
    state.category = payload;
   },
   setGenres: (state, { payload }) => {
    state.genres = payload;
-  },
-  setPage: (state, { payload }) => {
-   state.page = payload;
   },
   setTotalPages: (state, { payload }) => {
    state.totalPages = payload;
@@ -34,18 +26,14 @@ const dataSlice = createSlice({
 });
 export const {
  setStatus,
- setSearchQuery,
  setGenres,
- setPage,
  setTotalPages,
  setCategory
 } = dataSlice.actions;
 
 export const selectDataState = (state) => state.data;
 export const selectStatus = (state) => selectDataState(state).status;
-export const selectSearchQuery = (state) => selectDataState(state).searchQuery;
 export const selectGenres = (state) => selectDataState(state).genres;
-export const selectPage = (state) => selectDataState(state).page;
 export const selectTotalPages = (state) => selectDataState(state).totalPages;
 export const selectCategory = (state) => selectDataState(state).category;
 

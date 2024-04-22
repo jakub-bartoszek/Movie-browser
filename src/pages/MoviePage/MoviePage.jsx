@@ -9,7 +9,7 @@ import {
  selectMovieDetails
 } from "../../utils/redux/moviesSlice";
 import { selectStatus, setCategory } from "../../utils/redux/dataSlice";
-import { Wrapper, Section, SectionTitle, Container } from "./styled";
+import { Section, SectionTitle, Container, Content } from "./styled";
 import { Tile } from "../../components/common/Tile/Tile";
 import { PersonTile } from "../../components/common/PersonTile/PersonTile";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
@@ -42,7 +42,7 @@ export default function MoviePage() {
     return (
      <>
       <MovieBanner movieDetails={movieDetails} />
-      <Wrapper>
+      <Content>
        <Tile
         poster_path={movieDetails.poster_path}
         title={movieDetails.title}
@@ -72,7 +72,7 @@ export default function MoviePage() {
          />
         ))}
        </Section>
-      </Wrapper>
+      </Content>
      </>
     );
    default:

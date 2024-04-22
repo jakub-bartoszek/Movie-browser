@@ -1,24 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
- display: flex;
- flex-direction: column;
- width: 100%;
- height: 100%;
-`;
-
-export const Wrapper = styled.div`
  max-width: 1400px;
- padding: 0 16px 32px 16px;
+ padding: 0 16px;
  margin: 0 auto;
  display: flex;
  flex-direction: column;
- justify-content: center;
- flex-wrap: wrap;
+ height: 100%;
+`;
 
- @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
-  gap: 16px;
- }
+export const Content = styled.div`
+ display: grid;
+ justify-content: center;
 `;
 
 export const Section = styled.section`

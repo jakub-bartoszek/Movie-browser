@@ -2,33 +2,19 @@ import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { selectStatus, setCategory } from "../../utils/redux/dataSlice";
-import { StyledLoader } from "../../components/common/StyledLoader/styled";
-import { Container } from "../Error/styled";
-import { SmallTile } from "../../components/common/SmallTile/SmallTile";
-import { Error } from "../Error/Error";
-import { toMoviePage } from "../../routes/routes";
-import {
- Biography,
- Birth,
- BirthDate,
- BirthPlace,
- Content,
- Image,
- ImageWrapper,
- Name,
- PersonTile,
- Section,
- SectionTitle,
- Wrapper,
- StyledNav
-} from "./styled";
-import { nanoid } from "nanoid";
 import {
  fetchPersonCredits,
  fetchPersonDetails,
  selectPersonCredits,
  selectPersonDetails
 } from "../../utils/redux/peopleSlice";
+import { toMoviePage } from "../../routes/routes";
+import { nanoid } from "nanoid";
+import { StyledLoader } from "../../components/common/StyledLoader/styled";
+import { Error } from "../Error/Error";
+import { SmallTile } from "../../components/common/SmallTile/SmallTile";
+import { PersonTileBig } from "../../components/common/PersonTileBig/PersonTileBig";
+import { Section, SectionTitle, StyledNav, Container } from "./styled";
 
 export default function PersonPage() {
  const dispatch = useDispatch();
@@ -54,27 +40,8 @@ export default function PersonPage() {
     return <StyledLoader />;
    case "success":
     return (
-     <Wrapper>
-      <PersonTile>
-       <ImageWrapper>
-        <Image
-         src={`https://image.tmdb.org/t/p/w500/${personDetails.profile_path}`}
-         alt=""
-        />
-       </ImageWrapper>
-       <Content>
-        <Name>{personDetails.name}</Name>
-        <Birth>
-         <BirthDate>
-          {personDetails && personDetails.birthday
-           ? personDetails.birthday.toString().split("-").reverse().join(".")
-           : "N/A"}
-         </BirthDate>
-         <BirthPlace>{personDetails.place_of_birth}</BirthPlace>
-        </Birth>
-       </Content>
-       <Biography>{personDetails.biography}</Biography>
-      </PersonTile>
+     <>
+      <PersonTileBig personDetails={personDetails} />
       {personCredits.cast && personCredits.cast.length > 0 && (
        <>
         <SectionTitle>
@@ -111,7 +78,7 @@ export default function PersonPage() {
         </Section>
        </>
       )}
-     </Wrapper>
+     </>
     );
    default:
     return null;

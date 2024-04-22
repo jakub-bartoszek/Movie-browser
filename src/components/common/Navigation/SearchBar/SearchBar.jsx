@@ -1,12 +1,13 @@
-import { SearchInput, StyledSearchIcon, Wrapper } from "./styled";
-import { selectCategory } from "../../../../utils/redux/dataSlice";
-import { useSelector } from "react-redux";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { selectCategory } from "../../../../utils/redux/dataSlice";
+import { SearchInput, StyledSearchIcon, Wrapper } from "./styled";
 
 export const SearchBar = () => {
  const category = useSelector(selectCategory);
- const [searchQuery, setSearchQuery] = useState();
+ const [searchParams] = useSearchParams();
+ const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
  const navigate = useNavigate();
 
  const onInputChange = (e) => {

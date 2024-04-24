@@ -30,7 +30,7 @@ export default function MoviePage() {
 
  useEffect(() => {
   dispatch(setCategory("movies"));
- }, []);
+ }, [dispatch]);
 
  const renderContent = () => {
   switch (status) {

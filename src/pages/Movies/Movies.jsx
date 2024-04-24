@@ -39,7 +39,7 @@ export default function Movies() {
 
  useEffect(() => {
   dispatch(setCategory("movies"));
- }, []);
+ }, [dispatch]);
 
  function renderHeaderText() {
   if (!searchQuery) {

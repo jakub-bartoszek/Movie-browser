@@ -25,7 +25,7 @@ export default function PersonPage() {
 
  useEffect(() => {
   dispatch(setCategory("people"));
- }, []);
+ }, [dispatch]);
 
  useEffect(() => {
   dispatch(fetchPersonDetails(id));

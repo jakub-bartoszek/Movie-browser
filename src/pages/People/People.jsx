@@ -2,12 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 import { useSearchParams } from "react-router-dom";
-import {
- selectStatus,
- selectTotalPages,
- selectCategory,
- setCategory
-} from "../../utils/redux/dataSlice";
+import { selectStatus, selectTotalPages, setCategory } from "../../utils/redux/dataSlice";
 import {
  fetchPeopleSearchResults,
  fetchPopularPeople,
@@ -20,12 +15,11 @@ import { NoResult } from "../NoResult/NoResult";
 import { Error } from "../Error/Error";
 import { StyledLoader } from "../../components/common/StyledLoader/styled";
 
-export default function Movies() {
+export default function People() {
  const dispatch = useDispatch();
  const [searchParams] = useSearchParams();
  const people = useSelector(selectPeople);
  const status = useSelector(selectStatus);
- const category = useSelector(selectCategory);
  const searchQuery = searchParams.get("search") || "";
  const page = parseInt(searchParams.get("page") || "1");
  const totalPages = useSelector(selectTotalPages);
@@ -46,7 +40,7 @@ export default function Movies() {
 
  useEffect(() => {
   dispatch(setCategory("people"));
- }, [dispatch, category]);
+ }, [dispatch]);
 
  function renderHeaderText() {
   if (!searchQuery) {

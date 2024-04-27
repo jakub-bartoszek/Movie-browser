@@ -28,11 +28,11 @@ The project leverages the following technologies:
 
 To see the project in action, check out the [Demo](https://jakub-bartoszek-developer.github.io/Movie-browser/). Please note that the project is still ongoing and you can follow the progress at the link provided.
 
-![Project Screenshot](/readmeMovies.png)
+![Project Screenshot](/public/images/readmeMovies.png)
 
-![Project Screenshot](/readmeMovie.png)
+![Project Screenshot](/public/images/readmeMovie.png)
 
-![Project Screenshot](/readmePeople.png)
+![Project Screenshot](/public/images/readmePeople.png)
 
 # How it works and looks
 
